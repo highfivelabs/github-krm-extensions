@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "github-krm": {
+      "command": "go",
+      "args": ["run", "./cmd/mcp"]
+    }
+  }
+}
