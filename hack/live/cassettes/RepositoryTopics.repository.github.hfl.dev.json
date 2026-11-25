@@ -1,0 +1,101 @@
+{
+  "recorded": "2026-11-20T23:56:51Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[]}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[]}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"hfl-live\"]}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"hfl-live\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"hfl-live\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"hfl-live\"]}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"hfl-live\",\"second\"]}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"drift\"]}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"drift\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"drift\"]}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"hfl-live\",\"second\"]}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[]}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"names\":[]}"
+    }
+  ]
+}

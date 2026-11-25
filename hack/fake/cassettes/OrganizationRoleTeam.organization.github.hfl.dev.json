@@ -1,0 +1,57 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/organization-roles",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000019}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/organization-roles/rehearsal-roleID/teams?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/organization-roles/teams/rehearsal-team/rehearsal-roleID",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignment\":\"direct\",\"description\":\"example-description\",\"enterprise_id\":42,\"html_url\":\"https://github.com/orgs/rails/teams/core\",\"members_url\":\"example-members-url\",\"name\":\"example-name\",\"node_id\":\"example-node-id\",\"notification_setting\":\"example-notification-setting\",\"organization_id\":37,\"parent\":{\"description\":\"A great team.\",\"html_url\":\"https://github.com/orgs/rails/teams/core\",\"id\":1,\"members_url\":\"https://api.github.com/organizations/1/team/1/members{/member}\",\"name\":\"Justice League\",\"node_id\":\"MDQ6VGVhbTE=\",\"permission\":\"admin\",\"repositories_url\":\"https://api.github.com/organizations/1/team/1/repos\",\"slug\":\"justice-league\",\"type\":\"enterprise\",\"url\":\"https://api.github.com/organizations/1/team/1\"},\"permission\":\"example-permission\",\"permissions\":{\"admin\":true,\"maintain\":true,\"pull\":true,\"push\":true,\"triage\":true},\"privacy\":\"example-privacy\",\"repositories_url\":\"https://example.com/\",\"slug\":\"rehearsal-team\",\"type\":\"enterprise\",\"url\":\"https://example.com/\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/organization-roles/rehearsal-roleID/teams?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"slug\":\"rehearsal-team\"}]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/organization-roles/teams/rehearsal-team/rehearsal-roleID",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/organization-roles/rehearsal-roleID/teams?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    }
+  ]
+}

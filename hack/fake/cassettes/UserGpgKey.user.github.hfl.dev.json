@@ -1,0 +1,44 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/user/gpg_keys",
+      "body": "{\"armored_public_key\":\"example-armored-public-key\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"can_certify\":true,\"can_encrypt_comms\":true,\"can_encrypt_storage\":true,\"can_sign\":true,\"created_at\":\"2016-03-24T11:31:04-06:00\",\"emails\":[],\"expires_at\":\"2000-01-01T00:00:00Z\",\"id\":270000013,\"key_id\":\"3262EFF25BA0D270\",\"primary_key_id\":1,\"public_key\":\"xsBNBFayYZ...\",\"raw_key\":\"example-raw-key\",\"revoked\":true,\"subkeys\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/user/gpg_keys/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"can_certify\":true,\"can_encrypt_comms\":true,\"can_encrypt_storage\":true,\"can_sign\":true,\"created_at\":\"2016-03-24T11:31:04-06:00\",\"emails\":[],\"expires_at\":\"2000-01-01T00:00:00Z\",\"id\":270000013,\"key_id\":\"3262EFF25BA0D270\",\"primary_key_id\":1,\"public_key\":\"xsBNBFayYZ...\",\"raw_key\":\"example-raw-key\",\"revoked\":true,\"subkeys\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/user/gpg_keys/270000013",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/user/gpg_keys/270000013",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

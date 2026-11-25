@@ -1,0 +1,104 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false},\"id\":280000007}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies",
+      "body": "{\"name\":\"release/*\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"release/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"release/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"release/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "body": "{\"name\":\"release2/*\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"release2/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"release2/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "body": "{\"name\":\"drift/*\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"drift/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"drift/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "body": "{\"name\":\"release2/*\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"release2/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000004,\"name\":\"release2/*\",\"node_id\":\"MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}/deployment-branch-policies/270000004",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 204
+    }
+  ]
+}

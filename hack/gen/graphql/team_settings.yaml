@@ -1,0 +1,70 @@
+# A team's code review settings: whether review requests are delegated to
+# its members, how, and whether the whole team is notified. GraphQL only.
+#
+# A settings kind, of the team named by its node ID (teamId: node_id in the
+# REST API's team; Terraform takes the team's ID or slug and looks it up).
+# Deleting the object leaves the settings as they are (Terraform turns
+# delegation off). Terraform reads them through organization(login) {
+# team(slug) }; here the team is read by its node ID, node(id) { ... on
+# Team }, with the same fields, aliased as the update's input names so that
+# the API answers the spec's own fields.
+#
+# Sources:
+#   - integrations/terraform-provider-github v6.13.0,
+#     github/resource_github_team_settings.go: the mutation
+#     updateTeamReviewAssignment(input: $input) { clientMutationId } and
+#     the Team fields reviewRequestDelegationEnabled,
+#     reviewRequestDelegationAlgorithm, reviewRequestDelegationMemberCount,
+#     reviewRequestDelegationNotifyTeam (queryTeamSettings).
+#   - shurcooL/githubv4 2402fdf4a9ed (Terraform's pinned version), input.go:
+#     UpdateTeamReviewAssignmentInput (id, enabled, algorithm,
+#     teamMemberCount, notifyTeam, ...); enum TeamReviewAssignmentAlgorithm
+#     (ROUND_ROBIN, LOAD_BALANCE).
+#   - GitHub's GraphQL reference, mutation updateTeamReviewAssignment,
+#     Query.node and object Team:
+#     https://docs.github.com/en/graphql/reference/mutations#updateteamreviewassignment
+# Written 2026-11-22.
+terraform: [github_team_settings]
+shape: settings
+params:
+  teamId:
+    description: The team's node ID.
+fields:
+  enabled:
+    type: boolean
+    description: Turn on or off review request delegation for the team.
+  algorithm:
+    type: string
+    enum: [ROUND_ROBIN, LOAD_BALANCE]
+    description: The algorithm to use when assigning pull requests to team members.
+  teamMemberCount:
+    type: integer
+    description: The number of team members to assign to a pull request.
+  notifyTeam:
+    type: boolean
+    description: Whether to notify the entire team when at least one member is also assigned to the pull request.
+required: [enabled]
+sample: {teamId: T_example, enabled: true, algorithm: ROUND_ROBIN, teamMemberCount: 1, notifyTeam: false}
+read:
+  query: |
+    query TeamReviewAssignment($id: ID!) {
+      node(id: $id) {
+        ... on Team {
+          enabled: reviewRequestDelegationEnabled
+          algorithm: reviewRequestDelegationAlgorithm
+          teamMemberCount: reviewRequestDelegationMemberCount
+          notifyTeam: reviewRequestDelegationNotifyTeam
+        }
+      }
+    }
+  variables: {id: "{teamId}"}
+  result: node
+update:
+  query: |
+    mutation UpdateTeamReviewAssignment($input: UpdateTeamReviewAssignmentInput!) {
+      updateTeamReviewAssignment(input: $input) {
+        clientMutationId
+      }
+    }
+  variables:
+    input: {id: "{teamId}", enabled: "{enabled}", algorithm: "{algorithm}", teamMemberCount: "{teamMemberCount}", notifyTeam: "{notifyTeam}"}

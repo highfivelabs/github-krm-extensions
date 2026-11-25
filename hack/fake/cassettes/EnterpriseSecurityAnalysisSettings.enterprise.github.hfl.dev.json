@@ -1,0 +1,106 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_validity_checks_enabled\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_validity_checks_enabled\":true}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "body": "{\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "body": "{\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "body": "{\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "body": "{\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/code_security_and_analysis",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"advanced_security_enabled_for_new_user_namespace_repositories\":true,\"secret_scanning_push_protection_custom_link\":\"{{redacted}}\",\"secret_scanning_validity_checks_enabled\":true}"
+    }
+  ]
+}

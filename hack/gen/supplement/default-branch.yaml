@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: GitHub repository default branch (subset of repos/get and repos/update)
+  version: 1.1.4
+servers:
+- url: https://api.github.com
+paths:
+  /repos/{owner}/{repo}:
+    parameters:
+    - name: owner
+      in: path
+      required: true
+      description: The account owner of the repository. The name is not case sensitive.
+      schema:
+        type: string
+    - name: repo
+      in: path
+      required: true
+      description: The name of the repository without the `.git` extension. The name is not case sensitive.
+      schema:
+        type: string
+    get:
+      summary: Get a repository (its default branch)
+      operationId: repos/get
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repository-default-branch'
+    patch:
+      summary: Update a repository (its default branch)
+      operationId: repos/update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                default_branch:
+                  type: string
+                  description: Updates the default branch for this repository.
+              required:
+              - default_branch
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repository-default-branch'
+components:
+  schemas:
+    repository-default-branch:
+      type: object
+      properties:
+        default_branch:
+          type: string
+          description: The default branch of the repository.
+          example: master

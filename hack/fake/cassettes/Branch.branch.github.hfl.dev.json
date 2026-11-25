@@ -1,0 +1,85 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/git/ref/heads/main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000015}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/contents/{{name}}.md",
+      "body": "{\"content\":\"aGVsbG8K\",\"message\":\"add {{name}}.md\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"content\":\"aGVsbG8K\",\"id\":280000016,\"message\":\"add {{name}}.md\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/git/ref/heads/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/git/refs",
+      "body": "{\"ref\":\"refs/heads/{{name}}\",\"sha\":\"rehearsal-mainSHA\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"node_id\":\"REF_example\",\"ref\":\"refs/heads/{{name}}\",\"url\":\"https://api.github.com/repos/example-owner/example-repo/git/refs/heads/feature/example\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/git/ref/heads/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"node_id\":\"REF_example\",\"ref\":\"refs/heads/{{name}}\",\"url\":\"https://api.github.com/repos/example-owner/example-repo/git/refs/heads/feature/example\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/git/ref/heads/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"node_id\":\"REF_example\",\"ref\":\"refs/heads/{{name}}\",\"url\":\"https://api.github.com/repos/example-owner/example-repo/git/refs/heads/feature/example\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/git/refs/heads/{{name}}",
+      "body": "{\"sha\":\"rehearsal-nextSHA\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"node_id\":\"REF_example\",\"ref\":\"refs/heads/{{name}}\",\"url\":\"https://api.github.com/repos/example-owner/example-repo/git/refs/heads/feature/example\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/git/ref/heads/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"node_id\":\"REF_example\",\"ref\":\"refs/heads/{{name}}\",\"url\":\"https://api.github.com/repos/example-owner/example-repo/git/refs/heads/feature/example\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/git/refs/heads/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/git/ref/heads/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

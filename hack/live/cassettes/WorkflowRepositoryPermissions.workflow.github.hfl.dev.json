@@ -1,0 +1,111 @@
+{
+  "recorded": "2026-11-20T23:56:58Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/permissions/workflow",
+      "body": "{\"can_approve_pull_request_reviews\":false,\"default_workflow_permissions\":\"write\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"read\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"read\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"read\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"read\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "body": "{\"can_approve_pull_request_reviews\":false,\"default_workflow_permissions\":\"write\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"write\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"write\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "body": "{\"default_workflow_permissions\":\"read\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"read\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "body": "{\"can_approve_pull_request_reviews\":false,\"default_workflow_permissions\":\"write\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"write\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"default_workflow_permissions\":\"write\",\"can_approve_pull_request_reviews\":false}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions/workflow",
+      "body": "{\"can_approve_pull_request_reviews\":false,\"default_workflow_permissions\":\"read\"}",
+      "status": 204
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/permissions/workflow",
+      "body": "{\"can_approve_pull_request_reviews\":false,\"default_workflow_permissions\":\"read\"}",
+      "status": 204
+    }
+  ]
+}

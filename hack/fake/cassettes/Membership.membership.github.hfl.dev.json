@@ -1,0 +1,51 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/memberships/example-username",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/example-org/memberships/example-username",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"direct_membership\":true,\"enterprise_teams_providing_indirect_membership\":[],\"organization\":{\"avatar_url\":\"https://github.com/images/error/octocat_happy.gif\",\"description\":\"A great organization\",\"events_url\":\"https://api.github.com/orgs/github/events\",\"hooks_url\":\"https://api.github.com/orgs/github/hooks\",\"id\":1,\"issues_url\":\"https://api.github.com/orgs/github/issues\",\"login\":\"github\",\"members_url\":\"https://api.github.com/orgs/github/members{/member}\",\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjE=\",\"public_members_url\":\"https://api.github.com/orgs/github/public_members{/member}\",\"repos_url\":\"https://api.github.com/orgs/github/repos\",\"url\":\"https://api.github.com/orgs/github\"},\"organization_url\":\"https://api.github.com/orgs/octocat\",\"permissions\":{\"can_create_repository\":true},\"state\":\"active\",\"url\":\"https://api.github.com/orgs/octocat/memberships/defunkt\",\"user\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/memberships/example-username",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"direct_membership\":true,\"enterprise_teams_providing_indirect_membership\":[],\"organization\":{\"avatar_url\":\"https://github.com/images/error/octocat_happy.gif\",\"description\":\"A great organization\",\"events_url\":\"https://api.github.com/orgs/github/events\",\"hooks_url\":\"https://api.github.com/orgs/github/hooks\",\"id\":1,\"issues_url\":\"https://api.github.com/orgs/github/issues\",\"login\":\"github\",\"members_url\":\"https://api.github.com/orgs/github/members{/member}\",\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjE=\",\"public_members_url\":\"https://api.github.com/orgs/github/public_members{/member}\",\"repos_url\":\"https://api.github.com/orgs/github/repos\",\"url\":\"https://api.github.com/orgs/github\"},\"organization_url\":\"https://api.github.com/orgs/octocat\",\"permissions\":{\"can_create_repository\":true},\"state\":\"active\",\"url\":\"https://api.github.com/orgs/octocat/memberships/defunkt\",\"user\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/example-org/memberships/example-username",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/memberships/example-username",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

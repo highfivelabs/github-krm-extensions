@@ -1,0 +1,67 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/{{cred:org}}/actions/variables",
+      "body": "{\"name\":\"{{name_}}\",\"selected_repository_ids\":[],\"value\":\"a\",\"visibility\":\"selected\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000021,\"name\":\"{{name_}}\",\"selected_repository_ids\":[],\"value\":\"a\",\"visibility\":\"selected\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"repositories\":[],\"total_count\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"repositories\":[],\"total_count\":1}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "body": "{\"selected_repository_ids\":[280000002]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"repositories\":[],\"total_count\":1}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"repositories\":[],\"total_count\":1}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"repositories\":[],\"total_count\":1}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 204
+    }
+  ]
+}

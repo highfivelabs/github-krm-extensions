@@ -1,0 +1,51 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/organization-roles/example-role-id/users?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/example-org/organization-roles/users/example-username/example-role-id",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"assignment\":\"direct\",\"avatar_url\":\"{{redacted}}\",\"email\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"inherited_from\":[],\"login\":\"{{redacted}}\",\"name\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_at\":\"\\\"2020-07-09T00:17:55Z\\\"\",\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\",\"user_view_type\":\"public\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/organization-roles/example-role-id/users?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"login\":\"example-username\"}]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/example-org/organization-roles/users/example-username/example-role-id",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/organization-roles/example-role-id/users?per_page=100",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    }
+  ]
+}

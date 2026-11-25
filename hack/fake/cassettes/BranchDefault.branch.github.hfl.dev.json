@@ -1,0 +1,135 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/git/ref/heads/main",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000008}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/git/refs",
+      "body": "{\"ref\":\"refs/heads/{{name}}\",\"sha\":\"rehearsal-mainSHA\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000009,\"ref\":\"refs/heads/{{name}}\",\"sha\":\"rehearsal-mainSHA\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/git/refs",
+      "body": "{\"ref\":\"refs/heads/{{name}}-2\",\"sha\":\"rehearsal-mainSHA\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000010,\"ref\":\"refs/heads/{{name}}-2\",\"sha\":\"rehearsal-mainSHA\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "body": "{\"default_branch\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "body": "{\"default_branch\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}-2\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}-2\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "body": "{\"default_branch\":\"main\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"main\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"main\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "body": "{\"default_branch\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}-2\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}-2\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default_branch\":\"{{name}}-2\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/git/refs/heads/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/git/refs/heads/{{name}}-2",
+      "status": 204
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+terraform: [github_emu_group_mapping]
+shape: upsert
+params:
+  org:
+    description: The organization name. The name is not case sensitive.
+  team_slug:
+    description: The slug of the team name.
+  group_id:
+    type: integer
+    inBody: true
+serverFields:
+  group_name: example-group
+  updated_at: "2026-01-01T00:00:00Z"
+sample: {org: example-org, team_slug: example-team, group_id: 123}
+read:
+  method: GET
+  path: /orgs/{org}/teams/{team_slug}/external-groups
+  find: {list: groups, field: group_id, param: group_id}
+update:
+  method: PATCH
+  path: /orgs/{org}/teams/{team_slug}/external-groups
+delete:
+  method: DELETE
+  path: /orgs/{org}/teams/{team_slug}/external-groups

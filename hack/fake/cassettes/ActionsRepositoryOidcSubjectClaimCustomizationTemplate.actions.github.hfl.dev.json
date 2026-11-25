@@ -1,0 +1,108 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"sub_claim_prefix\":\"example-sub-claim-prefix\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"sub_claim_prefix\":\"example-sub-claim-prefix\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"],\"use_default\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\"],\"use_default\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\"],\"use_default\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/oidc/customization/sub",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\"],\"sub_claim_prefix\":\"example-sub-claim-prefix\",\"use_default\":false}\n"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/{{cred:org}}/repos",
+      "body": "{\"name\":\"{{name}}\",\"private\":true}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000011,\"name\":\"{{name}}\",\"private\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "body": "{\"access_level\":\"organization\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"organization\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"organization\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"organization\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "body": "{\"access_level\":\"none\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"none\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"none\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "body": "{\"access_level\":\"organization\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"organization\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"organization\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "body": "{\"access_level\":\"none\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"none\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"none\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{name}}/actions/permissions/access",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"access_level\":\"none\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{name}}",
+      "status": 204
+    }
+  ]
+}

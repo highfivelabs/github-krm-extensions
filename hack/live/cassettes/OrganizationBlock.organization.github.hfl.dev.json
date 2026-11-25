@@ -1,0 +1,47 @@
+{
+  "recorded": "2026-11-20T23:57:42Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/blocks/ghost",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization\",\"status\":\"404\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/blocks/ghost",
+      "body": "{}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/blocks/ghost",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/blocks/ghost",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/blocks/ghost",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/blocks/ghost",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization\",\"status\":\"404\"}"
+    }
+  ]
+}

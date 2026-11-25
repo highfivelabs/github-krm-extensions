@@ -1,0 +1,67 @@
+{
+  "recorded": "2026-11-20T23:57:30Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/{{cred:org}}/actions/variables",
+      "body": "{\"name\":\"{{name_}}\",\"selected_repository_ids\":[],\"value\":\"a\",\"visibility\":\"selected\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"total_count\":0,\"repositories\":[]}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"total_count\":0,\"repositories\":[]}"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "body": "{\"selected_repository_ids\":[1466016183]}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"repositories\":[{\"archive_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/{archive_format}{/ref}\",\"assignees_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/assignees{/user}\",\"blobs_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/blobs{/sha}\",\"branches_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches{/branch}\",\"collaborators_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/collaborators{/collaborator}\",\"comments_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/comments{/number}\",\"commits_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/commits{/sha}\",\"compare_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/compare/{base}...{head}\",\"contents_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/contents/{+path}\",\"contributors_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/contributors\",\"deployments_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/deployments\",\"description\":null,\"downloads_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/downloads\",\"events_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/events\",\"fork\":false,\"forks_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/forks\",\"full_name\":\"{{cred:org}}/{{run}}\",\"git_commits_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/commits{/sha}\",\"git_refs_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/refs{/sha}\",\"git_tags_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/tags{/sha}\",\"hooks_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/hooks\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}\",\"id\":1466016183,\"issue_comment_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/issues/comments{/number}\",\"issue_events_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/issues/events{/number}\",\"issues_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/issues{/number}\",\"keys_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/keys{/key_id}\",\"labels_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels{/name}\",\"languages_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/languages\",\"merges_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/merges\",\"milestones_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/milestones{/number}\",\"name\":\"{{run}}\",\"node_id\":\"R_kgDOV2Ghtw\",\"notifications_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/notifications{?since,all,participating}\",\"owner\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{baseURL}}/users/{{cred:org}}/events{/privacy}\",\"followers_url\":\"{{baseURL}}/users/{{cred:org}}/followers\",\"following_url\":\"{{baseURL}}/users/{{cred:org}}/following{/other_user}\",\"gists_url\":\"{{baseURL}}/users/{{cred:org}}/gists{/gist_id}\",\"gravatar_id\":\"\",\"html_url\":\"https://github.com/{{cred:org}}\",\"id\":100000000,\"login\":\"{{cred:org}}\",\"node_id\":\"O_kgDOBfXhAA\",\"organizations_url\":\"{{baseURL}}/users/{{cred:org}}/orgs\",\"received_events_url\":\"{{baseURL}}/users/{{cred:org}}/received_events\",\"repos_url\":\"{{baseURL}}/users/{{cred:org}}/repos\",\"site_admin\":false,\"starred_url\":\"{{baseURL}}/users/{{cred:org}}/starred{/owner}{/repo}\",\"subscriptions_url\":\"{{baseURL}}/users/{{cred:org}}/subscriptions\",\"type\":\"Organization\",\"url\":\"{{baseURL}}/users/{{cred:org}}\",\"user_view_type\":\"public\"},\"private\":false,\"pulls_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/pulls{/number}\",\"releases_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/releases{/id}\",\"stargazers_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/stargazers\",\"statuses_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/statuses/{sha}\",\"subscribers_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/subscribers\",\"subscription_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/subscription\",\"tags_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/tags\",\"teams_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/teams\",\"trees_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/trees{/sha}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}\"}],\"total_count\":1}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"repositories\":[{\"archive_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/{archive_format}{/ref}\",\"assignees_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/assignees{/user}\",\"blobs_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/blobs{/sha}\",\"branches_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches{/branch}\",\"collaborators_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/collaborators{/collaborator}\",\"comments_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/comments{/number}\",\"commits_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/commits{/sha}\",\"compare_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/compare/{base}...{head}\",\"contents_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/contents/{+path}\",\"contributors_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/contributors\",\"deployments_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/deployments\",\"description\":null,\"downloads_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/downloads\",\"events_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/events\",\"fork\":false,\"forks_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/forks\",\"full_name\":\"{{cred:org}}/{{run}}\",\"git_commits_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/commits{/sha}\",\"git_refs_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/refs{/sha}\",\"git_tags_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/tags{/sha}\",\"hooks_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/hooks\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}\",\"id\":1466016183,\"issue_comment_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/issues/comments{/number}\",\"issue_events_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/issues/events{/number}\",\"issues_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/issues{/number}\",\"keys_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/keys{/key_id}\",\"labels_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels{/name}\",\"languages_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/languages\",\"merges_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/merges\",\"milestones_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/milestones{/number}\",\"name\":\"{{run}}\",\"node_id\":\"R_kgDOV2Ghtw\",\"notifications_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/notifications{?since,all,participating}\",\"owner\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{baseURL}}/users/{{cred:org}}/events{/privacy}\",\"followers_url\":\"{{baseURL}}/users/{{cred:org}}/followers\",\"following_url\":\"{{baseURL}}/users/{{cred:org}}/following{/other_user}\",\"gists_url\":\"{{baseURL}}/users/{{cred:org}}/gists{/gist_id}\",\"gravatar_id\":\"\",\"html_url\":\"https://github.com/{{cred:org}}\",\"id\":100000000,\"login\":\"{{cred:org}}\",\"node_id\":\"O_kgDOBfXhAA\",\"organizations_url\":\"{{baseURL}}/users/{{cred:org}}/orgs\",\"received_events_url\":\"{{baseURL}}/users/{{cred:org}}/received_events\",\"repos_url\":\"{{baseURL}}/users/{{cred:org}}/repos\",\"site_admin\":false,\"starred_url\":\"{{baseURL}}/users/{{cred:org}}/starred{/owner}{/repo}\",\"subscriptions_url\":\"{{baseURL}}/users/{{cred:org}}/subscriptions\",\"type\":\"Organization\",\"url\":\"{{baseURL}}/users/{{cred:org}}\",\"user_view_type\":\"public\"},\"private\":false,\"pulls_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/pulls{/number}\",\"releases_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/releases{/id}\",\"stargazers_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/stargazers\",\"statuses_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/statuses/{sha}\",\"subscribers_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/subscribers\",\"subscription_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/subscription\",\"tags_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/tags\",\"teams_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/teams\",\"trees_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/git/trees{/sha}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}\"}],\"total_count\":1}"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}/repositories",
+      "body": "{}",
+      "status": 422,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Invalid request.\\n\\nInvalid input: object is missing required key: selected_repository_ids.\",\"documentation_url\":\"https://docs.github.com/rest/actions/variables#set-selected-repositories-for-an-organization-variable\",\"status\":\"422\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 204
+    }
+  ]
+}

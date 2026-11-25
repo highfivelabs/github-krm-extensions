@@ -1,0 +1,1095 @@
+openapi: 3.0.3
+info:
+  title: GitHub Enterprise Cloud operations missing from api.github.com.json
+  version: 1.1.4
+servers:
+- url: https://api.github.com
+paths:
+  /enterprises/{enterprise}/actions/permissions:
+    get:
+      summary: Get GitHub Actions permissions for an enterprise
+      operationId: enterprise-admin/get-github-actions-permissions-enterprise
+      tags:
+      - enterprise-admin
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/actions-enterprise-permissions'
+    put:
+      summary: Set GitHub Actions permissions for an enterprise
+      operationId: enterprise-admin/set-github-actions-permissions-enterprise
+      tags:
+      - enterprise-admin
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      responses:
+        '204':
+          description: Response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled_organizations:
+                  $ref: '#/components/schemas/enabled-organizations'
+                allowed_actions:
+                  $ref: '#/components/schemas/allowed-actions'
+                sha_pinning_required:
+                  $ref: '#/components/schemas/sha-pinning-required'
+              required:
+              - enabled_organizations
+  /enterprises/{enterprise}/actions/permissions/workflow:
+    get:
+      summary: Get default workflow permissions for an enterprise
+      tags:
+      - actions
+      operationId: actions/get-github-actions-default-workflow-permissions-enterprise
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/actions-get-default-workflow-permissions'
+    put:
+      summary: Set default workflow permissions for an enterprise
+      tags:
+      - actions
+      operationId: actions/set-github-actions-default-workflow-permissions-enterprise
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/actions-set-default-workflow-permissions'
+      responses:
+        '204':
+          description: Success response
+  /enterprises/{enterprise}/actions/runner-groups:
+    get:
+      summary: List self-hosted runner groups for an enterprise
+      operationId: enterprise-admin/list-self-hosted-runner-groups-for-enterprise
+      tags:
+      - enterprise-admin
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      - $ref: '#/components/parameters/per-page'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/visible-to-organization'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: number
+                  runner_groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/runner-groups-enterprise'
+                required:
+                - total_count
+                - runner_groups
+    post:
+      summary: Create a self-hosted runner group for an enterprise
+      operationId: enterprise-admin/create-self-hosted-runner-group-for-enterprise
+      tags:
+      - enterprise-admin
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Name of the runner group.
+                  type: string
+                visibility:
+                  type: string
+                  enum:
+                  - selected
+                  - all
+                selected_organization_ids:
+                  type: array
+                  items:
+                    type: integer
+                    description: Unique identifier of the organization.
+                runners:
+                  description: List of runner IDs to add to the runner group.
+                  type: array
+                  items:
+                    type: integer
+                    description: Unique identifier of the runner.
+                allows_public_repositories:
+                  description: Whether the runner group can be used by `public` repositories.
+                  type: boolean
+                  default: false
+                restricted_to_workflows:
+                  description: If `true`, the runner group will be restricted to running only the workflows
+                    specified in the `selected_workflows` array.
+                  type: boolean
+                  default: false
+                selected_workflows:
+                  description: List of workflows the runner group should be allowed to run. This setting
+                    will be ignored unless `restricted_to_workflows` is set to `true`.
+                  type: array
+                  items:
+                    type: string
+                    description: Name of workflow the runner group should be allowed to run. Note that
+                      a ref, tag, or long SHA is required.
+                network_configuration_id:
+                  description: The identifier of a hosted compute network configuration.
+                  type: string
+              required:
+              - name
+      responses:
+        '201':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runner-groups-enterprise'
+  /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}:
+    get:
+      summary: Get a self-hosted runner group for an enterprise
+      operationId: enterprise-admin/get-self-hosted-runner-group-for-enterprise
+      tags:
+      - enterprise-admin
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      - $ref: '#/components/parameters/runner-group-id'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runner-groups-enterprise'
+    patch:
+      summary: Update a self-hosted runner group for an enterprise
+      operationId: enterprise-admin/update-self-hosted-runner-group-for-enterprise
+      tags:
+      - enterprise-admin
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      - $ref: '#/components/parameters/runner-group-id'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Name of the runner group.
+                  type: string
+                visibility:
+                  type: string
+                  enum:
+                  - selected
+                  - all
+                  default: all
+                allows_public_repositories:
+                  description: Whether the runner group can be used by `public` repositories.
+                  type: boolean
+                  default: false
+                restricted_to_workflows:
+                  description: If `true`, the runner group will be restricted to running only the workflows
+                    specified in the `selected_workflows` array.
+                  type: boolean
+                  default: false
+                selected_workflows:
+                  description: List of workflows the runner group should be allowed to run. This setting
+                    will be ignored unless `restricted_to_workflows` is set to `true`.
+                  type: array
+                  items:
+                    type: string
+                    description: Name of workflow the runner group should be allowed to run. Note that
+                      a ref, tag, or long SHA is required.
+                network_configuration_id:
+                  description: The identifier of a hosted compute network configuration.
+                  type: string
+                  nullable: true
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runner-groups-enterprise'
+    delete:
+      summary: Delete a self-hosted runner group from an enterprise
+      operationId: enterprise-admin/delete-self-hosted-runner-group-from-enterprise
+      tags:
+      - enterprise-admin
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      - $ref: '#/components/parameters/runner-group-id'
+      responses:
+        '204':
+          description: Response
+  /enterprises/{enterprise}/code_security_and_analysis:
+    get:
+      summary: Get code security and analysis features for an enterprise
+      tags:
+      - enterprise-admin
+      operationId: secret-scanning/get-security-analysis-settings-for-enterprise
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/enterprise-security-analysis-settings'
+      deprecated: true
+    patch:
+      summary: Update code security and analysis features for an enterprise
+      tags:
+      - enterprise-admin
+      operationId: secret-scanning/patch-security-analysis-settings-for-enterprise
+      parameters:
+      - $ref: '#/components/parameters/enterprise'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                advanced_security_enabled_for_new_repositories:
+                  type: boolean
+                advanced_security_enabled_new_user_namespace_repos:
+                  type: boolean
+                dependabot_alerts_enabled_for_new_repositories:
+                  type: boolean
+                secret_scanning_enabled_for_new_repositories:
+                  type: boolean
+                secret_scanning_push_protection_enabled_for_new_repositories:
+                  type: boolean
+                secret_scanning_push_protection_custom_link:
+                  type: string
+                  nullable: true
+                secret_scanning_non_provider_patterns_enabled_for_new_repositories:
+                  type: boolean
+                  nullable: true
+      responses:
+        '204':
+          description: Action started
+      deprecated: true
+  /orgs/{org}/custom-repository-roles:
+    get:
+      summary: List custom repository roles in an organization
+      tags:
+      - orgs
+      operationId: orgs/list-custom-repo-roles
+      parameters:
+      - $ref: '#/components/parameters/org'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                  custom_roles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/organization-custom-repository-role'
+    post:
+      summary: Create a custom repository role
+      tags:
+      - orgs
+      operationId: orgs/create-custom-repo-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/organization-custom-repository-role-create-schema'
+      responses:
+        '201':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/organization-custom-repository-role'
+  /orgs/{org}/custom-repository-roles/{role_id}:
+    get:
+      summary: Get a custom repository role
+      tags:
+      - orgs
+      operationId: orgs/get-custom-repo-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/role-id'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/organization-custom-repository-role'
+    patch:
+      summary: Update a custom repository role
+      tags:
+      - orgs
+      operationId: orgs/update-custom-repo-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/role-id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/organization-custom-repository-role-update-schema'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/organization-custom-repository-role'
+    delete:
+      summary: Delete a custom repository role
+      tags:
+      - orgs
+      operationId: orgs/delete-custom-repo-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/role-id'
+      responses:
+        '204':
+          description: Response
+  /orgs/{org}/organization-roles:
+    get:
+      summary: Get all organization roles for an organization
+      tags:
+      - orgs
+      operationId: orgs/list-org-roles
+      parameters:
+      - $ref: '#/components/parameters/org'
+      responses:
+        '200':
+          description: Response - list of organization roles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_count:
+                    type: integer
+                    description: The total number of organization roles available to the organization.
+                  roles:
+                    type: array
+                    description: The list of organization roles available to the organization.
+                    items:
+                      $ref: '#/components/schemas/organization-role'
+    post:
+      summary: Create a custom organization role
+      tags:
+      - orgs
+      operationId: orgs/create-custom-organization-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/organization-custom-organization-role-create-schema'
+      responses:
+        '201':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/organization-role'
+  /orgs/{org}/organization-roles/{role_id}:
+    get:
+      summary: Get an organization role
+      tags:
+      - orgs
+      operationId: orgs/get-org-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/role-id'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/organization-role'
+    patch:
+      summary: Update a custom organization role
+      tags:
+      - orgs
+      operationId: orgs/patch-custom-organization-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/role-id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/organization-custom-organization-role-update-schema'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/organization-role'
+    delete:
+      summary: Delete a custom organization role.
+      tags:
+      - orgs
+      operationId: orgs/delete-custom-organization-role
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/role-id'
+      responses:
+        '204':
+          description: Response
+  /orgs/{org}/teams/{team_slug}/team-sync/group-mappings:
+    get:
+      summary: List IdP groups for a team
+      tags:
+      - teams
+      operationId: teams/list-idp-groups-in-org
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/team-slug'
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/group-mapping'
+    patch:
+      summary: Create or update IdP group connections
+      tags:
+      - teams
+      operationId: teams/create-or-update-idp-group-connections-in-org
+      parameters:
+      - $ref: '#/components/parameters/org'
+      - $ref: '#/components/parameters/team-slug'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groups:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      group_id:
+                        type: string
+                      group_name:
+                        type: string
+                      group_description:
+                        type: string
+                    required:
+                    - group_id
+                    - group_name
+                    - group_description
+              additionalProperties: false
+      responses:
+        '200':
+          description: Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/group-mapping'
+components:
+  parameters:
+    enterprise:
+      name: enterprise
+      description: The slug version of the enterprise name.
+      in: path
+      required: true
+      schema:
+        type: string
+    org:
+      name: org
+      description: The organization name. The name is not case sensitive.
+      in: path
+      required: true
+      schema:
+        type: string
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    per-page:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+    role-id:
+      name: role_id
+      description: The unique identifier of the role.
+      in: path
+      required: true
+      schema:
+        type: integer
+    runner-group-id:
+      name: runner_group_id
+      description: Unique identifier of the self-hosted runner group.
+      in: path
+      required: true
+      schema:
+        type: integer
+    team-slug:
+      name: team_slug
+      description: The slug of the team name.
+      in: path
+      required: true
+      schema:
+        type: string
+    visible-to-organization:
+      name: visible_to_organization
+      in: query
+      required: false
+      schema:
+        type: string
+  schemas:
+    actions-can-approve-pull-request-reviews:
+      type: boolean
+      description: Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.
+    actions-default-workflow-permissions:
+      type: string
+      description: The default workflow permissions granted to the GITHUB_TOKEN when running workflows.
+      enum:
+      - read
+      - write
+    actions-enterprise-permissions:
+      type: object
+      properties:
+        enabled_organizations:
+          $ref: '#/components/schemas/enabled-organizations'
+        selected_organizations_url:
+          type: string
+        allowed_actions:
+          $ref: '#/components/schemas/allowed-actions'
+        selected_actions_url:
+          $ref: '#/components/schemas/selected-actions-url'
+        sha_pinning_required:
+          $ref: '#/components/schemas/sha-pinning-required'
+      required:
+      - enabled_organizations
+    actions-get-default-workflow-permissions:
+      type: object
+      properties:
+        default_workflow_permissions:
+          $ref: '#/components/schemas/actions-default-workflow-permissions'
+        can_approve_pull_request_reviews:
+          $ref: '#/components/schemas/actions-can-approve-pull-request-reviews'
+      required:
+      - default_workflow_permissions
+      - can_approve_pull_request_reviews
+    actions-set-default-workflow-permissions:
+      type: object
+      properties:
+        default_workflow_permissions:
+          $ref: '#/components/schemas/actions-default-workflow-permissions'
+        can_approve_pull_request_reviews:
+          $ref: '#/components/schemas/actions-can-approve-pull-request-reviews'
+    allowed-actions:
+      type: string
+      description: The permissions policy that controls the actions and reusable workflows that are allowed
+        to run.
+      enum:
+      - all
+      - local_only
+      - selected
+    enabled-organizations:
+      type: string
+      enum:
+      - all
+      - none
+      - selected
+    enterprise-security-analysis-settings:
+      title: Enterprise Security Analysis Settings
+      type: object
+      properties:
+        advanced_security_enabled_for_new_repositories:
+          type: boolean
+        advanced_security_enabled_for_new_user_namespace_repositories:
+          type: boolean
+        dependabot_alerts_enabled_for_new_repositories:
+          type: boolean
+        secret_scanning_enabled_for_new_repositories:
+          type: boolean
+        secret_scanning_push_protection_enabled_for_new_repositories:
+          type: boolean
+        secret_scanning_push_protection_custom_link:
+          type: string
+          nullable: true
+          description: An optional URL string to display to contributors who are blocked from pushing
+            a secret.
+        secret_scanning_non_provider_patterns_enabled_for_new_repositories:
+          type: boolean
+        secret_scanning_validity_checks_enabled:
+          type: boolean
+      required:
+      - advanced_security_enabled_for_new_repositories
+      - dependabot_alerts_enabled_for_new_repositories
+      - secret_scanning_enabled_for_new_repositories
+      - secret_scanning_push_protection_enabled_for_new_repositories
+    group-mapping:
+      title: GroupMapping
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            type: object
+            required:
+            - group_id
+            - group_name
+            - group_description
+            properties:
+              group_id:
+                type: string
+              group_name:
+                type: string
+              group_description:
+                type: string
+              status:
+                type: string
+              synced_at:
+                type: string
+                nullable: true
+    nullable-simple-user:
+      title: Simple User
+      description: A GitHub user.
+      type: object
+      properties:
+        name:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        login:
+          type: string
+        id:
+          type: integer
+          format: int64
+        node_id:
+          type: string
+        avatar_url:
+          type: string
+          format: uri
+        gravatar_id:
+          type: string
+          nullable: true
+        url:
+          type: string
+          format: uri
+        html_url:
+          type: string
+          format: uri
+        followers_url:
+          type: string
+          format: uri
+        following_url:
+          type: string
+        gists_url:
+          type: string
+        starred_url:
+          type: string
+        subscriptions_url:
+          type: string
+          format: uri
+        organizations_url:
+          type: string
+          format: uri
+        repos_url:
+          type: string
+          format: uri
+        events_url:
+          type: string
+        received_events_url:
+          type: string
+          format: uri
+        type:
+          type: string
+        site_admin:
+          type: boolean
+        starred_at:
+          type: string
+        user_view_type:
+          type: string
+      required:
+      - avatar_url
+      - events_url
+      - followers_url
+      - following_url
+      - gists_url
+      - gravatar_id
+      - html_url
+      - id
+      - node_id
+      - login
+      - organizations_url
+      - received_events_url
+      - repos_url
+      - site_admin
+      - starred_url
+      - subscriptions_url
+      - type
+      - url
+      nullable: true
+    organization-custom-organization-role-create-schema:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        base_role:
+          type: string
+          enum:
+          - read
+          - triage
+          - write
+          - maintain
+          - admin
+      required:
+      - name
+      - permissions
+    organization-custom-organization-role-update-schema:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        base_role:
+          type: string
+          enum:
+          - none
+          - read
+          - triage
+          - write
+          - maintain
+          - admin
+    organization-custom-repository-role:
+      title: Organization Custom Repository Role
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          description: A short description about who this role is for or what permissions it grants.
+          type: string
+          nullable: true
+        base_role:
+          type: string
+          description: The system role from which this role inherits permissions.
+          enum:
+          - read
+          - triage
+          - write
+          - maintain
+        permissions:
+          type: array
+          items:
+            type: string
+        organization:
+          $ref: '#/components/schemas/simple-user'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - name
+      - base_role
+      - permissions
+      - organization
+      - created_at
+      - updated_at
+    organization-custom-repository-role-create-schema:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          description: A short description about who this role is for or what permissions it grants.
+          type: string
+          nullable: true
+        base_role:
+          type: string
+          description: The system role from which this role inherits permissions.
+          enum:
+          - read
+          - triage
+          - write
+          - maintain
+        permissions:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - base_role
+      - permissions
+    organization-custom-repository-role-update-schema:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          description: A short description about who this role is for or what permissions it grants.
+          type: string
+          nullable: true
+        base_role:
+          type: string
+          description: The system role from which this role inherits permissions.
+          enum:
+          - read
+          - triage
+          - write
+          - maintain
+        permissions:
+          type: array
+          items:
+            type: string
+    organization-role:
+      title: Organization Role
+      description: Organization roles
+      type: object
+      properties:
+        id:
+          description: The unique identifier of the role.
+          type: integer
+          format: int64
+        name:
+          description: The name of the role.
+          type: string
+        description:
+          description: A short description about who this role is for or what permissions it grants.
+          type: string
+          nullable: true
+        base_role:
+          type: string
+          nullable: true
+          description: The system role from which this role inherits permissions.
+          enum:
+          - read
+          - triage
+          - moderate
+          - write
+          - maintain
+          - admin
+        source:
+          type: string
+          nullable: true
+          description: Source answers the question, "where did this role come from?"
+          enum:
+          - Organization
+          - Enterprise
+          - Predefined
+        permissions:
+          description: A list of permissions included in this role.
+          type: array
+          items:
+            type: string
+        organization:
+          $ref: '#/components/schemas/nullable-simple-user'
+        created_at:
+          description: The date and time the role was created.
+          type: string
+          format: date-time
+        updated_at:
+          description: The date and time the role was last updated.
+          type: string
+          format: date-time
+      required:
+      - id
+      - name
+      - permissions
+      - organization
+      - created_at
+      - updated_at
+    runner-groups-enterprise:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        visibility:
+          type: string
+        default:
+          type: boolean
+        selected_organizations_url:
+          type: string
+        runners_url:
+          type: string
+        hosted_runners_url:
+          type: string
+        network_configuration_id:
+          description: The identifier of a hosted compute network configuration.
+          type: string
+        allows_public_repositories:
+          type: boolean
+        workflow_restrictions_read_only:
+          description: If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot
+            be modified.
+          type: boolean
+          default: false
+        restricted_to_workflows:
+          description: If `true`, the runner group will be restricted to running only the workflows specified
+            in the `selected_workflows` array.
+          type: boolean
+          default: false
+        selected_workflows:
+          description: List of workflows the runner group should be allowed to run. This setting will
+            be ignored unless `restricted_to_workflows` is set to `true`.
+          type: array
+          items:
+            type: string
+            description: Name of workflow the runner group should be allowed to run. Note that a ref,
+              tag, or long SHA is required.
+      required:
+      - id
+      - name
+      - visibility
+      - allows_public_repositories
+      - default
+      - runners_url
+    selected-actions-url:
+      type: string
+      description: The API URL to use to get or set the actions and reusable workflows that are allowed
+        to run, when `allowed_actions` is set to `selected`.
+    sha-pinning-required:
+      type: boolean
+      description: Whether actions must be pinned to a full-length commit SHA.
+    simple-user:
+      title: Simple User
+      description: A GitHub user.
+      type: object
+      properties:
+        name:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        login:
+          type: string
+        id:
+          type: integer
+          format: int64
+        node_id:
+          type: string
+        avatar_url:
+          type: string
+          format: uri
+        gravatar_id:
+          type: string
+          nullable: true
+        url:
+          type: string
+          format: uri
+        html_url:
+          type: string
+          format: uri
+        followers_url:
+          type: string
+          format: uri
+        following_url:
+          type: string
+        gists_url:
+          type: string
+        starred_url:
+          type: string
+        subscriptions_url:
+          type: string
+          format: uri
+        organizations_url:
+          type: string
+          format: uri
+        repos_url:
+          type: string
+          format: uri
+        events_url:
+          type: string
+        received_events_url:
+          type: string
+          format: uri
+        type:
+          type: string
+        site_admin:
+          type: boolean
+        starred_at:
+          type: string
+        user_view_type:
+          type: string
+      required:
+      - avatar_url
+      - events_url
+      - followers_url
+      - following_url
+      - gists_url
+      - gravatar_id
+      - html_url
+      - id
+      - node_id
+      - login
+      - organizations_url
+      - received_events_url
+      - repos_url
+      - site_admin
+      - starred_url
+      - subscriptions_url
+      - type
+      - url

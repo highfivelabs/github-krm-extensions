@@ -1,0 +1,114 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"job_workflow_ref\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\",\"actor\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"actor\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"actor\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\",\"workflow\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"workflow\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"workflow\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\",\"actor\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"actor\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"actor\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"include_claim_keys\":[\"repo\",\"context\",\"actor\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/oidc/customization/sub",
+      "body": "{\"include_claim_keys\":[\"repo\",\"context\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000024,\"include_claim_keys\":[\"repo\",\"context\"]}\n"
+    }
+  ]
+}

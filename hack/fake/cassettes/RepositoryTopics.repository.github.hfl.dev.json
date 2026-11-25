@@ -1,0 +1,101 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"hfl-live\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"hfl-live\",\"second\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"drift\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"drift\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"drift\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{\"names\":[\"hfl-live\",\"second\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/topics",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"names\":[\"hfl-live\",\"second\"]}\n"
+    }
+  ]
+}

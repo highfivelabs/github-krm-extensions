@@ -1,0 +1,110 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000018}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"CreateBranchProtectionRule\",\"query\":\"mutation CreateBranchProtectionRule($input: CreateBranchProtectionRuleInput!) { createBranchProtectionRule(input: $input) { branchProtectionRule { id } } }\",\"variables\":{\"input\":{\"allowsDeletions\":false,\"pattern\":\"{{name}}/*\",\"repositoryId\":\"rehearsal-repoNode\",\"requiresLinearHistory\":false}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"createBranchProtectionRule\":{\"branchProtectionRule\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":false}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"BranchProtectionRule\",\"query\":\"query BranchProtectionRule($id: ID!) { node(id: $id) { ... on BranchProtectionRule { id pattern allowsDeletions allowsForcePushes blocksCreations dismissesStaleReviews isAdminEnforced lockBranch requireLastPushApproval requiredApprovingReviewCount requiredStatusCheckContexts requiresApprovingReviews requiresCodeOwnerReviews requiresCommitSignatures requiresConversationResolution requiresLinearHistory requiresStatusChecks requiresStrictStatusChecks restrictsPushes restrictsReviewDismissals } } }\",\"variables\":{\"id\":\"gid://fake/BranchProtection/270000009\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":false}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"BranchProtectionRule\",\"query\":\"query BranchProtectionRule($id: ID!) { node(id: $id) { ... on BranchProtectionRule { id pattern allowsDeletions allowsForcePushes blocksCreations dismissesStaleReviews isAdminEnforced lockBranch requireLastPushApproval requiredApprovingReviewCount requiredStatusCheckContexts requiresApprovingReviews requiresCodeOwnerReviews requiresCommitSignatures requiresConversationResolution requiresLinearHistory requiresStatusChecks requiresStrictStatusChecks restrictsPushes restrictsReviewDismissals } } }\",\"variables\":{\"id\":\"gid://fake/BranchProtection/270000009\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":false}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateBranchProtectionRule\",\"query\":\"mutation UpdateBranchProtectionRule($input: UpdateBranchProtectionRuleInput!) { updateBranchProtectionRule(input: $input) { branchProtectionRule { id } } }\",\"variables\":{\"input\":{\"allowsDeletions\":false,\"branchProtectionRuleId\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":true}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateBranchProtectionRule\":{\"branchProtectionRule\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":true}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"BranchProtectionRule\",\"query\":\"query BranchProtectionRule($id: ID!) { node(id: $id) { ... on BranchProtectionRule { id pattern allowsDeletions allowsForcePushes blocksCreations dismissesStaleReviews isAdminEnforced lockBranch requireLastPushApproval requiredApprovingReviewCount requiredStatusCheckContexts requiresApprovingReviews requiresCodeOwnerReviews requiresCommitSignatures requiresConversationResolution requiresLinearHistory requiresStatusChecks requiresStrictStatusChecks restrictsPushes restrictsReviewDismissals } } }\",\"variables\":{\"id\":\"gid://fake/BranchProtection/270000009\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":true}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateBranchProtectionRule\",\"query\":\"mutation UpdateBranchProtectionRule($input: UpdateBranchProtectionRuleInput!) { updateBranchProtectionRule(input: $input) { branchProtectionRule { id } } }\",\"variables\":{\"input\":{\"branchProtectionRuleId\":\"gid://fake/BranchProtection/270000009\",\"requiresLinearHistory\":false}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateBranchProtectionRule\":{\"branchProtectionRule\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":false}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"BranchProtectionRule\",\"query\":\"query BranchProtectionRule($id: ID!) { node(id: $id) { ... on BranchProtectionRule { id pattern allowsDeletions allowsForcePushes blocksCreations dismissesStaleReviews isAdminEnforced lockBranch requireLastPushApproval requiredApprovingReviewCount requiredStatusCheckContexts requiresApprovingReviews requiresCodeOwnerReviews requiresCommitSignatures requiresConversationResolution requiresLinearHistory requiresStatusChecks requiresStrictStatusChecks restrictsPushes restrictsReviewDismissals } } }\",\"variables\":{\"id\":\"gid://fake/BranchProtection/270000009\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":false}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateBranchProtectionRule\",\"query\":\"mutation UpdateBranchProtectionRule($input: UpdateBranchProtectionRuleInput!) { updateBranchProtectionRule(input: $input) { branchProtectionRule { id } } }\",\"variables\":{\"input\":{\"allowsDeletions\":false,\"branchProtectionRuleId\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":true}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateBranchProtectionRule\":{\"branchProtectionRule\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":true}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"BranchProtectionRule\",\"query\":\"query BranchProtectionRule($id: ID!) { node(id: $id) { ... on BranchProtectionRule { id pattern allowsDeletions allowsForcePushes blocksCreations dismissesStaleReviews isAdminEnforced lockBranch requireLastPushApproval requiredApprovingReviewCount requiredStatusCheckContexts requiresApprovingReviews requiresCodeOwnerReviews requiresCommitSignatures requiresConversationResolution requiresLinearHistory requiresStatusChecks requiresStrictStatusChecks restrictsPushes restrictsReviewDismissals } } }\",\"variables\":{\"id\":\"gid://fake/BranchProtection/270000009\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowsDeletions\":false,\"id\":\"gid://fake/BranchProtection/270000009\",\"pattern\":\"{{name}}/*\",\"requiresLinearHistory\":true}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"DeleteBranchProtectionRule\",\"query\":\"mutation DeleteBranchProtectionRule($input: DeleteBranchProtectionRuleInput!) { deleteBranchProtectionRule(input: $input) { clientMutationId } }\",\"variables\":{\"input\":{\"branchProtectionRuleId\":\"gid://fake/BranchProtection/270000009\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"BranchProtectionRule\",\"query\":\"query BranchProtectionRule($id: ID!) { node(id: $id) { ... on BranchProtectionRule { id pattern allowsDeletions allowsForcePushes blocksCreations dismissesStaleReviews isAdminEnforced lockBranch requireLastPushApproval requiredApprovingReviewCount requiredStatusCheckContexts requiresApprovingReviews requiresCodeOwnerReviews requiresCommitSignatures requiresConversationResolution requiresLinearHistory requiresStatusChecks requiresStrictStatusChecks restrictsPushes restrictsReviewDismissals } } }\",\"variables\":{\"id\":\"gid://fake/BranchProtection/270000009\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":null}}\n"
+    }
+  ]
+}

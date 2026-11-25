@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/example-org/hooks",
+      "body": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"name\":\"example-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"example-name\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/hooks/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"example-name\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/hooks/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"example-name\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/hooks/270000014",
+      "body": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"changed-name\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/hooks/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"changed-name\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/hooks/270000014",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"hfl-live-drift\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/hooks/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"hfl-live-drift\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/hooks/270000014",
+      "body": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"changed-name\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/hooks/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"config\":{\"url\":\"https://example.com/webhook\"},\"created_at\":\"2011-09-06T17:26:27Z\",\"deliveries_url\":\"https://api.github.com/orgs/octocat/hooks/1/deliveries\",\"id\":270000014,\"name\":\"changed-name\",\"ping_url\":\"https://api.github.com/orgs/octocat/hooks/1/pings\",\"type\":\"example-type\",\"updated_at\":\"2011-09-06T20:39:23Z\",\"url\":\"https://api.github.com/orgs/octocat/hooks/1\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/example-org/hooks/270000014",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/hooks/270000014",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name}}",
+      "body": "{\"value_type\":\"string\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000017,\"value_type\":\"string\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "body": "{\"properties\":[{\"property_name\":\"{{name}}\",\"value\":\"a\"}]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"a\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"a\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"a\"}]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "body": "{\"properties\":[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "body": "{\"properties\":[{\"property_name\":\"{{name}}\",\"value\":\"hfl-live-drift\"}]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"hfl-live-drift\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"hfl-live-drift\"}]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "body": "{\"properties\":[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[{\"property_name\":\"{{name}}\",\"value\":\"b\"}]\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "body": "{\"properties\":[{\"property_name\":\"{{name}}\",\"value\":null}]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/properties/values",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "[]\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name}}",
+      "status": 204
+    }
+  ]
+}

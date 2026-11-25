@@ -1,0 +1,82 @@
+# An organization of an enterprise. GitHub Enterprise Cloud. Made over
+# GraphQL (createEnterpriseOrganization: there is no REST create), then
+# read, changed and deleted over REST at /orgs/{org}, as Terraform changes
+# and deletes it: a kind of both APIs. Its ID is the organization's login.
+#
+# The create takes no description or display name (name); the reconciler
+# reads the new organization back over REST at once and sets them with
+# the update (PATCH /orgs/{org}), as Terraform does. The administrators
+# (admin_logins) are named on create only: Terraform also adds and removes
+# them later, one by one, over two more APIs; here a change to them is not
+# applied (they are not read back either). enterprise_id and login cannot
+# change: a change is drift that only re-creating the object applies.
+#
+# Sources:
+#   - integrations/terraform-provider-github v6.13.0,
+#     github/resource_github_enterprise_organization.go:
+#     createEnterpriseOrganization(input: $input) { organization { id } }
+#     with enterpriseId, login (Terraform's name), profileName (the name
+#     again), billingEmail and adminLogins; then Organizations.Edit
+#     (PATCH /orgs/{org}: description, name) for description and
+#     display_name; updates by Organizations.Edit (billing_email too);
+#     Organizations.Delete (DELETE /orgs/{org}, 202 Accepted).
+#   - shurcooL/githubv4 2402fdf4a9ed (Terraform's pinned version),
+#     input.go: CreateEnterpriseOrganizationInput (enterpriseId, login,
+#     profileName, billingEmail, adminLogins: all required).
+#   - GitHub's GraphQL reference, mutation createEnterpriseOrganization
+#     (payload: enterprise, organization):
+#     https://docs.github.com/en/enterprise-cloud@latest/graphql/reference/mutations#createenterpriseorganization
+#   - GitHub's REST reference, organizations (GET, PATCH and DELETE
+#     /orgs/{org}; PATCH takes billing_email, name, description, ...):
+#     https://docs.github.com/en/rest/orgs/orgs
+# Written 2026-11-22.
+terraform: [github_enterprise_organization]
+shape: crud
+fields:
+  enterprise_id:
+    type: string
+    description: The node ID of the enterprise the organization is made in.
+  login:
+    type: string
+    description: The organization's login, its name in URLs (Terraform's name). It names the organization's profile too, as Terraform does, until name sets another.
+  admin_logins:
+    type: array
+    items: {type: string}
+    description: The logins of the organization's administrators, named when it is made (not applied when changed later).
+  billing_email:
+    type: string
+    description: The email address billing receipts are sent to.
+  name:
+    type: string
+    description: The organization's display name (Terraform's display_name).
+  description:
+    type: string
+    description: The description of the organization.
+required: [enterprise_id, login, admin_logins, billing_email]
+createOnly: [enterprise_id, login, admin_logins]
+writeOnly: [enterprise_id, admin_logins]
+id: {from: login}
+serverFields:
+  id: 270000001
+  node_id: O_example
+  url: https://api.github.com/orgs/example-org
+sample: {enterprise_id: E_example, login: example-org, admin_logins: [example-admin], billing_email: billing@example.com}
+create:
+  query: |
+    mutation CreateEnterpriseOrganization($input: CreateEnterpriseOrganizationInput!) {
+      createEnterpriseOrganization(input: $input) {
+        organization { login }
+      }
+    }
+  variables:
+    input: {enterpriseId: "{enterprise_id}", login: "{login}", profileName: "{login}", billingEmail: "{billing_email}", adminLogins: "{admin_logins}"}
+  result: createEnterpriseOrganization/organization
+read:
+  method: GET
+  path: /orgs/{id}
+update:
+  method: PATCH
+  path: /orgs/{id}
+delete:
+  method: DELETE
+  path: /orgs/{id}

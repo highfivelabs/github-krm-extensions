@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/example-org/actions/hosted-runners",
+      "body": "{\"image\":{},\"name\":\"example-name\",\"runner_group_id\":1,\"size\":\"example-size\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"example-name\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"example-name\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"example-name\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "body": "{\"image\":{},\"name\":\"changed-name\",\"runner_group_id\":1,\"size\":\"example-size\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"changed-name\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"changed-name\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"hfl-live-drift\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"hfl-live-drift\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "body": "{\"image\":{},\"name\":\"changed-name\",\"runner_group_id\":1,\"size\":\"example-size\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"changed-name\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000011,\"image_details\":{\"display_name\":\"20.04\",\"id\":\"ubuntu-20.04\",\"size_gb\":86,\"source\":\"github\"},\"last_active_on\":\"2022-10-09T23:39:01Z\",\"machine_size_details\":{\"cpu_cores\":8,\"id\":\"8-core\",\"memory_gb\":32,\"storage_gb\":300},\"name\":\"changed-name\",\"platform\":\"linux-x64\",\"public_ip_enabled\":true,\"public_ips\":[],\"runner_group_id\":1,\"status\":\"Ready\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/actions/hosted-runners/270000011",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

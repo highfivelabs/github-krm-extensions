@@ -1,0 +1,199 @@
+# Inputs to krm-rest-runtime/gen/krmgen.py. Specs are pinned to the commit in each url;
+# hack/gen/fetch-specs.sh downloads them. Specs with no url are committed supplements
+# (hack/gen/supplement/), each citing its sources. overrides: map (Terraform type -> API item path),
+# exclude (Terraform types), excludePaths (API item paths).
+vendor: github
+title: GitHub
+groupSuffix: github.hfl.dev
+connectionKind: Connection
+credentialKeys:
+- token
+baseURLHelp: 'GitHub API base URL; default https://api.github.com (GitHub Enterprise Server: https://<host>/api/v3).'
+terraform:
+  provider: integrations/github
+  prefix: github
+  gaps: terraform-gaps.json
+specs:
+- file: specs/github.json
+  url: https://raw.githubusercontent.com/github/rest-api-description/2a33d9cc5d1dc6ca603b908e0796454af88c1999/descriptions/api.github.com/api.github.com.json
+# GitHub Enterprise Cloud operations api.github.com serves but the spec above
+# leaves out (enterprise Actions settings and runner groups, custom roles,
+# team sync), copied from GitHub's GHEC description; see the file's header.
+- file: supplement/ghec.yaml
+# A repository's default branch alone (github_branch_default); see the file.
+- file: supplement/default-branch.yaml
+envelope: {}
+# Resources GitHub manages only through GraphQL (branch protection rules,
+# enterprise IP allow list entries, team review settings): one hand-written
+# file each in graphql/, citing its sources. On GitHub Enterprise Server the
+# endpoint, /api/graphql, takes the place of the Connection's /api/v3
+# (vendor.go's RESTPath).
+graphql:
+  endpoint: /graphql
+# REST resources whose calls no OpenAPI path pairing finds (a branch: made
+# on .../git/refs, read at .../git/ref/heads/<branch>), or that the spec
+# above leaves out (EMU group mappings): one hand-written file each in
+# kinds/, citing its sources.
+handwritten:
+  dir: kinds
+# GitHub uppercases Actions variable names (my_var reads back as MY_VAR);
+# its names are case-insensitive, so a change of case alone is not drift.
+caseInsensitive:
+- name
+overrides:
+  map:
+    github_issue: /repos/{owner}/{repo}/issues/{issue_number}
+    github_repository_pull_request: /repos/{owner}/{repo}/pulls/{pull_number}
+    # A file in a repository (Terraform's word "file" is not in the path).
+    github_repository_file: /repos/{owner}/{repo}/contents/{path}
+    github_actions_secret: /repos/{owner}/{repo}/actions/secrets/{secret_name}
+    github_actions_variable: /repos/{owner}/{repo}/actions/variables/{name}
+    github_actions_environment_secret: /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
+    github_actions_environment_variable: /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
+    github_dependabot_secret: /repos/{owner}/{repo}/dependabot/secrets/{secret_name}
+    github_branch_protection_v3: /repos/{owner}/{repo}/branches/{branch}/protection
+    github_issue_label: /repos/{owner}/{repo}/labels/{name}
+    github_user_ssh_key: /user/keys/{key_id}
+    github_repository_deploy_key: /repos/{owner}/{repo}/keys/{key_id}
+    # Terraform's words differ from the path's ("subject claim template" is
+    # the OIDC "sub" customization; "webhook" is "hooks"; "dependabot
+    # security updates" are "automated security fixes").
+    github_actions_organization_oidc_subject_claim_customization_template: /orgs/{org}/actions/oidc/customization/sub
+    github_actions_repository_oidc_subject_claim_customization_template: /repos/{owner}/{repo}/actions/oidc/customization/sub
+    github_actions_repository_access_level: /repos/{owner}/{repo}/actions/permissions/access
+    github_codespaces_secret: /repos/{owner}/{repo}/codespaces/secrets/{secret_name}
+    github_organization_webhook: /orgs/{org}/hooks/{hook_id}
+    github_repository_dependabot_security_updates: /repos/{owner}/{repo}/automated-security-fixes
+    github_repository_pages: /repos/{owner}/{repo}/pages
+    # The deprecated github_repository_deployment_branch_policy and its
+    # successor manage the same deployment branch policy.
+    github_repository_deployment_branch_policy: /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}
+    github_repository_environment_deployment_policy: /repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}
+    # From the supplements.
+    github_branch_default: /repos/{owner}/{repo}
+    github_enterprise_security_analysis_settings: /enterprises/{enterprise}/code_security_and_analysis
+    # Custom repository roles: github_organization_custom_role is the
+    # deprecated name of github_organization_repository_role.
+    github_organization_custom_role: /orgs/{org}/custom-repository-roles/{role_id}
+    github_organization_repository_role: /orgs/{org}/custom-repository-roles/{role_id}
+    # Links read back only in a list (readFrom below). Terraform's
+    # github_organization_role_team_assignment makes the same calls as
+    # github_organization_role_team; github_organization_security_manager
+    # (v6.13.0) assigns the organization's predefined "security_manager"
+    # role to a team through the same calls, not through the deprecated
+    # /orgs/{org}/security-managers API; "app" is not in the path.
+    github_organization_role_team: /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
+    github_organization_role_team_assignment: /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
+    github_organization_security_manager: /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
+    github_organization_role_user: /orgs/{org}/organization-roles/users/{username}/{role_id}
+    github_app_installation_repository: /user/installations/{installation_id}/repositories/{repository_id}
+  # Written by PUT and removed by DELETE, never read singly: read by finding
+  # the element in the list Terraform reads (go-github's
+  # ListTeamsAssignedToOrgRole, ListUsersAssignedToOrgRole, ListUserRepos).
+  readFrom:
+    /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}:
+      path: /orgs/{org}/organization-roles/{role_id}/teams
+      field: slug
+      param: team_slug
+    /orgs/{org}/organization-roles/users/{username}/{role_id}:
+      path: /orgs/{org}/organization-roles/{role_id}/users
+      field: login
+      param: username
+    /user/installations/{installation_id}/repositories/{repository_id}:
+      path: /user/installations/{installation_id}/repositories
+      list: repositories
+      field: id
+  # The lists above answer 30 elements a page unless asked for more (100 at
+  # most); the runtime reads one page.
+  readQuery:
+    /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}: {per_page: 100}
+    /orgs/{org}/organization-roles/users/{username}/{role_id}: {per_page: 100}
+    /user/installations/{installation_id}/repositories/{repository_id}: {per_page: 100}
+    # A file is read on its branch.
+    /repos/{owner}/{repo}/contents/{path}: {ref: "{branch}"}
+  kindNames:
+    # Singular names, so the plurals read right.
+    /repos/{owner}/{repo}/automated-security-fixes: RepositoryDependabotSecurityUpdate
+    /repos/{owner}/{repo}/pages: RepositoryPagesSite
+    /orgs/{org}/custom-repository-roles/{role_id}: OrganizationRepositoryRole
+    # Terraform's current name; the other two are deprecated for it.
+    /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}: OrganizationRoleTeam
+  creates:
+    # Pages: POST enables a site, PUT changes it, DELETE removes it.
+    /repos/{owner}/{repo}/pages: /repos/{owner}/{repo}/pages
+  # The API cannot delete an issue or a pull request; Terraform's destroy
+  # closes it (PATCH state: closed), and so does deleting the object. The
+  # closed issue stays readable.
+  deleteBody:
+    /repos/{owner}/{repo}/issues/{issue_number}: {method: PATCH, body: {state: closed}, stays: GitHub cannot delete an issue; deleting the object closes it}
+    /repos/{owner}/{repo}/pulls/{pull_number}: {method: PATCH, body: {state: closed}, stays: GitHub cannot delete a pull request; deleting the object closes it}
+  # Fields only a create takes: an update's body has neither a pull
+  # request's head (nor its draft state or source issue) nor an issue's
+  # parent.
+  createOnly:
+    /repos/{owner}/{repo}/pulls/{pull_number}: [head, head_repo, issue, draft]
+    /repos/{owner}/{repo}/issues/{issue_number}: [parent_issue_id]
+  writeOnly:
+    # A hook's secret reads back masked ("********"); basic auth is never
+    # read back.
+    /orgs/{org}/hooks/{hook_id}: [config.secret, config.username, config.password]
+    # A file's content reads back base64-encoded in lines of 60, not as sent:
+    # it is written each time the spec changes, not compared.
+    /repos/{owner}/{repo}/contents/{path}: [content]
+    # A pull request takes its head and base as branch names and reads them
+    # back as objects ({label, ref, sha, user, repo}): they are written when
+    # the spec changes, not compared.
+    /repos/{owner}/{repo}/pulls/{pull_number}: [head, base]
+  carry:
+    /repos/{owner}/{repo}/contents/{path}: {update: [sha], delete: [sha, message, branch]}
+  # A file's path keeps its slashes (docs/README.md in .../contents/docs/README.md),
+  # as go-github sends it (v88: GetContents escapes each part between them,
+  # CreateFile and DeleteFile send it as it is).
+  keepSlashes:
+    /repos/{owner}/{repo}/contents/{path}: [path]
+  # The branch a file is read on and written to: always named, since the
+  # read asks for it (ref).
+  extraFields:
+    /repos/{owner}/{repo}/contents/{path}:
+      branch: {type: string, required: true}
+  compare:
+    # Branch protection takes booleans and reads them back as
+    # {"url": ..., "enabled": true}.
+    /repos/{owner}/{repo}/branches/{branch}/protection:
+      enforce_admins: enabledObject
+      required_linear_history: enabledObject
+      allow_force_pushes: enabledObject
+      allow_deletions: enabledObject
+      block_creations: enabledObject
+      required_conversation_resolution: enabledObject
+      lock_branch: enabledObject
+      allow_fork_syncing: enabledObject
+  exclude:
+  # Projects (classic): GitHub removed its REST API; the words would match a
+  # Projects v2 item instead.
+  - github_organization_project
+  # GraphQL only; github_branch_protection_v3 is the REST resource and
+  # BranchProtectionV3 its kind.
+  - github_branch_protection
+  excludePaths:
+  - /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}
+  elements:
+    github_repository_custom_property:
+      item: /repos/{owner}/{repo}/properties/values
+      key: property_name
+      patch: properties
+      unset: {value: null}
+# Terraform gap types no kind will cover, and why: no draft kind is made for them
+# (krm-rest-runtime's README, "Draft kinds"). The README's "Not covered" table is
+# generated from these and draftNotes.
+hardBlocks:
+  github_organization_project: &classic >-
+    Projects (classic): GitHub has removed its REST API (the pinned REST description has
+    only `projectsV2`; the classic `/projects/...` and `.../projects` paths are gone).
+  github_project_card: *classic
+  github_project_column: *classic
+  github_repository_project: *classic
+  github_user_invitation_accepter: >-
+    An action (accept an invitation: `PATCH /user/repository_invitations/{invitation_id}`),
+    not a resource to keep in a state: the invitation is gone once accepted, and nothing
+    reads or undoes the acceptance.

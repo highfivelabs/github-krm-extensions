@@ -1,0 +1,16 @@
+{
+  "recorded": "2026-11-20T23:57:48Z",
+  "target": "api.github.com",
+  "interactions": [
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/teams/{{run}}",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}",
+      "status": 204
+    }
+  ]
+}

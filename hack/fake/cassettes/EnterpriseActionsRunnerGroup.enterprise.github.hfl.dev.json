@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/enterprises/example-enterprise/actions/runner-groups",
+      "body": "{\"name\":\"example-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"example-name\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"example-name\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"example-name\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"changed-name\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"changed-name\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"hfl-live-drift\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"hfl-live-drift\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"changed-name\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000015,\"name\":\"changed-name\",\"runners_url\":\"example-runners-url\",\"selected_organizations_url\":\"example-selected-organizations-url\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/runner-groups/270000015",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

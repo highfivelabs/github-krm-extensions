@@ -1,0 +1,82 @@
+# An IP allow list entry of an enterprise. GraphQL only. GitHub Enterprise
+# Cloud.
+#
+# The create names the enterprise by its node ID (ownerId); Terraform takes
+# its slug and looks the ID up first (enterprise(slug) { id }). The read,
+# update and delete name the entry by its node ID.
+#
+# Sources:
+#   - integrations/terraform-provider-github v6.13.0,
+#     github/resource_github_enterprise_ip_allow_list_entry.go:
+#     createIpAllowListEntry(input: $input) { ipAllowListEntry { id
+#     allowListValue name isActive createdAt updatedAt } }, node(id: $id) {
+#     ... on IpAllowListEntry { ... } }, updateIpAllowListEntry(input:
+#     $input) { ipAllowListEntry { ... } }, deleteIpAllowListEntry(input:
+#     $input) { clientMutationId }, as githubv4 builds them from
+#     Terraform's structs (a field is its Go name with the first letter
+#     lowered).
+#   - shurcooL/githubv4 2402fdf4a9ed (Terraform's pinned version), input.go:
+#     CreateIpAllowListEntryInput (ownerId, allowListValue, isActive, name),
+#     UpdateIpAllowListEntryInput (ipAllowListEntryId, ...),
+#     DeleteIpAllowListEntryInput.
+#   - GitHub's GraphQL reference, mutation createIpAllowListEntry and object
+#     IpAllowListEntry:
+#     https://docs.github.com/en/graphql/reference/mutations#createipallowlistentry
+# Written 2026-11-22.
+terraform: [github_enterprise_ip_allow_list_entry]
+shape: crud
+params:
+  ownerId:
+    description: The node ID of the enterprise (an IP allow list's owner) the entry belongs to.
+fields:
+  allowListValue:
+    type: string
+    description: An IP address or range of IP addresses in CIDR notation (Terraform's ip).
+  name:
+    type: string
+    description: An optional name for the IP allow list entry.
+  isActive:
+    type: boolean
+    default: true
+    description: Whether the entry is currently active.
+required: [allowListValue, isActive]
+serverFields: {createdAt: "2026-01-01T00:00:00Z", updatedAt: "2026-01-01T00:00:00Z"}
+sample: {ownerId: E_example, allowListValue: 192.0.2.0/24, isActive: true, name: example-name}
+create:
+  query: |
+    mutation CreateIpAllowListEntry($input: CreateIpAllowListEntryInput!) {
+      createIpAllowListEntry(input: $input) {
+        ipAllowListEntry { id allowListValue name isActive createdAt updatedAt }
+      }
+    }
+  variables:
+    input: {ownerId: "{ownerId}", allowListValue: "{allowListValue}", isActive: "{isActive}", name: "{name}"}
+  result: createIpAllowListEntry/ipAllowListEntry
+read:
+  query: |
+    query IpAllowListEntry($id: ID!) {
+      node(id: $id) {
+        ... on IpAllowListEntry { id allowListValue name isActive createdAt updatedAt }
+      }
+    }
+  variables: {id: "{id}"}
+  result: node
+update:
+  query: |
+    mutation UpdateIpAllowListEntry($input: UpdateIpAllowListEntryInput!) {
+      updateIpAllowListEntry(input: $input) {
+        ipAllowListEntry { id allowListValue name isActive updatedAt }
+      }
+    }
+  variables:
+    input: {ipAllowListEntryId: "{id}", allowListValue: "{allowListValue}", isActive: "{isActive}", name: "{name}"}
+  result: updateIpAllowListEntry/ipAllowListEntry
+delete:
+  query: |
+    mutation DeleteIpAllowListEntry($input: DeleteIpAllowListEntryInput!) {
+      deleteIpAllowListEntry(input: $input) {
+        clientMutationId
+      }
+    }
+  variables:
+    input: {ipAllowListEntryId: "{id}"}

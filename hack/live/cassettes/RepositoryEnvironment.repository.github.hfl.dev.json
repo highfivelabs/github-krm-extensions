@@ -1,0 +1,98 @@
+{
+  "recorded": "2026-11-20T23:57:12Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/deployments/environments#get-an-environment\",\"status\":\"404\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[],\"deployment_branch_policy\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[],\"deployment_branch_policy\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[],\"deployment_branch_policy\":null}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[{\"id\":73347929,\"node_id\":\"GA_kwDOV2Ght84EXzNZ\",\"type\":\"branch_policy\"}],\"deployment_branch_policy\":{\"protected_branches\":false,\"custom_branch_policies\":true}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[{\"id\":73347929,\"node_id\":\"GA_kwDOV2Ght84EXzNZ\",\"type\":\"branch_policy\"}],\"deployment_branch_policy\":{\"protected_branches\":false,\"custom_branch_policies\":true}}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{\"deployment_branch_policy\":{\"custom_branch_policies\":false,\"protected_branches\":true}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[{\"id\":73347931,\"node_id\":\"GA_kwDOV2Ght84EXzNb\",\"type\":\"branch_policy\"}],\"deployment_branch_policy\":{\"protected_branches\":true,\"custom_branch_policies\":false}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[{\"id\":73347931,\"node_id\":\"GA_kwDOV2Ght84EXzNb\",\"type\":\"branch_policy\"}],\"deployment_branch_policy\":{\"protected_branches\":true,\"custom_branch_policies\":false}}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[{\"id\":73347935,\"node_id\":\"GA_kwDOV2Ght84EXzNf\",\"type\":\"branch_policy\"}],\"deployment_branch_policy\":{\"protected_branches\":false,\"custom_branch_policies\":true}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28049296061,\"node_id\":\"EN_kwDOV2Ght88AAAAGh95KvQ\",\"name\":\"{{name}}\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/environments/{{name}}\",\"html_url\":\"https://github.com/{{cred:org}}/{{run}}/deployments/activity_log?environments_filter={{name}}\",\"created_at\":\"2026-11-20T23:57:08Z\",\"updated_at\":\"2026-11-20T23:57:08Z\",\"can_admins_bypass\":true,\"protection_rules\":[{\"id\":73347935,\"node_id\":\"GA_kwDOV2Ght84EXzNf\",\"type\":\"branch_policy\"}],\"deployment_branch_policy\":{\"protected_branches\":false,\"custom_branch_policies\":true}}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/deployments/environments#get-an-environment\",\"status\":\"404\"}"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"sha_pinning_required\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":false}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"sha_pinning_required\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":false}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"sha_pinning_required\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":true}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/actions/permissions",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled_repositories\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"sha_pinning_required\":true}\n"
+    }
+  ]
+}

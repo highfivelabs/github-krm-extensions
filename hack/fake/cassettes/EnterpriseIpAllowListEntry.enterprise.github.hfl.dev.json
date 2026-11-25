@@ -1,0 +1,105 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"CreateIpAllowListEntry\",\"query\":\"mutation CreateIpAllowListEntry($input: CreateIpAllowListEntryInput!) { createIpAllowListEntry(input: $input) { ipAllowListEntry { id allowListValue name isActive createdAt updatedAt } } }\",\"variables\":{\"input\":{\"allowListValue\":\"192.0.2.0/24\",\"isActive\":true,\"name\":\"example-name\",\"ownerId\":\"E_example\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"createIpAllowListEntry\":{\"ipAllowListEntry\":{\"allowListValue\":\"192.0.2.0/24\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"IpAllowListEntry\",\"query\":\"query IpAllowListEntry($id: ID!) { node(id: $id) { ... on IpAllowListEntry { id allowListValue name isActive createdAt updatedAt } } }\",\"variables\":{\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowListValue\":\"192.0.2.0/24\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"IpAllowListEntry\",\"query\":\"query IpAllowListEntry($id: ID!) { node(id: $id) { ... on IpAllowListEntry { id allowListValue name isActive createdAt updatedAt } } }\",\"variables\":{\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowListValue\":\"192.0.2.0/24\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateIpAllowListEntry\",\"query\":\"mutation UpdateIpAllowListEntry($input: UpdateIpAllowListEntryInput!) { updateIpAllowListEntry(input: $input) { ipAllowListEntry { id allowListValue name isActive updatedAt } } }\",\"variables\":{\"input\":{\"allowListValue\":\"changed-allowListValue\",\"ipAllowListEntryId\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateIpAllowListEntry\":{\"ipAllowListEntry\":{\"allowListValue\":\"changed-allowListValue\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"IpAllowListEntry\",\"query\":\"query IpAllowListEntry($id: ID!) { node(id: $id) { ... on IpAllowListEntry { id allowListValue name isActive createdAt updatedAt } } }\",\"variables\":{\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowListValue\":\"changed-allowListValue\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateIpAllowListEntry\",\"query\":\"mutation UpdateIpAllowListEntry($input: UpdateIpAllowListEntryInput!) { updateIpAllowListEntry(input: $input) { ipAllowListEntry { id allowListValue name isActive updatedAt } } }\",\"variables\":{\"input\":{\"allowListValue\":\"hfl-live-drift\",\"ipAllowListEntryId\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateIpAllowListEntry\":{\"ipAllowListEntry\":{\"allowListValue\":\"hfl-live-drift\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"IpAllowListEntry\",\"query\":\"query IpAllowListEntry($id: ID!) { node(id: $id) { ... on IpAllowListEntry { id allowListValue name isActive createdAt updatedAt } } }\",\"variables\":{\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowListValue\":\"hfl-live-drift\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateIpAllowListEntry\",\"query\":\"mutation UpdateIpAllowListEntry($input: UpdateIpAllowListEntryInput!) { updateIpAllowListEntry(input: $input) { ipAllowListEntry { id allowListValue name isActive updatedAt } } }\",\"variables\":{\"input\":{\"allowListValue\":\"changed-allowListValue\",\"ipAllowListEntryId\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"updateIpAllowListEntry\":{\"ipAllowListEntry\":{\"allowListValue\":\"changed-allowListValue\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"IpAllowListEntry\",\"query\":\"query IpAllowListEntry($id: ID!) { node(id: $id) { ... on IpAllowListEntry { id allowListValue name isActive createdAt updatedAt } } }\",\"variables\":{\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"allowListValue\":\"changed-allowListValue\",\"createdAt\":\"2026-01-01T00:00:00Z\",\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\",\"isActive\":true,\"name\":\"example-name\",\"updatedAt\":\"2026-01-01T00:00:00Z\"}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"DeleteIpAllowListEntry\",\"query\":\"mutation DeleteIpAllowListEntry($input: DeleteIpAllowListEntryInput!) { deleteIpAllowListEntry(input: $input) { clientMutationId } }\",\"variables\":{\"input\":{\"ipAllowListEntryId\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"IpAllowListEntry\",\"query\":\"query IpAllowListEntry($id: ID!) { node(id: $id) { ... on IpAllowListEntry { id allowListValue name isActive createdAt updatedAt } } }\",\"variables\":{\"id\":\"gid://fake/EnterpriseIpAllowListEntry/270000018\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":null}}\n"
+    }
+  ]
+}

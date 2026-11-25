@@ -1,0 +1,49 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/teams/280000004/memberships/rehearsal-me",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/teams/280000004/memberships/rehearsal-me",
+      "body": "{\"role\":\"maintainer\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"role\":\"maintainer\",\"state\":\"active\",\"url\":\"https://example.com/\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/teams/280000004/memberships/rehearsal-me",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"role\":\"maintainer\",\"state\":\"active\",\"url\":\"https://example.com/\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/teams/280000004/memberships/rehearsal-me",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/teams/280000004/memberships/rehearsal-me",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/{{cred:org}}/actions/variables",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"a\",\"visibility\":\"private\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"a\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"a\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"a\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"b\",\"visibility\":\"private\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"b\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"b\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "body": "{\"value\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"hfl-live-drift\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"hfl-live-drift\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"b\",\"visibility\":\"private\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"b\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2019-01-24T22:45:36.000Z\",\"name\":\"{{name_}}\",\"selected_repositories_url\":\"https://api.github.com/organizations/org/variables/USERNAME/repositories\",\"updated_at\":\"2019-01-24T22:45:36.000Z\",\"value\":\"b\",\"visibility\":\"private\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

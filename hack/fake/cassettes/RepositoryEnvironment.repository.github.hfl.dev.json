@@ -1,0 +1,98 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false},\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false},\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{\"deployment_branch_policy\":{\"custom_branch_policies\":false,\"protected_branches\":true}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"deployment_branch_policy\":{\"custom_branch_policies\":false,\"protected_branches\":true},\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"deployment_branch_policy\":{\"custom_branch_policies\":false,\"protected_branches\":true},\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "body": "{\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false},\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"created_at\":\"2020-11-23T22:00:40Z\",\"deployment_branch_policy\":{\"custom_branch_policies\":true,\"protected_branches\":false},\"html_url\":\"https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging\",\"name\":\"staging\",\"node_id\":\"MDExOkVudmlyb25tZW50NTY3ODA0Mjg=\",\"protection_rules\":[],\"updated_at\":\"2020-11-23T22:00:40Z\",\"url\":\"https://api.github.com/repos/github/hello-world/environments/staging\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

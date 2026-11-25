@@ -1,0 +1,152 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/teams/rehearsal-team",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000020}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateTeamReviewAssignment\",\"query\":\"mutation UpdateTeamReviewAssignment($input: UpdateTeamReviewAssignmentInput!) { updateTeamReviewAssignment(input: $input) { clientMutationId } }\",\"variables\":{\"input\":{\"algorithm\":\"ROUND_ROBIN\",\"enabled\":true,\"id\":\"rehearsal-teamNode\",\"notifyTeam\":false,\"teamMemberCount\":1}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"ROUND_ROBIN\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"ROUND_ROBIN\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"ROUND_ROBIN\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateTeamReviewAssignment\",\"query\":\"mutation UpdateTeamReviewAssignment($input: UpdateTeamReviewAssignmentInput!) { updateTeamReviewAssignment(input: $input) { clientMutationId } }\",\"variables\":{\"input\":{\"algorithm\":\"LOAD_BALANCE\",\"enabled\":true,\"id\":\"rehearsal-teamNode\",\"notifyTeam\":false,\"teamMemberCount\":1}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"LOAD_BALANCE\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"LOAD_BALANCE\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"LOAD_BALANCE\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateTeamReviewAssignment\",\"query\":\"mutation UpdateTeamReviewAssignment($input: UpdateTeamReviewAssignmentInput!) { updateTeamReviewAssignment(input: $input) { clientMutationId } }\",\"variables\":{\"input\":{\"algorithm\":\"ROUND_ROBIN\",\"enabled\":true,\"id\":\"rehearsal-teamNode\",\"notifyTeam\":false,\"teamMemberCount\":1}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"ROUND_ROBIN\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateTeamReviewAssignment\",\"query\":\"mutation UpdateTeamReviewAssignment($input: UpdateTeamReviewAssignmentInput!) { updateTeamReviewAssignment(input: $input) { clientMutationId } }\",\"variables\":{\"input\":{\"algorithm\":\"LOAD_BALANCE\",\"enabled\":true,\"id\":\"rehearsal-teamNode\",\"notifyTeam\":false,\"teamMemberCount\":1}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"LOAD_BALANCE\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"TeamReviewAssignment\",\"query\":\"query TeamReviewAssignment($id: ID!) { node(id: $id) { ... on Team { enabled: reviewRequestDelegationEnabled algorithm: reviewRequestDelegationAlgorithm teamMemberCount: reviewRequestDelegationMemberCount notifyTeam: reviewRequestDelegationNotifyTeam } } }\",\"variables\":{\"id\":\"rehearsal-teamNode\"}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"node\":{\"algorithm\":\"LOAD_BALANCE\",\"enabled\":true,\"notifyTeam\":false,\"teamMemberCount\":1}}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"UpdateTeamReviewAssignment\",\"query\":\"mutation UpdateTeamReviewAssignment($input: UpdateTeamReviewAssignmentInput!) { updateTeamReviewAssignment(input: $input) { clientMutationId } }\",\"variables\":{\"input\":{\"id\":\"rehearsal-teamNode\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    }
+  ]
+}

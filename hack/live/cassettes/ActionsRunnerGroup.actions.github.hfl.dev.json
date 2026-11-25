@@ -1,0 +1,91 @@
+{
+  "recorded": "2026-11-20T23:57:41Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups",
+      "body": "{\"name\":\"{{name}}\",\"visibility\":\"all\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"all\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"all\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"all\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "body": "{\"name\":\"{{name}}\",\"visibility\":\"selected\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"selected\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"selected_repositories_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/repositories\",\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"selected\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"selected_repositories_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/repositories\",\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "body": "{\"visibility\":\"all\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"all\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"all\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "body": "{\"name\":\"{{name}}\",\"visibility\":\"selected\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"selected\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"selected_repositories_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/repositories\",\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":9,\"name\":\"{{name}}\",\"visibility\":\"selected\",\"allows_public_repositories\":false,\"default\":false,\"workflow_restrictions_read_only\":false,\"restricted_to_workflows\":false,\"selected_workflows\":[],\"selected_repositories_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/repositories\",\"runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/runners\",\"hosted_runners_url\":\"{{baseURL}}/orgs/{{cred:org}}/actions/runner-groups/9/hosted-runners\",\"inherited\":false}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/9",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization\",\"status\":\"404\"}"
+    }
+  ]
+}

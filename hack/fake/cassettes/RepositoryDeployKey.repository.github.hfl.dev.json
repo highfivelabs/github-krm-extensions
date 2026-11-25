@@ -1,0 +1,39 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/keys",
+      "body": "{\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOezsKaM3b2dGxDGzthV/yegPUYNCgExO1qbHr/GlXpA\",\"read_only\":true,\"title\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"added_by\":\"example-added-by\",\"created_at\":\"example-created-at\",\"enabled\":true,\"id\":270000005,\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOezsKaM3b2dGxDGzthV/yegPUYNCgExO1qbHr/GlXpA\",\"last_used\":\"2000-01-01T00:00:00Z\",\"read_only\":true,\"title\":\"{{name}}\",\"url\":\"example-url\",\"verified\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/keys/270000005",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"added_by\":\"example-added-by\",\"created_at\":\"example-created-at\",\"enabled\":true,\"id\":270000005,\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOezsKaM3b2dGxDGzthV/yegPUYNCgExO1qbHr/GlXpA\",\"last_used\":\"2000-01-01T00:00:00Z\",\"read_only\":true,\"title\":\"{{name}}\",\"url\":\"example-url\",\"verified\":true}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/keys/270000005",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/keys/270000005",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

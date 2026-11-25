@@ -1,0 +1,25 @@
+terraform: [github_app_installation_repositories]
+kind: AppInstallationRepositorySet
+shape: set
+params:
+  installation_id:
+    type: integer
+    description: The unique identifier of the installation.
+fields:
+  repository_ids:
+    type: array
+    items: {type: integer}
+required: [repository_ids]
+set: {field: repository_ids, key: id, param: repository_id, list: repositories}
+sample: {installation_id: 7, repository_ids: [1296269, 1296270]}
+read:
+  method: GET
+  path: /user/installations/{installation_id}/repositories
+  query: {per_page: 100}
+create:
+  method: PUT
+  path: /user/installations/{installation_id}/repositories/{repository_id}
+delete:
+  method: DELETE
+  path: /user/installations/{installation_id}/repositories/{repository_id}
+  ok: [422]

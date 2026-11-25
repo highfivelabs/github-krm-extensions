@@ -1,0 +1,99 @@
+{
+  "recorded": "2026-11-20T23:57:06Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"a\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"a\",\"created_at\":\"2026-11-20T23:57:04Z\",\"updated_at\":\"2026-11-20T23:57:04Z\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"a\",\"created_at\":\"2026-11-20T23:57:04Z\",\"updated_at\":\"2026-11-20T23:57:04Z\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"b\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:04Z\",\"updated_at\":\"2026-11-20T23:57:05Z\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:04Z\",\"updated_at\":\"2026-11-20T23:57:05Z\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "body": "{\"value\":\"hfl-live-drift\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"hfl-live-drift\",\"created_at\":\"2026-11-20T23:57:04Z\",\"updated_at\":\"2026-11-20T23:57:05Z\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"b\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:04Z\",\"updated_at\":\"2026-11-20T23:57:06Z\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:04Z\",\"updated_at\":\"2026-11-20T23:57:06Z\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/environments/{{run}}/variables/{{name_}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/actions/variables#get-an-environment-variable\",\"status\":\"404\"}"
+    }
+  ]
+}

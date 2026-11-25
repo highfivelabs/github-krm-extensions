@@ -1,0 +1,91 @@
+{
+  "recorded": "2026-11-20T23:56:44Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/labels",
+      "body": "{\"color\":\"ff0000\",\"description\":\"first\",\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"first\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"first\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"first\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "body": "{\"color\":\"ff0000\",\"description\":\"second\",\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"second\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"second\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "body": "{\"description\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"hfl-live-drift\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"hfl-live-drift\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "body": "{\"color\":\"ff0000\",\"description\":\"second\",\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"second\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":13163480836,\"node_id\":\"LA_kwDOV2Ght88AAAADEJrHBA\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/labels/{{name}}\",\"name\":\"{{name}}\",\"color\":\"ff0000\",\"default\":false,\"description\":\"second\",\"archived_at\":null,\"archived_by\":null}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/issues/labels#get-a-label\",\"status\":\"404\"}"
+    }
+  ]
+}

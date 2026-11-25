@@ -1,0 +1,197 @@
+# A branch protection rule of a repository, by pattern (GraphQL only:
+# BranchProtectionV3 is the REST API's protection of one branch).
+#
+# The create names the repository by its node ID (repositoryId: the
+# node_id of GET /repos/{owner}/{repo}); the read, update and delete name
+# the rule by its node ID. The actor lists (who may push, dismiss reviews,
+# bypass) are node IDs too, as the mutations take them; reads answer them
+# as allowance connections of the actors, so they are write-only here:
+# sent when the spec changes, not compared. Terraform takes names as well
+# and looks their IDs up first.
+#
+# Sources:
+#   - integrations/terraform-provider-github v6.13.0,
+#     github/resource_github_branch_protection.go and
+#     github/util_v4_branch_protection.go: createBranchProtectionRule(input:
+#     $input) { branchProtectionRule { id } }, node(id: $id) { ... on
+#     BranchProtectionRule { ... } }, updateBranchProtectionRule(input:
+#     $input) { branchProtectionRule { id } }, deleteBranchProtectionRule(input:
+#     $input) { clientMutationId }, as githubv4 builds them from Terraform's
+#     structs (a field is its Go name with the first letter lowered), and
+#     the input fields Terraform sets.
+#   - shurcooL/githubv4 2402fdf4a9ed (Terraform's pinned version), input.go:
+#     CreateBranchProtectionRuleInput, UpdateBranchProtectionRuleInput,
+#     DeleteBranchProtectionRuleInput, their JSON names.
+#   - GitHub's GraphQL reference, mutation createBranchProtectionRule and
+#     object BranchProtectionRule:
+#     https://docs.github.com/en/graphql/reference/mutations#createbranchprotectionrule
+# Written 2026-11-22.
+terraform: [github_branch_protection]
+shape: crud
+params:
+  repositoryId:
+    description: The repository's node ID (node_id in the REST API's repository).
+fields:
+  pattern:
+    type: string
+    description: "Identifies the protection rule pattern (Terraform's pattern)."
+  allowsDeletions:
+    type: boolean
+    description: "Allow the branch to be deleted (allows_deletions)."
+  allowsForcePushes:
+    type: boolean
+    description: "Allow force pushes on the branch (allows_force_pushes)."
+  blocksCreations:
+    type: boolean
+    description: "Restrict pushes that create matching branches (restrict_pushes.blocks_creations)."
+  dismissesStaleReviews:
+    type: boolean
+    description: "Dismiss approved reviews automatically when a new commit is pushed (dismiss_stale_reviews)."
+  isAdminEnforced:
+    type: boolean
+    description: "Enforce the rule for repository administrators too (enforce_admins)."
+  lockBranch:
+    type: boolean
+    description: "Make the branch read-only, preventing any pushes to it (lock_branch)."
+  requireLastPushApproval:
+    type: boolean
+    description: "The most recent push must be approved by someone other than the last pusher (require_last_push_approval)."
+  requiredApprovingReviewCount:
+    type: integer
+    description: "Number of approvals a pull request needs, 0-6 (required_approving_review_count)."
+  requiredStatusCheckContexts:
+    type: array
+    items: {type: string}
+    description: "The status checks to require in order to merge into this branch (required_status_checks.contexts)."
+  requiresApprovingReviews:
+    type: boolean
+    description: "Require approving reviews on pull requests (required_pull_request_reviews)."
+  requiresCodeOwnerReviews:
+    type: boolean
+    description: "Require an approved review in pull requests including files with a designated code owner (require_code_owner_reviews)."
+  requiresCommitSignatures:
+    type: boolean
+    description: "Require all commits to be signed (require_signed_commits)."
+  requiresConversationResolution:
+    type: boolean
+    description: "Require all conversations on code to be resolved before a pull request can be merged (require_conversation_resolution)."
+  requiresLinearHistory:
+    type: boolean
+    description: "Prevent anyone from pushing merge commits to the branch (required_linear_history)."
+  requiresStatusChecks:
+    type: boolean
+    description: "Require status checks to pass before merging (required_status_checks)."
+  requiresStrictStatusChecks:
+    type: boolean
+    description: "Require branches to be up to date before merging (required_status_checks.strict)."
+  restrictsPushes:
+    type: boolean
+    description: "Restrict who can push to matching branches (restrict_pushes)."
+  restrictsReviewDismissals:
+    type: boolean
+    description: "Restrict who can dismiss pull request reviews (restrict_dismissals)."
+  pushActorIds:
+    type: array
+    items: {type: string}
+    description: "Node IDs of the users, teams and apps that may push to the branch (restrict_pushes.push_allowances, as IDs)."
+  reviewDismissalActorIds:
+    type: array
+    items: {type: string}
+    description: "Node IDs of the users, teams and apps that may dismiss reviews (dismissal_restrictions, as IDs)."
+  bypassPullRequestActorIds:
+    type: array
+    items: {type: string}
+    description: "Node IDs of the users, teams and apps that may bypass pull request requirements (pull_request_bypassers, as IDs)."
+  bypassForcePushActorIds:
+    type: array
+    items: {type: string}
+    description: "Node IDs of the users, teams and apps that may bypass force push restrictions (force_push_bypassers, as IDs)."
+required: [pattern]
+writeOnly: [pushActorIds, reviewDismissalActorIds, bypassPullRequestActorIds, bypassForcePushActorIds]
+sample: {repositoryId: R_example, pattern: main, requiresApprovingReviews: true, requiredApprovingReviewCount: 1}
+create:
+  query: |
+    mutation CreateBranchProtectionRule($input: CreateBranchProtectionRuleInput!) {
+      createBranchProtectionRule(input: $input) {
+        branchProtectionRule { id }
+      }
+    }
+  variables:
+    input:
+      repositoryId: "{repositoryId}"
+      pattern: "{pattern}"
+      allowsDeletions: "{allowsDeletions}"
+      allowsForcePushes: "{allowsForcePushes}"
+      blocksCreations: "{blocksCreations}"
+      dismissesStaleReviews: "{dismissesStaleReviews}"
+      isAdminEnforced: "{isAdminEnforced}"
+      lockBranch: "{lockBranch}"
+      requireLastPushApproval: "{requireLastPushApproval}"
+      requiredApprovingReviewCount: "{requiredApprovingReviewCount}"
+      requiredStatusCheckContexts: "{requiredStatusCheckContexts}"
+      requiresApprovingReviews: "{requiresApprovingReviews}"
+      requiresCodeOwnerReviews: "{requiresCodeOwnerReviews}"
+      requiresCommitSignatures: "{requiresCommitSignatures}"
+      requiresConversationResolution: "{requiresConversationResolution}"
+      requiresLinearHistory: "{requiresLinearHistory}"
+      requiresStatusChecks: "{requiresStatusChecks}"
+      requiresStrictStatusChecks: "{requiresStrictStatusChecks}"
+      restrictsPushes: "{restrictsPushes}"
+      restrictsReviewDismissals: "{restrictsReviewDismissals}"
+      pushActorIds: "{pushActorIds}"
+      reviewDismissalActorIds: "{reviewDismissalActorIds}"
+      bypassPullRequestActorIds: "{bypassPullRequestActorIds}"
+      bypassForcePushActorIds: "{bypassForcePushActorIds}"
+  result: createBranchProtectionRule/branchProtectionRule
+read:
+  query: |
+    query BranchProtectionRule($id: ID!) {
+      node(id: $id) {
+        ... on BranchProtectionRule { id pattern allowsDeletions allowsForcePushes blocksCreations dismissesStaleReviews isAdminEnforced lockBranch requireLastPushApproval requiredApprovingReviewCount requiredStatusCheckContexts requiresApprovingReviews requiresCodeOwnerReviews requiresCommitSignatures requiresConversationResolution requiresLinearHistory requiresStatusChecks requiresStrictStatusChecks restrictsPushes restrictsReviewDismissals }
+      }
+    }
+  variables: {id: "{id}"}
+  result: node
+update:
+  query: |
+    mutation UpdateBranchProtectionRule($input: UpdateBranchProtectionRuleInput!) {
+      updateBranchProtectionRule(input: $input) {
+        branchProtectionRule { id }
+      }
+    }
+  variables:
+    input:
+      branchProtectionRuleId: "{id}"
+      pattern: "{pattern}"
+      allowsDeletions: "{allowsDeletions}"
+      allowsForcePushes: "{allowsForcePushes}"
+      blocksCreations: "{blocksCreations}"
+      dismissesStaleReviews: "{dismissesStaleReviews}"
+      isAdminEnforced: "{isAdminEnforced}"
+      lockBranch: "{lockBranch}"
+      requireLastPushApproval: "{requireLastPushApproval}"
+      requiredApprovingReviewCount: "{requiredApprovingReviewCount}"
+      requiredStatusCheckContexts: "{requiredStatusCheckContexts}"
+      requiresApprovingReviews: "{requiresApprovingReviews}"
+      requiresCodeOwnerReviews: "{requiresCodeOwnerReviews}"
+      requiresCommitSignatures: "{requiresCommitSignatures}"
+      requiresConversationResolution: "{requiresConversationResolution}"
+      requiresLinearHistory: "{requiresLinearHistory}"
+      requiresStatusChecks: "{requiresStatusChecks}"
+      requiresStrictStatusChecks: "{requiresStrictStatusChecks}"
+      restrictsPushes: "{restrictsPushes}"
+      restrictsReviewDismissals: "{restrictsReviewDismissals}"
+      pushActorIds: "{pushActorIds}"
+      reviewDismissalActorIds: "{reviewDismissalActorIds}"
+      bypassPullRequestActorIds: "{bypassPullRequestActorIds}"
+      bypassForcePushActorIds: "{bypassForcePushActorIds}"
+  result: updateBranchProtectionRule/branchProtectionRule
+delete:
+  query: |
+    mutation DeleteBranchProtectionRule($input: DeleteBranchProtectionRuleInput!) {
+      deleteBranchProtectionRule(input: $input) {
+        clientMutationId
+      }
+    }
+  variables:
+    input: {branchProtectionRuleId: "{id}"}

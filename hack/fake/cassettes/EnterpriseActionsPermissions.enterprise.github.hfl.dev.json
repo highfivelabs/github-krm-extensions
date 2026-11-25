@@ -1,0 +1,106 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "body": "{\"enabled_organizations\":\"all\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"all\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "body": "{\"enabled_organizations\":\"changed-enabled_organizations\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"changed-enabled_organizations\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"changed-enabled_organizations\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "body": "{\"enabled_organizations\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"hfl-live-drift\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"hfl-live-drift\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "body": "{\"enabled_organizations\":\"changed-enabled_organizations\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"changed-enabled_organizations\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"changed-enabled_organizations\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/enterprises/example-enterprise/actions/permissions",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled_organizations\":\"changed-enabled_organizations\",\"selected_actions_url\":\"example-selected-actions-url\",\"selected_organizations_url\":\"example-selected-organizations-url\"}\n"
+    }
+  ]
+}

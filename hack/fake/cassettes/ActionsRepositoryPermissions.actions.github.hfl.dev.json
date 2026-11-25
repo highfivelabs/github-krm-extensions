@@ -1,0 +1,108 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"all\",\"enabled\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"local_only\",\"enabled\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"local_only\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"local_only\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"local_only\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"all\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"all\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "body": "{\"allowed_actions\":\"local_only\",\"enabled\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"local_only\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"local_only\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/actions/permissions",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_actions\":\"local_only\",\"enabled\":true,\"selected_actions_url\":\"example-selected-actions-url\"}\n"
+    }
+  ]
+}

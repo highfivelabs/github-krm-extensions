@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups",
+      "body": "{\"name\":\"{{name}}\",\"visibility\":\"all\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"all\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"all\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"all\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "body": "{\"name\":\"{{name}}\",\"visibility\":\"selected\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"selected\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"selected\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "body": "{\"visibility\":\"all\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"all\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"all\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "body": "{\"name\":\"{{name}}\",\"visibility\":\"selected\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"selected\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"default\":true,\"hosted_runners_url\":\"example-hosted-runners-url\",\"id\":270000010,\"inherited\":true,\"inherited_allows_public_repositories\":true,\"name\":\"{{name}}\",\"runners_url\":\"example-runners-url\",\"selected_repositories_url\":\"example-selected-repositories-url\",\"visibility\":\"selected\",\"workflow_restrictions_read_only\":false}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/runner-groups/270000010",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

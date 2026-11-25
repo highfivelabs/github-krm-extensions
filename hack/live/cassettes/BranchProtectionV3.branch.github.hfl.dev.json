@@ -1,0 +1,68 @@
+{
+  "recorded": "2026-11-20T23:57:23Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Branch not protected\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"404\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "body": "{\"enforce_admins\":false,\"required_pull_request_reviews\":{\"required_approving_review_count\":1},\"required_status_checks\":{\"contexts\":[],\"strict\":true},\"restrictions\":{\"teams\":[],\"users\":[]}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"allow_deletions\":{\"enabled\":false},\"allow_force_pushes\":{\"enabled\":false},\"allow_fork_syncing\":{\"enabled\":false},\"block_creations\":{\"enabled\":false},\"enforce_admins\":{\"enabled\":false,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/enforce_admins\"},\"lock_branch\":{\"enabled\":false},\"required_conversation_resolution\":{\"enabled\":false},\"required_linear_history\":{\"enabled\":false},\"required_pull_request_reviews\":{\"dismiss_stale_reviews\":false,\"require_code_owner_reviews\":false,\"require_last_push_approval\":false,\"required_approving_review_count\":1,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_pull_request_reviews\"},\"required_signatures\":{\"enabled\":false,\"url\":\"{{redacted}}\"},\"required_status_checks\":{\"checks\":[],\"contexts\":[],\"contexts_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks/contexts\",\"strict\":true,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks\"},\"restrictions\":{\"apps\":[],\"apps_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/apps\",\"teams\":[],\"teams_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/teams\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions\",\"users\":[],\"users_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/users\"},\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"allow_deletions\":{\"enabled\":false},\"allow_force_pushes\":{\"enabled\":false},\"allow_fork_syncing\":{\"enabled\":false},\"block_creations\":{\"enabled\":false},\"enforce_admins\":{\"enabled\":false,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/enforce_admins\"},\"lock_branch\":{\"enabled\":false},\"required_conversation_resolution\":{\"enabled\":false},\"required_linear_history\":{\"enabled\":false},\"required_pull_request_reviews\":{\"dismiss_stale_reviews\":false,\"require_code_owner_reviews\":false,\"require_last_push_approval\":false,\"required_approving_review_count\":1,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_pull_request_reviews\"},\"required_signatures\":{\"enabled\":false,\"url\":\"{{redacted}}\"},\"required_status_checks\":{\"checks\":[],\"contexts\":[],\"contexts_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks/contexts\",\"strict\":true,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks\"},\"restrictions\":{\"apps\":[],\"apps_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/apps\",\"teams\":[],\"teams_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/teams\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions\",\"users\":[],\"users_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/users\"},\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"allow_deletions\":{\"enabled\":false},\"allow_force_pushes\":{\"enabled\":false},\"allow_fork_syncing\":{\"enabled\":false},\"block_creations\":{\"enabled\":false},\"enforce_admins\":{\"enabled\":false,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/enforce_admins\"},\"lock_branch\":{\"enabled\":false},\"required_conversation_resolution\":{\"enabled\":false},\"required_linear_history\":{\"enabled\":false},\"required_pull_request_reviews\":{\"dismiss_stale_reviews\":false,\"require_code_owner_reviews\":false,\"require_last_push_approval\":false,\"required_approving_review_count\":1,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_pull_request_reviews\"},\"required_signatures\":{\"enabled\":false,\"url\":\"{{redacted}}\"},\"required_status_checks\":{\"checks\":[],\"contexts\":[],\"contexts_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks/contexts\",\"strict\":true,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks\"},\"restrictions\":{\"apps\":[],\"apps_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/apps\",\"teams\":[],\"teams_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/teams\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions\",\"users\":[],\"users_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/users\"},\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "body": "{\"enforce_admins\":false,\"required_linear_history\":true,\"required_pull_request_reviews\":{\"required_approving_review_count\":1},\"required_status_checks\":{\"contexts\":[],\"strict\":true},\"restrictions\":{\"teams\":[],\"users\":[]}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"allow_deletions\":{\"enabled\":false},\"allow_force_pushes\":{\"enabled\":false},\"allow_fork_syncing\":{\"enabled\":false},\"block_creations\":{\"enabled\":false},\"enforce_admins\":{\"enabled\":false,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/enforce_admins\"},\"lock_branch\":{\"enabled\":false},\"required_conversation_resolution\":{\"enabled\":false},\"required_linear_history\":{\"enabled\":true},\"required_pull_request_reviews\":{\"dismiss_stale_reviews\":false,\"require_code_owner_reviews\":false,\"require_last_push_approval\":false,\"required_approving_review_count\":1,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_pull_request_reviews\"},\"required_signatures\":{\"enabled\":false,\"url\":\"{{redacted}}\"},\"required_status_checks\":{\"checks\":[],\"contexts\":[],\"contexts_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks/contexts\",\"strict\":true,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks\"},\"restrictions\":{\"apps\":[],\"apps_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/apps\",\"teams\":[],\"teams_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/teams\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions\",\"users\":[],\"users_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/users\"},\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"allow_deletions\":{\"enabled\":false},\"allow_force_pushes\":{\"enabled\":false},\"allow_fork_syncing\":{\"enabled\":false},\"block_creations\":{\"enabled\":false},\"enforce_admins\":{\"enabled\":false,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/enforce_admins\"},\"lock_branch\":{\"enabled\":false},\"required_conversation_resolution\":{\"enabled\":false},\"required_linear_history\":{\"enabled\":true},\"required_pull_request_reviews\":{\"dismiss_stale_reviews\":false,\"require_code_owner_reviews\":false,\"require_last_push_approval\":false,\"required_approving_review_count\":1,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_pull_request_reviews\"},\"required_signatures\":{\"enabled\":false,\"url\":\"{{redacted}}\"},\"required_status_checks\":{\"checks\":[],\"contexts\":[],\"contexts_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks/contexts\",\"strict\":true,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/required_status_checks\"},\"restrictions\":{\"apps\":[],\"apps_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/apps\",\"teams\":[],\"teams_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/teams\",\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions\",\"users\":[],\"users_url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection/restrictions/users\"},\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/branches/main/protection\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/branches/main/protection",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Branch not protected\",\"documentation_url\":\"https://docs.github.com/rest/branches/branch-protection#get-branch-protection\",\"status\":\"404\"}"
+    }
+  ]
+}

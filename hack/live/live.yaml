@@ -1,0 +1,428 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+#
+# Live tests (TestEveryKindLive, krm-rest-runtime's kindtest.Live): these
+# kinds, in this order, against the real API. Kinds not listed are not run
+# live. They skip, naming the secret, until it exists in Secret Manager; then
+#   KRM_LIVE=1 go test -tags live -run TestEveryKindLive -v .
+# Everything a run makes is named hfl-live-<stamp>-<hex> (or hfl_live_...),
+# deleted at the end; the sweep deletes older leftovers. How it works and
+# what the {{...}} templates mean: krm-rest-runtime docs/live.md.
+#
+# The test organization is on GitHub's free plan. A run makes one public
+# repository (environments and branch protection need a public repository
+# on the free plan; it holds only a README), an environment in it and a
+# team, all named after the run, and deletes them at the end. The token is
+# a classic personal access token of a member who owns the test
+# organization, scopes repo, admin:org, delete_repo.
+#
+# Organization-wide settings kinds (ActionsOrganizationPermissions,
+# ActionsOrganizationWorkflowPermissions,
+# ActionsOrganizationOidcSubjectClaimCustomizationTemplate) change one
+# setting for a few seconds and put the old values back. A few kinds make
+# their own throwaway things, named after the kind and deleted after it: a
+# private repository (ActionsRepositoryAccessLevel), branches and commits
+# in the run's repository (BranchDefault, RepositoryPullRequest, Branch), an
+# organization custom property (RepositoryCustomProperty). TeamSettings
+# changes the run's team's review settings. GitHub cannot delete an issue
+# or a pull request: Issue and RepositoryPullRequest close theirs, which go
+# with the run's repository.
+secret: krm-live-github         # JSON: {"token": "ghp_...", "org": "<test org>"}
+target: api.github.com
+# What names the account owner (the token's user): its login, saved as me
+# from GET /user, and a deploy key's added_by. Redacted wherever a run
+# records them (krm-rest-runtime docs/live.md, "Identities").
+redactVars: [me]
+redactFields: [added_by]
+
+before:
+- {method: GET, path: /user, save: {me: login}}
+- {method: POST, path: "/orgs/{{cred:org}}/repos", body: {name: "{{run}}", private: false, auto_init: true}, save: {repoID: id}}
+- {method: PUT, path: "/repos/{{cred:org}}/{{run}}/environments/{{run}}"}
+- {method: POST, path: "/orgs/{{cred:org}}/teams", body: {name: "{{run}}", privacy: closed}, save: {teamID: id, team: slug}}
+after:
+- {method: DELETE, path: "/orgs/{{cred:org}}/teams/{{var:team}}", ok: [404]}
+- {method: DELETE, path: "/repos/{{cred:org}}/{{run}}", ok: [404]}
+
+sweep:
+- {list: "/orgs/{{cred:org}}/repos?per_page=100&sort=created", name: name, delete: "/repos/{{cred:org}}/{id}"}
+- {list: "/orgs/{{cred:org}}/teams?per_page=100", name: slug, delete: "/orgs/{{cred:org}}/teams/{id}"}
+- {list: "/orgs/{{cred:org}}/actions/variables?per_page=30", items: variables, name: name, delete: "/orgs/{{cred:org}}/actions/variables/{id}"}
+- {list: "/orgs/{{cred:org}}/actions/secrets?per_page=100", items: secrets, name: name, delete: "/orgs/{{cred:org}}/actions/secrets/{id}"}
+- {list: "/orgs/{{cred:org}}/dependabot/secrets?per_page=100", items: secrets, name: name, delete: "/orgs/{{cred:org}}/dependabot/secrets/{id}"}
+- {list: "/orgs/{{cred:org}}/properties/schema", name: property_name, delete: "/orgs/{{cred:org}}/properties/schema/{id}"}
+
+kinds:
+# --- in the run's repository
+- kind: IssueLabel
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", name: "{{name}}", color: ff0000, description: first}
+  change: {description: second}
+
+# A file at the root of the run's repository, on auto_init's default branch
+# (main). Its update and delete send the blob sha a read answers just before.
+- kind: RepositoryFile
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", path: "{{name}}.md", branch: main, message: "add {{name}}.md", content: aGVsbG8K}
+  change: {content: Z29vZGJ5ZQo=, message: "change {{name}}.md"}
+  noDrift: content is write-only (a read answers it re-encoded in lines of 60), so a change behind the controller's back is not seen
+
+- kind: RepositoryMilestone
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", title: "{{name}}"}
+  change: {description: changed}
+
+- kind: RepositoryTopics
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", names: [hfl-live]}
+  change: {names: [hfl-live, second]}
+  drift: [drift]
+
+- kind: ActionsRepositoryPermissions
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", enabled: true, allowed_actions: all}
+  change: {allowed_actions: local_only}
+  drift: all
+  driftFull: true                # the PUT needs enabled too
+
+# The organization's default (read) forbids a repository write access; for
+# the length of this kind the organization allows it, then is put back.
+- kind: WorkflowRepositoryPermissions
+  before:
+  - {method: PUT, path: "/orgs/{{cred:org}}/actions/permissions/workflow", body: {default_workflow_permissions: write, can_approve_pull_request_reviews: false}}
+  after:
+  - {method: PUT, path: "/orgs/{{cred:org}}/actions/permissions/workflow", body: {default_workflow_permissions: read, can_approve_pull_request_reviews: false}}
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", default_workflow_permissions: read, can_approve_pull_request_reviews: false}
+  change: {default_workflow_permissions: write}
+  drift: read
+
+- kind: ActionsVariable
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", name: "{{name_}}", value: a}
+  change: {value: b}
+
+# Secret values come from the Connection Secret's org key (the test
+# organization's name, nothing secret), encrypted by the EncryptSecret hook.
+- kind: ActionsSecret
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", secretName: "{{name_}}", secretRefs: {value: {name: creds, key: org}}}
+
+- kind: DependabotSecret
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", secretName: "{{name_}}", secretRefs: {value: {name: creds, key: org}}}
+
+- kind: ActionsEnvironmentVariable
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", environmentName: "{{run}}", name: "{{name_}}", value: a}
+  change: {value: b}
+
+- kind: ActionsEnvironmentSecret
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", environmentName: "{{run}}", secretName: "{{name_}}", secretRefs: {value: {name: creds, key: org}}}
+
+- kind: RepositoryEnvironment
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", environmentName: "{{name}}"}
+  change: {deployment_branch_policy: {protected_branches: false, custom_branch_policies: true}}
+  drift: {protected_branches: true, custom_branch_policies: false}
+
+- kind: RepositoryDeploymentBranchPolicy
+  before:
+  - {method: PUT, path: "/repos/{{cred:org}}/{{run}}/environments/{{name}}", body: {deployment_branch_policy: {protected_branches: false, custom_branch_policies: true}}}
+  after:
+  - {method: DELETE, path: "/repos/{{cred:org}}/{{run}}/environments/{{name}}", ok: [404]}
+  replaceSample: true
+  # The update (PUT) refuses type; it is left to its default, branch.
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", environmentName: "{{name}}", name: "release/*"}
+  change: {name: "release2/*"}
+  drift: "drift/*"
+
+- kind: RepositoryDeployKey
+  replaceSample: true
+  # A throwaway public key; its private half was never kept. A key may be
+  # in use only once on GitHub, and stays in use by a deleted repository
+  # (which can be restored): if a run fails before the key's own delete,
+  # generate another (ssh-keygen -t ed25519).
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", title: "{{name}}", key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOezsKaM3b2dGxDGzthV/yegPUYNCgExO1qbHr/GlXpA", read_only: true}
+
+- kind: Release
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", tag_name: "{{name}}", name: "{{name}}", body: first}
+  change: {body: second}
+
+- kind: BranchProtectionV3
+  replaceSample: true
+  spec:
+    owner: "{{cred:org}}"
+    repo: "{{run}}"
+    branch: main
+    required_status_checks: {strict: true, contexts: []}
+    enforce_admins: false
+    required_pull_request_reviews: {required_approving_review_count: 1}
+    restrictions: {users: [], teams: []}
+  change: {required_linear_history: true}
+  noDrift: "the PUT replaces the whole protection, in another shape than a read answers ({enabled: ...}); a one-field write is refused"
+
+- kind: RepositoryVulnerabilityAlerts
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}"}
+
+- kind: ActionsRepositoryOidcSubjectClaimCustomizationTemplate
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", use_default: false, include_claim_keys: [repo, context, job_workflow_ref]}
+  change: {include_claim_keys: [repo, context]}
+  drift: [repo]
+  driftFull: true                # the PUT needs use_default too
+
+- kind: CodespacesSecret
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", secretName: "{{name_}}", secretRefs: {value: {name: creds, key: org}}}
+
+# The default branch moves to a branch made for this kind, then to a
+# second; the settings cleanup puts main back before the branches go.
+- kind: BranchDefault
+  before:
+  - {method: GET, path: "/repos/{{cred:org}}/{{run}}/git/ref/heads/main", save: {mainSHA: object/sha}}
+  - {method: POST, path: "/repos/{{cred:org}}/{{run}}/git/refs", body: {ref: "refs/heads/{{name}}", sha: "{{var:mainSHA}}"}}
+  - {method: POST, path: "/repos/{{cred:org}}/{{run}}/git/refs", body: {ref: "refs/heads/{{name}}-2", sha: "{{var:mainSHA}}"}}
+  after:
+  - {method: DELETE, path: "/repos/{{cred:org}}/{{run}}/git/refs/heads/{{name}}", ok: [404, 422]}
+  - {method: DELETE, path: "/repos/{{cred:org}}/{{run}}/git/refs/heads/{{name}}-2", ok: [404, 422]}
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", default_branch: "{{name}}"}
+  change: {default_branch: "{{name}}-2"}
+  drift: main
+
+# The access level applies only to private repositories: this kind makes
+# its own, empty, and deletes it.
+- kind: ActionsRepositoryAccessLevel
+  before:
+  - {method: POST, path: "/orgs/{{cred:org}}/repos", body: {name: "{{name}}", private: true}}
+  after:
+  - {method: DELETE, path: "/repos/{{cred:org}}/{{name}}", ok: [404]}
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{name}}", access_level: organization}
+  change: {access_level: none}
+  drift: organization
+
+# An issue in the run's repository. GitHub cannot delete one: the delete
+# closes it, and the closed issue stays until the repository goes.
+- kind: Issue
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", title: "{{name}}", body: first}
+  change: {body: second}
+
+# A pull request from a branch made for this kind (one commit ahead of
+# main) into main. The delete closes it; the branch goes after.
+- kind: RepositoryPullRequest
+  before:
+  - {method: GET, path: "/repos/{{cred:org}}/{{run}}/git/ref/heads/main", save: {mainSHA: object/sha}}
+  - {method: POST, path: "/repos/{{cred:org}}/{{run}}/git/refs", body: {ref: "refs/heads/{{name}}", sha: "{{var:mainSHA}}"}}
+  - {method: PUT, path: "/repos/{{cred:org}}/{{run}}/contents/{{name}}.md", body: {message: "add {{name}}.md", content: aGVsbG8K, branch: "{{name}}"}}
+  after:
+  - {method: DELETE, path: "/repos/{{cred:org}}/{{run}}/git/refs/heads/{{name}}", ok: [404, 422]}
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", head: "{{name}}", base: main, title: "{{name}}", body: first}
+  change: {body: second}
+
+# A branch at main's commit, then moved (fast-forward) to a commit made on
+# main for this kind.
+- kind: Branch
+  before:
+  - {method: GET, path: "/repos/{{cred:org}}/{{run}}/git/ref/heads/main", save: {mainSHA: object/sha}}
+  - {method: PUT, path: "/repos/{{cred:org}}/{{run}}/contents/{{name}}.md", body: {message: "add {{name}}.md", content: aGVsbG8K}, save: {nextSHA: commit/sha}}
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", branch: "{{name}}", sha: "{{var:mainSHA}}"}
+  change: {sha: "{{var:nextSHA}}"}
+  noDrift: "sha is write-only (the branch's head moves with every push), so a change behind the controller's back is not seen"
+
+# Every label of the run's repository: the set replaces auto_init's
+# default labels with its own, and the delete removes them.
+- kind: IssueLabelSet
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", labels: [{name: "{{name}}-a", color: ff0000, description: first}, {name: "{{name}}-b", color: 00ff00}]}
+
+# One custom property's value on a repository (an element of
+# .../properties/values), for a string property the run defines first.
+- kind: RepositoryCustomProperty
+  before:
+  - {method: PUT, path: "/orgs/{{cred:org}}/properties/schema/{{name}}", body: {value_type: string}}
+  after:
+  - {method: DELETE, path: "/orgs/{{cred:org}}/properties/schema/{{name}}", ok: [404]}
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", property_name: "{{name}}", value: a}
+  change: {value: b}
+
+# A branch protection rule (GraphQL) on a pattern no branch has, naming
+# the run's repository by its node ID.
+- kind: BranchProtection
+  before:
+  - {method: GET, path: "/repos/{{cred:org}}/{{run}}", save: {repoNode: node_id}}
+  replaceSample: true
+  spec: {repositoryId: "{{var:repoNode}}", pattern: "{{name}}/*", requiresLinearHistory: false, allowsDeletions: false}
+  change: {requiresLinearHistory: true}
+  drift: false
+
+- kind: RepositoryCollaborator
+  skip: "needs a second GitHub account: the test organization's only member is its owner, who has admin on every repository, so adding, changing and removing them as a collaborator change nothing (the read answers 204 before and after the delete)"
+
+# --- the run's team
+- kind: TeamMembership
+  replaceSample: true
+  spec: {teamID: "{{var:teamID}}", username: "{{var:me}}", role: maintainer}
+  noUpdate: "the organization's only member is its owner, whom GitHub reads back as maintainer of every team, whatever role is sent"
+
+- kind: TeamRepository
+  replaceSample: true
+  spec: {teamID: "{{var:teamID}}", owner: "{{cred:org}}", repo: "{{run}}", permission: push}
+
+# A predefined organization role (the first GET /orgs/{org}/organization-roles
+# lists) for the run's team, whose only member is the organization's owner.
+- kind: OrganizationRoleTeam
+  before:
+  - {method: GET, path: "/orgs/{{cred:org}}/organization-roles", save: {roleID: roles/0/id}}
+  replaceSample: true
+  spec: {org: "{{cred:org}}", teamSlug: "{{var:team}}", roleID: "{{var:roleID}}"}
+
+# The run's team's code review settings (GraphQL), named by its node ID;
+# the old values are put back at the end. Its only member is the owner.
+- kind: TeamSettings
+  before:
+  - {method: GET, path: "/orgs/{{cred:org}}/teams/{{var:team}}", save: {teamNode: node_id}}
+  replaceSample: true
+  spec: {teamId: "{{var:teamNode}}", enabled: true, algorithm: ROUND_ROBIN, teamMemberCount: 1, notifyTeam: false}
+  change: {algorithm: LOAD_BALANCE}
+  drift: ROUND_ROBIN
+  driftFull: true                # the update needs enabled too
+
+# --- the organization
+- kind: ActionsOrganizationVariable
+  replaceSample: true
+  spec: {org: "{{cred:org}}", name: "{{name_}}", value: a, visibility: private}
+  change: {value: b}
+
+- kind: ActionsOrganizationVariableRepository
+  before:
+  - {method: POST, path: "/orgs/{{cred:org}}/actions/variables", body: {name: "{{name_}}", value: a, visibility: selected, selected_repository_ids: []}}
+  after:
+  - {method: DELETE, path: "/orgs/{{cred:org}}/actions/variables/{{name_}}", ok: [404]}
+  replaceSample: true
+  spec: {org: "{{cred:org}}", name: "{{name_}}", selected_repository_ids: ["{{var:repoID}}"]}
+
+- kind: ActionsOrganizationSecret
+  replaceSample: true
+  spec: {org: "{{cred:org}}", secretName: "{{name_}}", visibility: private, secretRefs: {value: {name: creds, key: org}}}
+  change: {visibility: all}
+  noDrift: "every write needs the sealed value, which only the controller's hook makes"
+
+# A *SecretRepository kind needs a secret made beforehand, and GitHub
+# refuses a value not sealed with the organization's public key. These are
+# "hfl-live" sealed (extensions.Seal) for the test organization's keys
+# (GET /orgs/{org}/actions/secrets/public-key, .../dependabot/...); if
+# GitHub rotates a key, seal again.
+- kind: ActionsOrganizationSecretRepository
+  before:
+  - {method: PUT, path: "/orgs/{{cred:org}}/actions/secrets/{{name_}}", body: {visibility: selected, selected_repository_ids: [], key_id: "3380204578043523366", encrypted_value: 9nmjFBGw3QgZJeohH8xX35JtnRUHJHlczhtWAUGd0XQ2RrUEu1S4dPLauoYu1AzqLIplZ6AVc+M=}}
+  after:
+  - {method: DELETE, path: "/orgs/{{cred:org}}/actions/secrets/{{name_}}", ok: [404]}
+  replaceSample: true
+  spec: {org: "{{cred:org}}", secretName: "{{name_}}", selected_repository_ids: ["{{var:repoID}}"]}
+
+- kind: DependabotOrganizationSecret
+  replaceSample: true
+  spec: {org: "{{cred:org}}", secretName: "{{name_}}", visibility: private, secretRefs: {value: {name: creds, key: org}}}
+  change: {visibility: all}
+  noDrift: "every write needs the sealed value, which only the controller's hook makes"
+
+- kind: DependabotOrganizationSecretRepository
+  before:
+  - {method: PUT, path: "/orgs/{{cred:org}}/dependabot/secrets/{{name_}}", body: {visibility: selected, selected_repository_ids: [], key_id: "3380217566468950943", encrypted_value: 0BZ3I0Gd2XpJSeaRswkK5XkzPIl93I88LZKIg+pJBw3yux0TLDRoGzERuPeszyDCVxLKz09gZrY=}}
+  after:
+  - {method: DELETE, path: "/orgs/{{cred:org}}/dependabot/secrets/{{name_}}", ok: [404]}
+  replaceSample: true
+  spec: {org: "{{cred:org}}", secretName: "{{name_}}", selected_repository_ids: ["{{var:repoID}}"]}
+
+- kind: ActionsRunnerGroup
+  replaceSample: true
+  spec: {org: "{{cred:org}}", name: "{{name}}", visibility: all}
+  change: {visibility: selected}
+  drift: all
+
+- kind: OrganizationBlock
+  replaceSample: true
+  # ghost is GitHub's placeholder for deleted accounts, not a person.
+  spec: {org: "{{cred:org}}", username: ghost}
+
+- kind: ActionsOrganizationPermissions
+  replaceSample: true
+  spec: {org: "{{cred:org}}", enabled_repositories: all, allowed_actions: all, sha_pinning_required: false}
+  change: {sha_pinning_required: true}
+  drift: false
+  driftFull: true                # the PUT needs enabled_repositories too
+
+- kind: ActionsOrganizationWorkflowPermissions
+  replaceSample: true
+  spec: {org: "{{cred:org}}", default_workflow_permissions: read, can_approve_pull_request_reviews: false}
+  change: {can_approve_pull_request_reviews: true}
+  drift: false
+
+# GitHub's default subject claim is repo and context; the after call puts
+# that back even if the read before the kind answered no keys to restore.
+- kind: ActionsOrganizationOidcSubjectClaimCustomizationTemplate
+  after:
+  - {method: PUT, path: "/orgs/{{cred:org}}/actions/oidc/customization/sub", body: {include_claim_keys: [repo, context]}}
+  replaceSample: true
+  spec: {org: "{{cred:org}}", include_claim_keys: [repo, context, job_workflow_ref]}
+  change: {include_claim_keys: [repo, context, actor]}
+  drift: [repo, context, workflow]
+
+# --- not run
+- kind: Membership
+  skip: "would invite a real GitHub account to the organization (an e-mail to a person), or, for the token's own owner, remove the organization's only owner on delete"
+- kind: ActionsHostedRunner
+  skip: "GitHub-hosted larger runners are billed and need GitHub Team or Enterprise Cloud; the free organization answers 404 not supported for this organization"
+- kind: CodespacesOrganizationSecret
+  skip: "Codespaces organization secrets are not available to the free organization (the list answers 404)"
+- kind: CodespacesOrganizationSecretRepositories
+  skip: "Codespaces organization secrets are not available to the free organization (the list answers 404)"
+- kind: CodespacesUserSecret
+  skip: "a secret on the token owner's personal account, outside the test organization; the token has no codespace scope"
+- kind: UserSshKey
+  skip: "a key on the token owner's personal account, outside the test organization; the token has no admin:public_key scope"
+- kind: UserGpgKey
+  skip: "a key on the token owner's personal account, outside the test organization; the token has no admin:gpg_key scope"
+- kind: OrganizationRoleUser
+  skip: "needs a second GitHub account: the test organization's only member is its owner, who already holds every permission an organization role grants"
+- kind: OrganizationWebhook
+  skip: "the token has no admin:org_hook scope (it has repo, admin:org, delete_repo), which every organization webhook call needs"
+- kind: AppInstallationRepository
+  skip: "needs a GitHub App installed on the test organization for selected repositories, and the installation's ID; none is installed"
+- kind: AppInstallationRepositorySet
+  skip: "needs a GitHub App installed on the test organization for selected repositories, and the installation's ID; none is installed"
+- kind: RepositoryDependabotSecurityUpdate
+  skip: "a repository with Dependabot security updates off reads 200 {enabled: false}, not 404 (Terraform reads it so), so the manager would take it as already set and never send the PUT, and the delete is never seen gone; the read needs enabled as its presence field"
+- kind: RepositoryPagesSite
+  skip: "the CRD has neither source nor build_type (the generator drops the POST body's fields: a nullable schema with an anyOf of required sets), and GitHub refuses a Pages site with neither (422)"
+# GitHub Enterprise Cloud: the free organization belongs to no enterprise
+# and has no Enterprise Cloud features; left fake (Open decisions KLIVE3).
+- kind: EnterpriseActionsPermissions
+  skip: "needs GitHub Enterprise Cloud (an enterprise account); the test organization is on the free plan (KLIVE3: left fake)"
+- kind: EnterpriseActionsRunnerGroup
+  skip: "needs GitHub Enterprise Cloud (an enterprise account); the test organization is on the free plan (KLIVE3: left fake)"
+- kind: EnterpriseActionsWorkflowPermissions
+  skip: "needs GitHub Enterprise Cloud (an enterprise account); the test organization is on the free plan (KLIVE3: left fake)"
+- kind: EnterpriseSecurityAnalysisSettings
+  skip: "needs GitHub Enterprise Cloud (an enterprise account); the test organization is on the free plan (KLIVE3: left fake)"
+- kind: OrganizationRepositoryRole
+  skip: "custom repository roles need GitHub Enterprise Cloud; the test organization is on the free plan (KLIVE3: left fake)"
+- kind: OrganizationRole
+  skip: "custom organization roles need GitHub Enterprise Cloud; the test organization is on the free plan (KLIVE3: left fake)"
+- kind: TeamSyncGroupMapping
+  skip: "team synchronization needs GitHub Enterprise Cloud with an identity provider (SAML SSO); the test organization is on the free plan (KLIVE3: left fake)"
+- kind: EnterpriseOrganization
+  skip: "makes an organization in an enterprise account, which needs GitHub Enterprise Cloud; the test organization is on the free plan (KLIVE3: left fake)"
+- kind: EnterpriseIpAllowListEntry
+  skip: "an enterprise's IP allow list needs GitHub Enterprise Cloud (an enterprise account); the test organization is on the free plan (KLIVE3: left fake)"
+- kind: EmuGroupMapping
+  skip: "needs an Enterprise Managed Users organization with an identity provider group; the test organization is on the free plan (KLIVE3: left fake)"

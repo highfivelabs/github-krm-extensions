@@ -1,0 +1,91 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "me": "rehearsal-me",
+    "repoID": 280000002,
+    "team": "rehearsal-team",
+    "teamID": 280000004
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/labels",
+      "body": "{\"color\":\"ff0000\",\"description\":\"first\",\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"first\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"first\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"first\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "body": "{\"color\":\"ff0000\",\"description\":\"second\",\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"second\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"second\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "body": "{\"description\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"hfl-live-drift\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"hfl-live-drift\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "body": "{\"color\":\"ff0000\",\"description\":\"second\",\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"second\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"archived_at\":\"2023-01-01T12:00:00Z\",\"archived_by\":{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{redacted}}\",\"followers_url\":\"{{redacted}}\",\"following_url\":\"{{redacted}}\",\"gists_url\":\"{{redacted}}\",\"gravatar_id\":\"41d064eb2195891e12d0413f63227ea7\",\"html_url\":\"{{redacted}}\",\"id\":1,\"login\":\"{{redacted}}\",\"node_id\":\"MDQ6VXNlcjE=\",\"organizations_url\":\"{{redacted}}\",\"received_events_url\":\"{{redacted}}\",\"repos_url\":\"{{redacted}}\",\"site_admin\":true,\"starred_url\":\"{{redacted}}\",\"subscriptions_url\":\"{{redacted}}\",\"type\":\"User\",\"url\":\"{{redacted}}\"},\"color\":\"ff0000\",\"default\":true,\"description\":\"second\",\"name\":\"{{name}}\",\"node_id\":\"MDU6TGFiZWwyMDgwNDU5NDY=\",\"url\":\"https://api.github.com/repositories/42/labels/bug\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/labels/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

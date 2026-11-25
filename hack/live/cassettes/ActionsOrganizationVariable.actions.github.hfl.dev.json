@@ -1,0 +1,99 @@
+{
+  "recorded": "2026-11-20T23:57:28Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/{{cred:org}}/actions/variables",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"a\",\"visibility\":\"private\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"a\",\"created_at\":\"2026-11-20T23:57:27Z\",\"updated_at\":\"2026-11-20T23:57:27Z\",\"visibility\":\"private\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"a\",\"created_at\":\"2026-11-20T23:57:27Z\",\"updated_at\":\"2026-11-20T23:57:27Z\",\"visibility\":\"private\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"b\",\"visibility\":\"private\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:27Z\",\"updated_at\":\"2026-11-20T23:57:27Z\",\"visibility\":\"private\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:27Z\",\"updated_at\":\"2026-11-20T23:57:27Z\",\"visibility\":\"private\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "body": "{\"value\":\"hfl-live-drift\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"hfl-live-drift\",\"created_at\":\"2026-11-20T23:57:27Z\",\"updated_at\":\"2026-11-20T23:57:28Z\",\"visibility\":\"private\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "body": "{\"name\":\"{{name_}}\",\"value\":\"b\",\"visibility\":\"private\"}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:27Z\",\"updated_at\":\"2026-11-20T23:57:28Z\",\"visibility\":\"private\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"name\":\"{{NAME_}}\",\"value\":\"b\",\"created_at\":\"2026-11-20T23:57:27Z\",\"updated_at\":\"2026-11-20T23:57:28Z\",\"visibility\":\"private\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/actions/variables/{{name_}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/actions/variables#get-an-organization-variable\",\"status\":\"404\"}"
+    }
+  ]
+}

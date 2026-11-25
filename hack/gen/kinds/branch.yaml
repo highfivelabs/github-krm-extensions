@@ -1,0 +1,29 @@
+terraform: [github_branch]
+shape: upsert
+params:
+  owner:
+    description: The account owner of the repository. The name is not case sensitive.
+  repo:
+  branch:
+fields:
+  sha:
+    type: string
+required: [sha]
+writeOnly: [sha]
+serverFields:
+  node_id: REF_example
+  url: https://api.github.com/repos/example-owner/example-repo/git/refs/heads/feature/example
+sample: {owner: example-owner, repo: example-repo, branch: feature/example, sha: aa218f56b14c9653891f9e74264a383fa43fefbd}
+create:
+  method: POST
+  path: /repos/{owner}/{repo}/git/refs
+  body: {ref: "refs/heads/{branch}"}
+read:
+  method: GET
+  path: /repos/{owner}/{repo}/git/ref/heads/{+branch}
+update:
+  method: PATCH
+  path: /repos/{owner}/{repo}/git/refs/heads/{+branch}
+delete:
+  method: DELETE
+  path: /repos/{owner}/{repo}/git/refs/heads/{+branch}

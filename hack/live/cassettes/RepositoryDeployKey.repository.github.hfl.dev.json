@@ -1,0 +1,39 @@
+{
+  "recorded": "2026-11-20T23:57:17Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/keys",
+      "body": "{\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOezsKaM3b2dGxDGzthV/yegPUYNCgExO1qbHr/GlXpA\",\"read_only\":true,\"title\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":170620474,\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOezsKaM3b2dGxDGzthV/yegPUYNCgExO1qbHr/GlXpA\",\"created_at\":\"2026-11-20T23:57:16Z\",\"last_used\":null,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/keys/170620474\",\"title\":\"{{name}}\",\"verified\":true,\"read_only\":true,\"added_by\":\"{{redacted}}\",\"enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/keys/170620474",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":170620474,\"key\":\"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOezsKaM3b2dGxDGzthV/yegPUYNCgExO1qbHr/GlXpA\",\"created_at\":\"2026-11-20T23:57:16Z\",\"last_used\":null,\"url\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/keys/170620474\",\"title\":\"{{name}}\",\"verified\":true,\"read_only\":true,\"added_by\":\"{{redacted}}\",\"enabled\":true}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/keys/170620474",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/keys/170620474",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key\",\"status\":\"404\"}"
+    }
+  ]
+}

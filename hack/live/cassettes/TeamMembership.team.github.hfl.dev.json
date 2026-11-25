@@ -1,0 +1,38 @@
+{
+  "recorded": "2026-11-20T23:57:25Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{id:1}}",
+    "repoID": 1466016183,
+    "team": "{{run}}",
+    "teamID": 20815322
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/teams/20815322/memberships/{{id:1}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"state\":\"active\",\"role\":\"maintainer\",\"url\":\"{{baseURL}}/organizations/100000000/team/20815322/memberships/{{id:1}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/teams/20815322/memberships/{{id:1}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"state\":\"active\",\"role\":\"maintainer\",\"url\":\"{{baseURL}}/organizations/100000000/team/20815322/memberships/{{id:1}}\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/teams/20815322/memberships/{{id:1}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/teams/20815322/memberships/{{id:1}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/teams/members#get-team-membership-for-a-user-legacy\",\"status\":\"404\"}"
+    }
+  ]
+}

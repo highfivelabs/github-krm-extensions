@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/graphql",
+      "body": "{\"operationName\":\"CreateEnterpriseOrganization\",\"query\":\"mutation CreateEnterpriseOrganization($input: CreateEnterpriseOrganizationInput!) { createEnterpriseOrganization(input: $input) { organization { login } } }\",\"variables\":{\"input\":{\"adminLogins\":[\"example-admin\"],\"billingEmail\":\"billing@example.com\",\"enterpriseId\":\"E_example\",\"login\":\"example-org\",\"profileName\":\"example-org\"}}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"createEnterpriseOrganization\":{\"organization\":{\"billing_email\":\"billing@example.com\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}}}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"billing@example.com\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"billing@example.com\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"billing@example.com\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org",
+      "body": "{\"billing_email\":\"changed-billing_email\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"changed-billing_email\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"changed-billing_email\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org",
+      "body": "{\"billing_email\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"hfl-live-drift\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"hfl-live-drift\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org",
+      "body": "{\"billing_email\":\"changed-billing_email\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"changed-billing_email\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"billing_email\":\"changed-billing_email\",\"id\":270000001,\"login\":\"example-org\",\"node_id\":\"O_example\",\"url\":\"https://api.github.com/orgs/example-org\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/example-org",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mainSHA": "rehearsal-mainSHA",
+    "me": "rehearsal-me",
+    "nextSHA": "rehearsal-nextSHA",
+    "repoID": 280000002,
+    "repoNode": "rehearsal-repoNode",
+    "roleID": "rehearsal-roleID",
+    "team": "rehearsal-team",
+    "teamID": 280000004,
+    "teamNode": "rehearsal-teamNode"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/orgs/example-org/custom-repository-roles",
+      "body": "{\"base_role\":\"read\",\"name\":\"example-name\",\"permissions\":[]}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"read\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"read\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"read\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "body": "{\"base_role\":\"changed-base_role\",\"name\":\"example-name\",\"permissions\":[]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"changed-base_role\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"changed-base_role\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "body": "{\"base_role\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"hfl-live-drift\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"hfl-live-drift\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "body": "{\"base_role\":\"changed-base_role\",\"name\":\"example-name\",\"permissions\":[]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"changed-base_role\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"base_role\":\"changed-base_role\",\"created_at\":\"2000-01-01T00:00:00Z\",\"id\":270000016,\"name\":\"example-name\",\"organization\":{\"avatar_url\":\"example-avatar-url\",\"events_url\":\"example-events-url\",\"followers_url\":\"example-followers-url\",\"following_url\":\"example-following-url\",\"gists_url\":\"example-gists-url\",\"gravatar_id\":\"example-gravatar-id\",\"html_url\":\"example-html-url\",\"id\":1,\"login\":\"example-login\",\"node_id\":\"example-node-id\",\"organizations_url\":\"example-organizations-url\",\"received_events_url\":\"example-received-events-url\",\"repos_url\":\"example-repos-url\",\"site_admin\":true,\"starred_url\":\"example-starred-url\",\"subscriptions_url\":\"example-subscriptions-url\",\"type\":\"example-type\",\"url\":\"example-url\"},\"permissions\":[],\"updated_at\":\"2000-01-01T00:00:00Z\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/example-org/custom-repository-roles/270000016",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}
