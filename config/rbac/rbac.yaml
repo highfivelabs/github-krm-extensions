@@ -1,0 +1,203 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+# The manager reads Connections and their Secrets in every namespace it
+# reconciles; narrow the binding per namespace if that is too broad.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: manager
+  namespace: github-krm-extensions-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: github-krm-extensions-manager
+rules:
+- apiGroups: &id001
+  - actions.github.hfl.dev
+  - branch.github.hfl.dev
+  - codespaces.github.hfl.dev
+  - dependabot.github.hfl.dev
+  - issue.github.hfl.dev
+  - membership.github.hfl.dev
+  - organization.github.hfl.dev
+  - release.github.hfl.dev
+  - repository.github.hfl.dev
+  - team.github.hfl.dev
+  - user.github.hfl.dev
+  - workflow.github.hfl.dev
+  resources:
+  - actionsenvironmentsecrets
+  - actionsenvironmentvariables
+  - actionshostedrunners
+  - actionsorganizationpermissionses
+  - actionsorganizationsecretrepositories
+  - actionsorganizationsecrets
+  - actionsorganizationvariablerepositories
+  - actionsorganizationvariables
+  - actionsorganizationworkflowpermissionses
+  - actionsrepositorypermissionses
+  - actionsrunnergroups
+  - actionssecrets
+  - actionsvariables
+  - branchprotectionv3s
+  - codespacesorganizationsecretrepositorieses
+  - codespacesorganizationsecrets
+  - codespacesusersecrets
+  - dependabotorganizationsecretrepositories
+  - dependabotorganizationsecrets
+  - dependabotsecrets
+  - issuelabels
+  - memberships
+  - organizationblocks
+  - releases
+  - repositorycollaborators
+  - repositorydeploykeys
+  - repositorydeploymentbranchpolicies
+  - repositoryenvironments
+  - repositorymilestones
+  - repositorytopicses
+  - repositoryvulnerabilityalertses
+  - teammemberships
+  - teamrepositories
+  - usergpgkeys
+  - usersshkeys
+  - workflowrepositorypermissionses
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - actionsenvironmentsecrets/status
+  - actionsenvironmentvariables/status
+  - actionshostedrunners/status
+  - actionsorganizationpermissionses/status
+  - actionsorganizationsecretrepositories/status
+  - actionsorganizationsecrets/status
+  - actionsorganizationvariablerepositories/status
+  - actionsorganizationvariables/status
+  - actionsorganizationworkflowpermissionses/status
+  - actionsrepositorypermissionses/status
+  - actionsrunnergroups/status
+  - actionssecrets/status
+  - actionsvariables/status
+  - branchprotectionv3s/status
+  - codespacesorganizationsecretrepositorieses/status
+  - codespacesorganizationsecrets/status
+  - codespacesusersecrets/status
+  - dependabotorganizationsecretrepositories/status
+  - dependabotorganizationsecrets/status
+  - dependabotsecrets/status
+  - issuelabels/status
+  - memberships/status
+  - organizationblocks/status
+  - releases/status
+  - repositorycollaborators/status
+  - repositorydeploykeys/status
+  - repositorydeploymentbranchpolicies/status
+  - repositoryenvironments/status
+  - repositorymilestones/status
+  - repositorytopicses/status
+  - repositoryvulnerabilityalertses/status
+  - teammemberships/status
+  - teamrepositories/status
+  - usergpgkeys/status
+  - usersshkeys/status
+  - workflowrepositorypermissionses/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - actionsenvironmentsecrets/finalizers
+  - actionsenvironmentvariables/finalizers
+  - actionshostedrunners/finalizers
+  - actionsorganizationpermissionses/finalizers
+  - actionsorganizationsecretrepositories/finalizers
+  - actionsorganizationsecrets/finalizers
+  - actionsorganizationvariablerepositories/finalizers
+  - actionsorganizationvariables/finalizers
+  - actionsorganizationworkflowpermissionses/finalizers
+  - actionsrepositorypermissionses/finalizers
+  - actionsrunnergroups/finalizers
+  - actionssecrets/finalizers
+  - actionsvariables/finalizers
+  - branchprotectionv3s/finalizers
+  - codespacesorganizationsecretrepositorieses/finalizers
+  - codespacesorganizationsecrets/finalizers
+  - codespacesusersecrets/finalizers
+  - dependabotorganizationsecretrepositories/finalizers
+  - dependabotorganizationsecrets/finalizers
+  - dependabotsecrets/finalizers
+  - issuelabels/finalizers
+  - memberships/finalizers
+  - organizationblocks/finalizers
+  - releases/finalizers
+  - repositorycollaborators/finalizers
+  - repositorydeploykeys/finalizers
+  - repositorydeploymentbranchpolicies/finalizers
+  - repositoryenvironments/finalizers
+  - repositorymilestones/finalizers
+  - repositorytopicses/finalizers
+  - repositoryvulnerabilityalertses/finalizers
+  - teammemberships/finalizers
+  - teamrepositories/finalizers
+  - usergpgkeys/finalizers
+  - usersshkeys/finalizers
+  - workflowrepositorypermissionses/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.github.hfl.dev
+  resources:
+  - connections
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ''
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: github-krm-extensions-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: github-krm-extensions-manager
+subjects:
+- kind: ServiceAccount
+  name: manager
+  namespace: github-krm-extensions-system
