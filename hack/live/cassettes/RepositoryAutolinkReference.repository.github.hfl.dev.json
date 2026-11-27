@@ -1,0 +1,39 @@
+{
+  "recorded": "2026-11-27T00:49:28Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1473821003,
+    "team": "{{run}}",
+    "teamID": 20906180
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/autolinks",
+      "body": "{\"is_alphanumeric\":false,\"key_prefix\":\"{{name}}-\",\"url_template\":\"https://example.com/{{name}}/\\u003cnum\\u003e\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":19592310,\"key_prefix\":\"{{name}}-\",\"url_template\":\"https://example.com/{{name}}/\u003cnum\u003e\",\"is_alphanumeric\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/autolinks/19592310",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":19592310,\"key_prefix\":\"{{name}}-\",\"url_template\":\"https://example.com/{{name}}/\u003cnum\u003e\",\"is_alphanumeric\":false}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/autolinks/19592310",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/autolinks/19592310",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository\",\"status\":\"404\"}"
+    }
+  ]
+}

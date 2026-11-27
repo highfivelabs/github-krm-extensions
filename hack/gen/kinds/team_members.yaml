@@ -1,0 +1,49 @@
+# Every member of a team, with each one's role (github_team_members, beside
+# the one-member TeamMembership). Hand-written as a set kind: the team's
+# member list (teams/list-members-in-org) names each member by login but not
+# its role, so each is read by its membership (teams/get-membership-for-user-in-org),
+# as the pinned Terraform provider reads them; a member is added or its role
+# changed by teams/add-or-update-membership-for-user-in-org and removed by
+# teams/remove-membership-for-user-in-org. Paths and bodies: the pinned REST
+# description (github/rest-api-description 2a33d9c).
+terraform: [github_team_members]
+kind: TeamMembers
+shape: set
+params:
+  org:
+    description: The organization name. The name is not case sensitive.
+  team_slug:
+    description: The slug of the team name.
+fields:
+  members:
+    type: array
+    items:
+      type: object
+      required: [login]
+      properties:
+        login: {type: string, description: The handle for the GitHub user account.}
+        role:
+          type: string
+          enum: [member, maintainer]
+          description: The role that this user should have in the team.
+required: [members]
+set: {field: members, key: login, param: username, readEach: {method: GET, path: "/orgs/{org}/teams/{team_slug}/memberships/{username}"}}
+sample:
+  org: example-org
+  team_slug: example-team
+  members:
+  - {login: octocat, role: maintainer}
+  - {login: hubot, role: member}
+read:
+  method: GET
+  path: /orgs/{org}/teams/{team_slug}/members
+  query: {per_page: "100"}
+create:
+  method: PUT
+  path: /orgs/{org}/teams/{team_slug}/memberships/{username}
+update:
+  method: PUT
+  path: /orgs/{org}/teams/{team_slug}/memberships/{username}
+delete:
+  method: DELETE
+  path: /orgs/{org}/teams/{team_slug}/memberships/{username}

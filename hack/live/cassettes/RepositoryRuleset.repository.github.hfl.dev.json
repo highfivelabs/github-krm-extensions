@@ -1,0 +1,91 @@
+{
+  "recorded": "2026-11-27T00:52:09Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1473822877,
+    "team": "{{run}}",
+    "teamID": 20906193
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets",
+      "body": "{\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"enforcement\":\"disabled\",\"name\":\"{{name}}\",\"rules\":[{\"type\":\"deletion\"}],\"target\":\"branch\"}",
+      "status": 201,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"disabled\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:09.691-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"disabled\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:09.691-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"disabled\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:09.691-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "body": "{\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"enforcement\":\"active\",\"name\":\"{{name}}\",\"rules\":[{\"type\":\"deletion\"}],\"target\":\"branch\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"active\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:10.327-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"active\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:10.327-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "body": "{\"enforcement\":\"disabled\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"disabled\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:10.808-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"disabled\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:10.808-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "PUT",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "body": "{\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"enforcement\":\"active\",\"name\":\"{{name}}\",\"rules\":[{\"type\":\"deletion\"}],\"target\":\"branch\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"active\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:11.276-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"id\":28203374,\"name\":\"{{name}}\",\"target\":\"branch\",\"source_type\":\"Repository\",\"source\":\"{{cred:org}}/{{run}}\",\"enforcement\":\"active\",\"conditions\":{\"ref_name\":{\"exclude\":[],\"include\":[\"refs/heads/{{name}}/*\"]}},\"rules\":[{\"type\":\"deletion\"}],\"node_id\":\"RRS_lACqUmVwb3NpdG9yec5X2MCdzgGuWW4\",\"created_at\":\"2026-11-26T17:52:09.678-07:00\",\"updated_at\":\"2026-11-26T17:52:11.276-07:00\",\"bypass_actors\":[],\"current_user_can_bypass\":\"never\",\"_links\":{\"self\":{\"href\":\"{{baseURL}}/repos/{{cred:org}}/{{run}}/rulesets/28203374\"},\"html\":{\"href\":\"https://github.com/{{cred:org}}/{{run}}/rules/28203374\"}}}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/repos/{{cred:org}}/{{run}}/rulesets/28203374",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/repos/rules#get-a-repository-ruleset\",\"status\":\"404\"}"
+    }
+  ]
+}

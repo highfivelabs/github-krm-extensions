@@ -1,0 +1,52 @@
+{
+  "recorded": "2026-11-27T01:02:49Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{id:1}}",
+    "repoID": 1473829828,
+    "team": "{{run}}",
+    "teamID": 20906251
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/teams/{{run}}/members?per_page=100",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "[{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{baseURL}}/users/{{id:1}}/events{/privacy}\",\"followers_url\":\"{{baseURL}}/users/{{id:1}}/followers\",\"following_url\":\"{{baseURL}}/users/{{id:1}}/following{/other_user}\",\"gists_url\":\"{{baseURL}}/users/{{id:1}}/gists{/gist_id}\",\"gravatar_id\":\"\",\"html_url\":\"{{redacted}}\",\"id\":2502520,\"inherited\":false,\"login\":\"{{id:1}}\",\"node_id\":\"MDQ6VXNlcjI1MDI1MjA=\",\"organizations_url\":\"{{baseURL}}/users/{{id:1}}/orgs\",\"received_events_url\":\"{{baseURL}}/users/{{id:1}}/received_events\",\"repos_url\":\"{{baseURL}}/users/{{id:1}}/repos\",\"role\":\"maintainer\",\"site_admin\":false,\"starred_url\":\"{{baseURL}}/users/{{id:1}}/starred{/owner}{/repo}\",\"subscriptions_url\":\"{{baseURL}}/users/{{id:1}}/subscriptions\",\"type\":\"User\",\"url\":\"{{baseURL}}/users/{{id:1}}\",\"user_view_type\":\"public\"}]"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/teams/{{run}}/memberships/{{id:1}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"state\":\"active\",\"role\":\"maintainer\",\"url\":\"{{baseURL}}/organizations/144095389/team/20906251/memberships/{{id:1}}\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/teams/{{run}}/members?per_page=100",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "[{\"avatar_url\":\"{{redacted}}\",\"events_url\":\"{{baseURL}}/users/{{id:1}}/events{/privacy}\",\"followers_url\":\"{{baseURL}}/users/{{id:1}}/followers\",\"following_url\":\"{{baseURL}}/users/{{id:1}}/following{/other_user}\",\"gists_url\":\"{{baseURL}}/users/{{id:1}}/gists{/gist_id}\",\"gravatar_id\":\"\",\"html_url\":\"{{redacted}}\",\"id\":2502520,\"inherited\":false,\"login\":\"{{id:1}}\",\"node_id\":\"MDQ6VXNlcjI1MDI1MjA=\",\"organizations_url\":\"{{baseURL}}/users/{{id:1}}/orgs\",\"received_events_url\":\"{{baseURL}}/users/{{id:1}}/received_events\",\"repos_url\":\"{{baseURL}}/users/{{id:1}}/repos\",\"role\":\"maintainer\",\"site_admin\":false,\"starred_url\":\"{{baseURL}}/users/{{id:1}}/starred{/owner}{/repo}\",\"subscriptions_url\":\"{{baseURL}}/users/{{id:1}}/subscriptions\",\"type\":\"User\",\"url\":\"{{baseURL}}/users/{{id:1}}\",\"user_view_type\":\"public\"}]"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/teams/{{run}}/memberships/{{id:1}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"state\":\"active\",\"role\":\"maintainer\",\"url\":\"{{baseURL}}/organizations/144095389/team/20906251/memberships/{{id:1}}\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/teams/{{run}}/memberships/{{id:1}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/teams/{{run}}/members?per_page=100",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "[]"
+    }
+  ]
+}

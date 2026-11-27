@@ -1,0 +1,68 @@
+{
+  "recorded": "2026-11-27T00:53:32Z",
+  "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1473823831,
+    "team": "{{run}}",
+    "teamID": 20906208
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization\",\"status\":\"404\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "body": "{\"description\":\"first\",\"required\":false,\"value_type\":\"string\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"property_name\":\"{{name_}}\",\"url\":\"{{baseURL}}/orgs/{{cred:org}}/properties/schema/{{name_}}\",\"source_type\":\"organization\",\"value_type\":\"string\",\"required\":false,\"description\":\"first\",\"values_editable_by\":\"org_actors\",\"require_explicit_values\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"property_name\":\"{{name_}}\",\"url\":\"{{baseURL}}/orgs/{{cred:org}}/properties/schema/{{name_}}\",\"source_type\":\"organization\",\"value_type\":\"string\",\"required\":false,\"description\":\"first\",\"values_editable_by\":\"org_actors\",\"require_explicit_values\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"property_name\":\"{{name_}}\",\"url\":\"{{baseURL}}/orgs/{{cred:org}}/properties/schema/{{name_}}\",\"source_type\":\"organization\",\"value_type\":\"string\",\"required\":false,\"description\":\"first\",\"values_editable_by\":\"org_actors\",\"require_explicit_values\":false}"
+    },
+    {
+      "method": "PUT",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "body": "{\"description\":\"second\",\"required\":false,\"value_type\":\"string\"}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"property_name\":\"{{name_}}\",\"url\":\"{{baseURL}}/orgs/{{cred:org}}/properties/schema/{{name_}}\",\"source_type\":\"organization\",\"value_type\":\"string\",\"required\":false,\"description\":\"second\",\"values_editable_by\":\"org_actors\",\"require_explicit_values\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"property_name\":\"{{name_}}\",\"url\":\"{{baseURL}}/orgs/{{cred:org}}/properties/schema/{{name_}}\",\"source_type\":\"organization\",\"value_type\":\"string\",\"required\":false,\"description\":\"second\",\"values_editable_by\":\"org_actors\",\"require_explicit_values\":false}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/orgs/{{cred:org}}/properties/schema/{{name_}}",
+      "status": 404,
+      "contentType": "application/json; charset=utf-8",
+      "response": "{\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization\",\"status\":\"404\"}"
+    }
+  ]
+}

@@ -4,17 +4,6 @@
   "downloads": 421560601,
   "rank": 20,
   "total": 88,
-  "covered_by_operators": [
-   "github_organization_custom_properties",
-   "github_organization_ruleset",
-   "github_organization_settings",
-   "github_repository",
-   "github_repository_autolink_reference",
-   "github_repository_ruleset",
-   "github_repository_webhook",
-   "github_team",
-   "github_team_members"
-  ],
   "gaps": [
    "github_actions_environment_secret",
    "github_actions_environment_variable",
@@ -60,6 +49,7 @@
    "github_issue_labels",
    "github_membership",
    "github_organization_block",
+   "github_organization_custom_properties",
    "github_organization_custom_role",
    "github_organization_project",
    "github_organization_repository_role",
@@ -67,11 +57,15 @@
    "github_organization_role_team",
    "github_organization_role_team_assignment",
    "github_organization_role_user",
+   "github_organization_ruleset",
    "github_organization_security_manager",
+   "github_organization_settings",
    "github_organization_webhook",
    "github_project_card",
    "github_project_column",
    "github_release",
+   "github_repository",
+   "github_repository_autolink_reference",
    "github_repository_collaborator",
    "github_repository_collaborators",
    "github_repository_custom_property",
@@ -85,8 +79,12 @@
    "github_repository_pages",
    "github_repository_project",
    "github_repository_pull_request",
+   "github_repository_ruleset",
    "github_repository_topics",
    "github_repository_vulnerability_alerts",
+   "github_repository_webhook",
+   "github_team",
+   "github_team_members",
    "github_team_membership",
    "github_team_repository",
    "github_team_settings",
@@ -95,6 +93,7 @@
    "github_user_invitation_accepter",
    "github_user_ssh_key",
    "github_workflow_repository_permissions"
-  ]
+  ],
+  "covered_by_operators": []
  }
 }

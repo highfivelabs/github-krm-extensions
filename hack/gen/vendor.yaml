@@ -87,6 +87,13 @@ overrides:
     github_organization_security_manager: /orgs/{org}/organization-roles/teams/{team_slug}/{role_id}
     github_organization_role_user: /orgs/{org}/organization-roles/users/{username}/{role_id}
     github_app_installation_repository: /user/installations/{installation_id}/repositories/{repository_id}
+    # Kinds that were left to git-hubby until 2026-11-26 (HFL-777): Terraform's
+    # words differ from the paths' ("webhook" is "hooks", "reference" and
+    # "custom properties" are not in them; the organization's settings are
+    # the organization itself).
+    github_repository_webhook: /repos/{owner}/{repo}/hooks/{hook_id}
+    github_repository_autolink_reference: /repos/{owner}/{repo}/autolinks/{autolink_id}
+    github_organization_custom_properties: /orgs/{org}/properties/schema/{custom_property_name}
   # Written by PUT and removed by DELETE, never read singly: read by finding
   # the element in the list Terraform reads (go-github's
   # ListTeamsAssignedToOrgRole, ListUsersAssignedToOrgRole, ListUserRepos).
@@ -137,6 +144,7 @@ overrides:
     # A hook's secret reads back masked ("********"); basic auth is never
     # read back.
     /orgs/{org}/hooks/{hook_id}: [config.secret, config.username, config.password]
+    /repos/{owner}/{repo}/hooks/{hook_id}: [config.secret, config.username, config.password]
     # A file's content reads back base64-encoded in lines of 60, not as sent:
     # it is written each time the spec changes, not compared.
     /repos/{owner}/{repo}/contents/{path}: [content]
@@ -157,6 +165,9 @@ overrides:
     /repos/{owner}/{repo}/contents/{path}:
       branch: {type: string, required: true}
   compare:
+    # A webhook's events read back sorted.
+    /repos/{owner}/{repo}/hooks/{hook_id}:
+      events: unordered
     # Branch protection takes booleans and reads them back as
     # {"url": ..., "enabled": true}.
     /repos/{owner}/{repo}/branches/{branch}/protection:
