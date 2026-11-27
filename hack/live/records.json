@@ -246,6 +246,33 @@
     "target": "api.github.com",
     "lastPass": "2026-11-20T23:57:42Z"
   },
+  "OrganizationCustomProperties.organization.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611270053-80e7",
+    "date": "2026-11-27T00:53:34Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T00:53:34Z"
+  },
+  "OrganizationSettings.organization.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "delete"
+    ],
+    "run": "hfl-live-2611270049-d8f7",
+    "date": "2026-11-27T00:49:44Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T00:49:44Z"
+  },
   "Release.release.github.hfl.dev": {
     "result": "pass",
     "steps": [
@@ -260,6 +287,34 @@
     "date": "2026-11-20T23:57:20Z",
     "target": "api.github.com",
     "lastPass": "2026-11-20T23:57:20Z"
+  },
+  "Repository.repository.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611270049-d8f7",
+    "date": "2026-11-27T00:49:27Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T00:49:27Z"
+  },
+  "RepositoryAutolinkReference.repository.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611270049-d8f7",
+    "date": "2026-11-27T00:49:29Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T00:49:29Z"
   },
   "RepositoryDeployKey.repository.github.hfl.dev": {
     "result": "pass",
@@ -319,6 +374,21 @@
     "target": "api.github.com",
     "lastPass": "2026-11-20T23:56:46Z"
   },
+  "RepositoryRuleset.repository.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611270052-1e63",
+    "date": "2026-11-27T00:52:12Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T00:52:12Z"
+  },
   "RepositoryTopics.repository.github.hfl.dev": {
     "result": "pass",
     "steps": [
@@ -345,6 +415,49 @@
     "date": "2026-11-20T23:57:24Z",
     "target": "api.github.com",
     "lastPass": "2026-11-20T23:57:24Z"
+  },
+  "RepositoryWebhook.repository.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611270053-80e7",
+    "date": "2026-11-27T00:53:31Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T00:53:31Z"
+  },
+  "Team.team.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611270104-b3f9",
+    "date": "2026-11-27T01:04:22Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T01:04:22Z"
+  },
+  "TeamMembers.team.github.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611270102-03a6",
+    "date": "2026-11-27T01:02:50Z",
+    "target": "api.github.com",
+    "lastPass": "2026-11-27T01:02:50Z"
   },
   "TeamMembership.team.github.hfl.dev": {
     "result": "pass",

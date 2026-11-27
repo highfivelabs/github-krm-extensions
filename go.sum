@@ -101,8 +101,8 @@ github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.3 h1:B+8ClL/kCQkRiU82d9xajR
 github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.3/go.mod h1:NbCUVmiS4foBGBHOYlCT25+YmGpJ32dZPi75pGEUpj4=
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0 h1:/Tnpcb2E0Pz/tN9s3bfEY2Q8ePCEX9iuS+cneUwncnw=
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0/go.mod h1:zOBXOsUaBSjKgmH4OGzV1esUpR3oUSCPYVd2cUBjKYY=
-github.com/highfivelabs/krm-rest-runtime v0.0.0-20261126171525-3753a6307665 h1:qHFA0Ppv8w3q0S2Air++DL0dj3uuOazM9KjFQYq1b4Y=
-github.com/highfivelabs/krm-rest-runtime v0.0.0-20261126171525-3753a6307665/go.mod h1:fxv/Z0UQ6ztzWZ2A35x+wiK5Y+zdyal64FuKulFh/ng=
+github.com/highfivelabs/krm-rest-runtime v0.0.0-20261127010445-c36967c333b9 h1:im0V0SxjNe7rpQRP1J0O5L3VfrvJ2EjKyRzMXZcTAxc=
+github.com/highfivelabs/krm-rest-runtime v0.0.0-20261127010445-c36967c333b9/go.mod h1:fxv/Z0UQ6ztzWZ2A35x+wiK5Y+zdyal64FuKulFh/ng=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnrnM=

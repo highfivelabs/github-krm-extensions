@@ -1,6 +1,12 @@
 {
-  "recorded": "2026-11-20T23:57:48Z",
+  "recorded": "2026-11-27T01:04:22Z",
   "target": "api.github.com",
+  "vars": {
+    "me": "{{redacted}}",
+    "repoID": 1473830740,
+    "team": "{{run}}",
+    "teamID": 20906255
+  },
   "interactions": [
     {
       "method": "DELETE",

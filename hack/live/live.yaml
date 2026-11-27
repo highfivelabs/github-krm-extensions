@@ -377,7 +377,66 @@ kinds:
   change: {include_claim_keys: [repo, context, actor]}
   drift: [repo, context, workflow]
 
+
+# --- kinds that were left to git-hubby until 2026-11-26 (HFL-777)
+# A repository of its own, private, made and deleted by the kind (the
+# token has delete_repo); the sweep deletes one a failed run leaves.
+- kind: Repository
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", name: "{{name}}", visibility: private, description: first, has_wiki: false}
+  change: {description: second}
+
+- kind: RepositoryWebhook
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", active: false, events: [push], config: {url: "https://example.com/{{name}}", content_type: json}}
+  change: {events: [push, pull_request]}
+  drift: [push]
+
+# Autolinks cannot be changed, only made and deleted.
+- kind: RepositoryAutolinkReference
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", key_prefix: "{{name}}-", url_template: "https://example.com/{{name}}/<num>", is_alphanumeric: false}
+
+# Rulesets on the free plan need a public repository: the run's is.
+- kind: RepositoryRuleset
+  replaceSample: true
+  spec: {owner: "{{cred:org}}", repo: "{{run}}", name: "{{name}}", target: branch, enforcement: disabled, conditions: {ref_name: {include: ["refs/heads/{{name}}/*"], exclude: []}}, rules: [{type: deletion}]}
+  change: {enforcement: active}
+  drift: disabled
+
+- kind: Team
+  replaceSample: true
+  spec: {org: "{{cred:org}}", name: "{{name}}", privacy: closed, description: first}
+  change: {description: second}
+
+# The run's team's members: its only member is the organization's owner,
+# whom GitHub always answers as a maintainer (a role of member does not
+# stick), so the set is read and its role compared, but not changed.
+- kind: TeamMembers
+  replaceSample: true
+  spec: {org: "{{cred:org}}", team_slug: "{{var:team}}", members: [{login: "{{var:me}}", role: maintainer}]}
+  noUpdate: "the test organization's only member is its owner, whom GitHub always answers as a team maintainer; changing the set needs a second account"
+
+- kind: OrganizationCustomProperties
+  replaceSample: true
+  spec: {org: "{{cred:org}}", customPropertyName: "{{name_}}", value_type: string, required: false, description: first}
+  change: {description: second}
+  noDrift: "GitHub's PUT needs value_type and refuses the read-only fields a read answers (source_type, url), so neither a one-field nor a whole-object write behind the controller's back is taken; the controller's own writes send the spec, value_type included"
+
+# The organization's own settings: one setting changed for a few seconds,
+# and the old value put back at the end.
+- kind: OrganizationSettings
+  before:
+  - {method: GET, path: "/orgs/{{cred:org}}", save: {orgProjects: has_repository_projects}}
+  after:
+  - {method: PATCH, path: "/orgs/{{cred:org}}", body: {has_repository_projects: "{{var:orgProjects}}"}}
+  replaceSample: true
+  spec: {org: "{{cred:org}}", has_repository_projects: true}
+  change: {has_repository_projects: false}
+
 # --- not run
+- kind: OrganizationRuleset
+  skip: "organization rulesets need GitHub Team or Enterprise Cloud; the test organization is on the free plan"
 - kind: Membership
   skip: "would invite a real GitHub account to the organization (an e-mail to a person), or, for the token's own owner, remove the organization's only owner on delete"
 - kind: ActionsHostedRunner

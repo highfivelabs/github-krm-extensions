@@ -5,7 +5,7 @@ go 1.27.0
 toolchain go1.27.4
 
 require (
-	github.com/highfivelabs/krm-rest-runtime v0.0.0-20261126171525-3753a6307665
+	github.com/highfivelabs/krm-rest-runtime v0.0.0-20261127010445-c36967c333b9
 	golang.org/x/crypto v0.59.0
 )
 

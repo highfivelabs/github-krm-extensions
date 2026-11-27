@@ -1,17 +1,28 @@
 # github-krm-extensions
 
 Kubernetes kinds for the GitHub configuration that Terraform's
-`integrations/github` provider manages and GitHub's operators do not. The only official GitHub operator, actions-runner-controller, runs Actions runners; it manages no GitHub configuration. Community operators (Interhyp's git-hubby) cover organizations, repositories and teams on GitHub Enterprise Cloud.
+`integrations/github` provider manages. The only official GitHub operator,
+actions-runner-controller, runs Actions runners and manages no GitHub
+configuration. So these kinds cover the provider's resources themselves:
+repositories, organization settings, teams and rulesets included.
 
-By the numbers: `integrations/github` is the #20 Terraform provider by downloads
-(421,560,601); version 6.13.0 has 88 resources. Operators
-cover 9. This repository adds **66 kinds** standing in for
-**74 more** of the 79 the operators leave. Each gap kind is listed below with its Terraform equivalent.
+Until 2026-11-26 those four were left to a community operator, Interhyp's
+git-hubby. It is young (v0.13, API `v1alpha1`) and mostly one maintainer's
+work. Its objects also reset or remove whatever their spec leaves out,
+which is unsafe when adopting an estate that already exists. So we built
+our own kinds (HFL-777).
 
-**Readiness: proven against a fake GitHub API only.** Every kind passes
-create, update, drift repair and delete against a fake built from the same
-descriptors (`TestEveryKindOnFake`). None has run against the real API yet;
-treat each as untested there until it has.
+By the numbers: `integrations/github` is the #20 Terraform provider by
+downloads (421,560,601), and version 6.13.0 has 88 resources. This
+repository has **75 kinds**, standing in for **83** of them. The other 5
+will not be built ("Not covered", below). Each kind is listed below with
+its Terraform equivalent.
+
+**Readiness.** Every kind passes create, update, drift repair and delete
+against a fake built from the same descriptors (`TestEveryKindOnFake`).
+36 kinds have also passed against the real API, in a test organization on
+GitHub's free plan (`hack/live/live.yaml`, `hack/live/records.json`).
+`zz_generated.report.md` gives each kind's readiness.
 
 ## How it works
 
@@ -233,7 +244,7 @@ since a read answers it re-encoded. `spec.path` keeps its slashes
 ### Not covered
 
 <!-- BEGIN generated: not covered (krmgen.py, from vendor.yaml hardBlocks and draftNotes) -->
-5 of the 79 Terraform gap types have no kind: 5 are not built (`hardBlocks` in `hack/gen/vendor.yaml`).
+5 of the 88 Terraform gap types have no kind: 5 are not built (`hardBlocks` in `hack/gen/vendor.yaml`).
 
 | Terraform | Status | Why |
 | --- | --- | --- |

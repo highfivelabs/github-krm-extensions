@@ -1,0 +1,134 @@
+# A team in an organization (github_team). Hand-written, though the OpenAPI
+# pairing finds it (teams/create, teams/get-by-name, teams/update-in-org,
+# teams/delete-in-org): a team is named by its slug, and other kinds'
+# references (TeamMembership's and TeamRepository's teamID) read its
+# numeric id, which the pinned generator leaves out of the fake's server
+# fields when the ID is another field. Fields: the create's and the
+# update's request bodies in the pinned REST description
+# (github/rest-api-description 2a33d9c); those only the create takes are
+# createOnly; the parent, which reads back as an object, is written, not
+# compared. Server fields: the generated kind's, and id.
+terraform:
+- github_team
+kind: Team
+shape: crud
+params:
+  org: {}
+fields:
+  description:
+    type: string
+    description: The description of the team.
+  maintainers:
+    type: array
+    description: List GitHub usernames for organization members who will become team maintainers.
+    items:
+      type: string
+  name:
+    type: string
+    description: The name of the team.
+  notification_setting:
+    type: string
+    enum:
+    - notifications_enabled
+    - notifications_disabled
+  parent_team_id:
+    type: integer
+    description: The ID of a team to set as the parent team.
+  parent_team_slug:
+    type: string
+    description: The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided.
+  permission:
+    type: string
+    description: '**Closing down notice**. The permission that new repositories will be added to the team
+      with when none is specified.'
+    enum:
+    - pull
+    - push
+  privacy:
+    type: string
+    enum:
+    - secret
+    - closed
+  repo_names:
+    type: array
+    description: The full name (e.g., "organization-name/repository-name") of repositories to add the
+      team to.
+    items:
+      type: string
+required:
+- name
+createOnly:
+- maintainers
+- repo_names
+writeOnly:
+- parent_team_id
+- parent_team_slug
+id: slug
+serverFields:
+  id: 1
+  created_at: '2017-07-14T16:53:42Z'
+  enterprise_id: 42
+  html_url: https://github.com/orgs/rails/teams/core
+  ldap_dn: cn=Enterprise Ops,ou=teams,dc=github,dc=com
+  members_count: 3
+  members_url: https://api.github.com/organizations/1/team/1/members{/member}
+  node_id: MDQ6VGVhbTE=
+  organization:
+    login: github
+    url: https://api.github.com/orgs/github
+    id: 1
+    node_id: MDEyOk9yZ2FuaXphdGlvbjE=
+    repos_url: https://api.github.com/orgs/github/repos
+    events_url: https://api.github.com/orgs/github/events
+    hooks_url: https://api.github.com/orgs/github/hooks
+    issues_url: https://api.github.com/orgs/github/issues
+    members_url: https://api.github.com/orgs/github/members{/member}
+    public_members_url: https://api.github.com/orgs/github/public_members{/member}
+    avatar_url: https://github.com/images/error/octocat_happy.gif
+    description: A great organization
+    html_url: https://github.com/octocat
+    has_organization_projects: true
+    has_repository_projects: true
+    public_repos: 2
+    public_gists: 1
+    followers: 20
+    following: 0
+    type: Organization
+    created_at: '2008-01-14T04:33:35Z'
+    updated_at: example-updated-at
+    archived_at: example-archived-at
+  organization_id: 37
+  parent:
+    id: 1
+    node_id: MDQ6VGVhbTE=
+    url: https://api.github.com/organizations/1/team/1
+    members_url: https://api.github.com/organizations/1/team/1/members{/member}
+    name: Justice League
+    description: A great team.
+    permission: admin
+    html_url: https://github.com/orgs/rails/teams/core
+    repositories_url: https://api.github.com/organizations/1/team/1/repos
+    slug: justice-league
+    type: enterprise
+  repos_count: 10
+  repositories_url: https://api.github.com/organizations/1/team/1/repos
+  type: enterprise
+  updated_at: '2017-08-17T12:37:15Z'
+  url: https://api.github.com/organizations/1/team/1
+sample:
+  org: example-org
+  name: example-team
+  privacy: closed
+  description: An example team
+create:
+  method: POST
+  path: /orgs/{org}/teams
+read:
+  method: GET
+  path: /orgs/{org}/teams/{id}
+update:
+  method: PATCH
+  path: /orgs/{org}/teams/{id}
+delete:
+  method: DELETE
+  path: /orgs/{org}/teams/{id}
