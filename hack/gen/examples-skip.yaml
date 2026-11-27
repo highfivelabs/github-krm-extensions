@@ -1,0 +1,22 @@
+# Upjet references that gen/examples.py (krm-rest-runtime) would turn into
+# examples/<Kind>/with-<Target>.yaml, but that don't hold here, with why.
+# Each such example takes the target's status.id (Upjet's default
+# extractor, the target's external name); these fields take something else.
+upjet:
+  ActionsOrganizationSecretRepository: >-
+    secretName is the secret's name, but ActionsOrganizationSecret is an
+    upsert named by its own spec.secretName and has no status.id; its sealed
+    value also needs the organization's public key, which the fake API
+    doesn't serve.
+  CodespacesOrganizationSecretRepositories: >-
+    secretName is the secret's name, but CodespacesOrganizationSecret is an
+    upsert named by its own spec.secretName and has no status.id.
+  BranchProtection: >-
+    repositoryId is the repository's GraphQL node ID
+    (createBranchProtectionRule), but Repository's status.id is its name
+    (Upjet's external name). The fake takes any string; GitHub doesn't. The
+    live test reads the repository's node_id instead.
+  TeamSettings: >-
+    teamId is the team's GraphQL node ID (node(id:)), but Team's status.id
+    is its slug. The fake takes any string; GitHub doesn't. The live test
+    reads the team's node_id instead.
