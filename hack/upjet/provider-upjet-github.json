@@ -1,0 +1,5309 @@
+{
+ "formatVersion": 1,
+ "generatedBy": "factory upjet sync (upjet/README.md in highfivelabs/factory)",
+ "provider": {
+  "repo": "crossplane-contrib/provider-upjet-github",
+  "tag": "v0.23.0",
+  "commit": "8b7a377813c13f612161eef31f43f2de170627a5",
+  "commitDate": "2026-11-22T22:37:12Z",
+  "licence": "Apache-2.0"
+ },
+ "join": "types.yaml terraform",
+ "counts": {
+  "ours": 75,
+  "matched": 69,
+  "references": 61,
+  "referencesOur": 61,
+  "handExamples": 75,
+  "notTested": 0
+ },
+ "entries": [
+  {
+   "ours": {
+    "kind": "ActionsEnvironmentSecret",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_environment_secret",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "EnvironmentSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:29"
+    },
+    "references": [
+     {
+      "field": "environment",
+      "target": "github_repository_environment",
+      "targetKind": "repo.github.upbound.io/Environment",
+      "source": "both",
+      "at": "config/cluster/actionsenvironmentsecret/config.go:13"
+     },
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/actionsenvironmentsecret/config.go:10"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/environmentsecret",
+      "at": "examples-generated/cluster/actions/v1alpha1/environmentsecret.yaml",
+      "origin": "generated",
+      "fields": [
+       "secret_name"
+      ],
+      "refFields": [
+       "environment",
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/environmentsecret",
+      "at": "examples/cluster/actions/v1alpha1/environmentsecret.yaml",
+      "origin": "hand",
+      "fields": [
+       "secret_name"
+      ],
+      "refFields": [
+       "environment"
+      ],
+      "values": {
+       "secret_name": "example_secret_name"
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsenvironmentsecret/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ],
+    "github_repository_environment": [
+     "repository.github.hfl.dev/RepositoryEnvironment"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsEnvironmentVariable",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_environment_variable",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "EnvironmentVariable",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:31"
+    },
+    "references": [
+     {
+      "field": "environment",
+      "target": "github_repository_environment",
+      "targetKind": "repo.github.upbound.io/Environment",
+      "source": "both",
+      "at": "config/cluster/actionsenvironmentvariable/config.go:14"
+     },
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/actionsenvironmentvariable/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/environmentvariable",
+      "at": "examples-generated/cluster/actions/v1alpha1/environmentvariable.yaml",
+      "origin": "generated",
+      "fields": [
+       "value",
+       "variable_name"
+      ],
+      "refFields": [
+       "environment",
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/environmentvariable",
+      "at": "examples/cluster/actions/v1alpha1/environmentvariable.yaml",
+      "origin": "hand",
+      "fields": [
+       "value",
+       "variable_name"
+      ],
+      "refFields": [
+       "environment"
+      ],
+      "values": {
+       "value": "example_variable_value",
+       "variable_name": "example_variable_name"
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsenvironmentvariable/config.go:9"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ],
+    "github_repository_environment": [
+     "repository.github.hfl.dev/RepositoryEnvironment"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsHostedRunner",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_hosted_runner",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "HostedRunner",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:11"
+    },
+    "examples": [
+     {
+      "id": "actions/v1alpha1/hostedrunner",
+      "at": "examples-generated/cluster/actions/v1alpha1/hostedrunner.yaml",
+      "origin": "generated",
+      "with": [
+       "github_actions_runner_group"
+      ],
+      "fields": [
+       "image",
+       "image.id",
+       "image.source",
+       "name",
+       "runner_group_id",
+       "size"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/hostedrunner",
+      "at": "examples/cluster/actions/v1alpha1/hostedrunner.yaml",
+      "origin": "hand",
+      "with": [
+       "github_actions_runner_group"
+      ],
+      "fields": [
+       "image",
+       "image.id",
+       "image.source",
+       "name",
+       "runner_group_id",
+       "size"
+      ],
+      "values": {
+       "image": [
+        {
+         "id": "2306",
+         "source": "github"
+        }
+       ],
+       "name": "example-hosted-runner",
+       "runner_group_id": 1234,
+       "size": "4-core"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "HostedRunner",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionshostedrunner/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationOidcSubjectClaimCustomizationTemplate",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_oidc_subject_claim_customization_template",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationOIDCSubjectClaimCustomizationTemplate",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:13"
+    },
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationoidcsubjectclaimcustomizationtemplate",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationoidcsubjectclaimcustomizationtemplate.yaml",
+      "origin": "generated",
+      "fields": [
+       "include_claim_keys"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/organizationoidcsubjectclaimcustomizationtemplate",
+      "at": "examples/cluster/actions/v1alpha1/organizationoidcsubjectclaimcustomizationtemplate.yaml",
+      "origin": "hand",
+      "fields": [
+       "include_claim_keys"
+      ],
+      "values": {
+       "include_claim_keys": [
+        "actor",
+        "context",
+        "repository_owner"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationOIDCSubjectClaimCustomizationTemplate",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationoidcsubjectclaimcustomizationtemplate/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationPermissions",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_permissions",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationPermissions",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:33"
+    },
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationpermissions",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationpermissions.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "allowed_actions",
+       "allowed_actions_config",
+       "allowed_actions_config.github_owned_allowed",
+       "allowed_actions_config.patterns_allowed",
+       "allowed_actions_config.verified_allowed",
+       "enabled_repositories",
+       "enabled_repositories_config",
+       "enabled_repositories_config.repository_ids"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/organizationpermissions",
+      "at": "examples/cluster/actions/v1alpha1/organizationpermissions.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "allowed_actions",
+       "allowed_actions_config",
+       "allowed_actions_config.github_owned_allowed",
+       "allowed_actions_config.patterns_allowed",
+       "allowed_actions_config.verified_allowed",
+       "enabled_repositories",
+       "enabled_repositories_config",
+       "enabled_repositories_config.repository_ids"
+      ],
+      "values": {
+       "allowed_actions": "selected",
+       "allowed_actions_config": [
+        {
+         "github_owned_allowed": true,
+         "patterns_allowed": [
+          "actions/cache@*",
+          "actions/checkout@*"
+         ],
+         "verified_allowed": true
+        }
+       ],
+       "enabled_repositories": "selected",
+       "enabled_repositories_config": [
+        {
+         "repository_ids": [
+          123456789
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationpermissions/config.go:9"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationSecret",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_secret",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationActionsSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:35"
+    },
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationactionssecret",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationactionssecret.yaml",
+      "origin": "generated",
+      "fields": [
+       "secret_name",
+       "visibility"
+      ]
+     },
+     {
+      "at": "examples/cluster/actions/organizationactionssecret.yaml",
+      "origin": "hand",
+      "fields": [
+       "secret_name",
+       "visibility"
+      ],
+      "values": {
+       "secret_name": "TEST_SECRET",
+       "visibility": "private"
+      }
+     },
+     {
+      "id": "actions/v1alpha1/organizationactionssecret",
+      "at": "examples/cluster/actions/v1alpha1/organizationactionssecret.yaml",
+      "origin": "hand",
+      "fields": [
+       "secret_name",
+       "visibility"
+      ],
+      "values": {
+       "secret_name": "example_secret_name",
+       "visibility": "private"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationActionsSecret",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationsecret/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationSecretRepository",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_secret_repositories",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationActionsSecretRepositorySet",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:15"
+    },
+    "references": [
+     {
+      "field": "secret_name",
+      "target": "github_actions_organization_secret",
+      "targetKind": "actions.github.upbound.io/OrganizationActionsSecret",
+      "source": "both",
+      "at": "config/cluster/actionsorganizationsecretrepositories/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationactionssecretrepositoryset",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationactionssecretrepositoryset.yaml",
+      "origin": "generated",
+      "with": [
+       "github_actions_organization_secret",
+       "github_repository"
+      ],
+      "fields": [
+       "selected_repository_ids"
+      ],
+      "refFields": [
+       "secret_name"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/organizationactionssecretrepositoryset",
+      "at": "examples/cluster/actions/v1alpha1/organizationactionssecretrepositoryset.yaml",
+      "origin": "hand",
+      "with": [
+       "github_actions_organization_secret",
+       "github_repository"
+      ],
+      "fields": [
+       "selected_repository_ids"
+      ],
+      "refFields": [
+       "secret_name"
+      ],
+      "values": {
+       "selected_repository_ids": [
+        123456789
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationActionsSecretRepositorySet",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationsecretrepositories/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_actions_organization_secret": [
+     "actions.github.hfl.dev/ActionsOrganizationSecret"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationSecretRepository",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_secret_repository",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationActionsSecretRepository",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:17"
+    },
+    "references": [
+     {
+      "field": "secret_name",
+      "target": "github_actions_organization_secret",
+      "targetKind": "actions.github.upbound.io/OrganizationActionsSecret",
+      "source": "both",
+      "at": "config/cluster/actionsorganizationsecretrepository/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationactionssecretrepository",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationactionssecretrepository.yaml",
+      "origin": "generated",
+      "with": [
+       "github_actions_organization_secret",
+       "github_repository"
+      ],
+      "fields": [
+       "repository_id"
+      ],
+      "refFields": [
+       "secret_name"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/organizationactionssecretrepository",
+      "at": "examples/cluster/actions/v1alpha1/organizationactionssecretrepository.yaml",
+      "origin": "hand",
+      "with": [
+       "github_actions_organization_secret",
+       "github_repository"
+      ],
+      "fields": [
+       "repository_id"
+      ],
+      "refFields": [
+       "secret_name"
+      ],
+      "values": {
+       "repository_id": 123456789
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationActionsSecretRepository",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationsecretrepository/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_actions_organization_secret": [
+     "actions.github.hfl.dev/ActionsOrganizationSecret"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationVariable",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_variable",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationActionsVariable",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:37"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "source": "config",
+      "at": "config/cluster/actionsorganizationvariable/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationactionsvariable",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationactionsvariable.yaml",
+      "origin": "generated",
+      "fields": [
+       "value",
+       "variable_name",
+       "visibility"
+      ]
+     },
+     {
+      "at": "examples/cluster/actions/organizationactionsvariable.yaml",
+      "origin": "hand",
+      "fields": [
+       "value",
+       "variable_name",
+       "visibility"
+      ],
+      "values": {
+       "value": "My variable value",
+       "variable_name": "TEST_VARIABLE",
+       "visibility": "private"
+      }
+     },
+     {
+      "id": "actions/v1alpha1/organizationactionsvariable",
+      "at": "examples/cluster/actions/v1alpha1/organizationactionsvariable.yaml",
+      "origin": "hand",
+      "fields": [
+       "value",
+       "variable_name",
+       "visibility"
+      ],
+      "values": {
+       "value": "example_variable_value",
+       "variable_name": "example_variable_name",
+       "visibility": "private"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationActionsVariable",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationvariable/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationVariableRepository",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_variable_repositories",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationActionsVariableRepositorySet",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:19"
+    },
+    "references": [
+     {
+      "field": "variable_name",
+      "target": "github_actions_organization_variable",
+      "targetKind": "actions.github.upbound.io/OrganizationActionsVariable",
+      "source": "both",
+      "at": "config/cluster/actionsorganizationvariablerepositories/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationactionsvariablerepositoryset",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationactionsvariablerepositoryset.yaml",
+      "origin": "generated",
+      "with": [
+       "github_actions_organization_variable",
+       "github_repository"
+      ],
+      "fields": [
+       "selected_repository_ids"
+      ],
+      "refFields": [
+       "variable_name"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/organizationactionsvariablerepositoryset",
+      "at": "examples/cluster/actions/v1alpha1/organizationactionsvariablerepositoryset.yaml",
+      "origin": "hand",
+      "with": [
+       "github_actions_organization_variable",
+       "github_repository"
+      ],
+      "fields": [
+       "selected_repository_ids"
+      ],
+      "refFields": [
+       "variable_name"
+      ],
+      "values": {
+       "selected_repository_ids": [
+        123456789
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationActionsVariableRepositorySet",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationvariablerepositories/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_actions_organization_variable": [
+     "actions.github.hfl.dev/ActionsOrganizationVariable"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationVariableRepository",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_variable_repository",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationActionsVariableRepository",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:21"
+    },
+    "references": [
+     {
+      "field": "variable_name",
+      "target": "github_actions_organization_variable",
+      "targetKind": "actions.github.upbound.io/OrganizationActionsVariable",
+      "source": "both",
+      "at": "config/cluster/actionsorganizationvariablerepository/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationactionsvariablerepository",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationactionsvariablerepository.yaml",
+      "origin": "generated",
+      "with": [
+       "github_actions_organization_variable",
+       "github_repository"
+      ],
+      "fields": [
+       "repository_id"
+      ],
+      "refFields": [
+       "variable_name"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/organizationactionsvariablerepository",
+      "at": "examples/cluster/actions/v1alpha1/organizationactionsvariablerepository.yaml",
+      "origin": "hand",
+      "with": [
+       "github_actions_organization_variable",
+       "github_repository"
+      ],
+      "fields": [
+       "repository_id"
+      ],
+      "refFields": [
+       "variable_name"
+      ],
+      "values": {
+       "repository_id": 123456789
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationActionsVariableRepository",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationvariablerepository/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_actions_organization_variable": [
+     "actions.github.hfl.dev/ActionsOrganizationVariable"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsOrganizationWorkflowPermissions",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_organization_workflow_permissions",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationWorkflowPermissions",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:23"
+    },
+    "examples": [
+     {
+      "id": "actions/v1alpha1/organizationworkflowpermissions",
+      "at": "examples-generated/cluster/actions/v1alpha1/organizationworkflowpermissions.yaml",
+      "origin": "generated",
+      "fields": [
+       "can_approve_pull_request_reviews",
+       "default_workflow_permissions",
+       "organization_slug"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/organizationworkflowpermissions",
+      "at": "examples/cluster/actions/v1alpha1/organizationworkflowpermissions.yaml",
+      "origin": "hand",
+      "fields": [
+       "can_approve_pull_request_reviews",
+       "default_workflow_permissions",
+       "organization_slug"
+      ],
+      "values": {
+       "can_approve_pull_request_reviews": false,
+       "default_workflow_permissions": "read",
+       "organization_slug": "my-organization"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationWorkflowPermissions",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsorganizationworkflowpermissions/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsRepositoryAccessLevel",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_repository_access_level",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryAccessLevel",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:39"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/actionsrepositoryaccesslevel/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/repositoryaccesslevel",
+      "at": "examples-generated/cluster/actions/v1alpha1/repositoryaccesslevel.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "access_level"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/repositoryaccesslevel",
+      "at": "examples/cluster/actions/v1alpha1/repositoryaccesslevel.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "access_level"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "access_level": "user"
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsrepositoryaccesslevel/config.go:9"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsRepositoryOidcSubjectClaimCustomizationTemplate",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_repository_oidc_subject_claim_customization_template",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryOIDCSubjectClaimCustomizationTemplate",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:25"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/actionsrepositoryoidcsubjectclaimcustomizationtemplate/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/repositoryoidcsubjectclaimcustomizationtemplate",
+      "at": "examples-generated/cluster/actions/v1alpha1/repositoryoidcsubjectclaimcustomizationtemplate.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "include_claim_keys",
+       "use_default"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/repositoryoidcsubjectclaimcustomizationtemplate",
+      "at": "examples/cluster/actions/v1alpha1/repositoryoidcsubjectclaimcustomizationtemplate.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "include_claim_keys",
+       "use_default"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "include_claim_keys": [
+        "actor",
+        "context",
+        "repository_owner"
+       ],
+       "use_default": false
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryOIDCSubjectClaimCustomizationTemplate",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsrepositoryoidcsubjectclaimcustomizationtemplate/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsRepositoryPermissions",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_repository_permissions",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryPermissions",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:41"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/actionsrepositorypermissions/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/repositorypermissions",
+      "at": "examples-generated/cluster/actions/v1alpha1/repositorypermissions.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "allowed_actions",
+       "allowed_actions_config",
+       "allowed_actions_config.github_owned_allowed",
+       "allowed_actions_config.patterns_allowed",
+       "allowed_actions_config.verified_allowed"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/repositorypermissions",
+      "at": "examples/cluster/actions/v1alpha1/repositorypermissions.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "allowed_actions",
+       "allowed_actions_config",
+       "allowed_actions_config.github_owned_allowed",
+       "allowed_actions_config.patterns_allowed",
+       "allowed_actions_config.verified_allowed"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "allowed_actions": "selected",
+       "allowed_actions_config": [
+        {
+         "github_owned_allowed": true,
+         "patterns_allowed": [
+          "actions/cache@*",
+          "actions/checkout@*"
+         ],
+         "verified_allowed": true
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsrepositorypermissions/config.go:9"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsRunnerGroup",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_runner_group",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RunnerGroup",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:27"
+    },
+    "examples": [
+     {
+      "id": "actions/v1alpha1/runnergroup",
+      "at": "examples-generated/cluster/actions/v1alpha1/runnergroup.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "name",
+       "selected_repository_ids",
+       "visibility"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/runnergroup",
+      "at": "examples/cluster/actions/v1alpha1/runnergroup.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "name",
+       "selected_repository_ids",
+       "visibility"
+      ],
+      "values": {
+       "name": "example-runner-group",
+       "selected_repository_ids": [
+        123456789
+       ],
+       "visibility": "selected"
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "actions",
+     "at": "config/cluster/actions/config.go:9"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsSecret",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_secret",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "ActionsSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:43"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/actionssecret/config.go:12"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/actionssecret",
+      "at": "examples-generated/cluster/actions/v1alpha1/actionssecret.yaml",
+      "origin": "generated",
+      "fields": [
+       "secret_name"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/actionssecret",
+      "at": "examples/cluster/actions/v1alpha1/actionssecret.yaml",
+      "origin": "hand",
+      "fields": [
+       "secret_name"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "secret_name": "example_secret_name"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ActionsSecret",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionssecret/config.go:9"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ActionsVariable",
+    "group": "actions.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_actions_variable",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "ActionsVariable",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:45"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/actionsvariable/config.go:12"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/actionsvariable",
+      "at": "examples-generated/cluster/actions/v1alpha1/actionsvariable.yaml",
+      "origin": "generated",
+      "fields": [
+       "value",
+       "variable_name"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/actionsvariable",
+      "at": "examples/cluster/actions/v1alpha1/actionsvariable.yaml",
+      "origin": "hand",
+      "fields": [
+       "value",
+       "variable_name"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "value": "example_variable_value",
+       "variable_name": "example_variable_name"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ActionsVariable",
+     "shortGroup": "actions",
+     "at": "config/cluster/actionsvariable/config.go:9"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AppInstallationRepository",
+    "group": "app.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_app_installation_repository",
+    "group": "app.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AppInstallationRepositoryAssociation",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:49"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/appinstallationrepository/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "app/v1alpha1/appinstallationrepositoryassociation",
+      "at": "examples-generated/cluster/app/v1alpha1/appinstallationrepositoryassociation.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "installation_id"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "app/v1alpha1/appinstallationrepositoryassociation",
+      "at": "examples/cluster/app/v1alpha1/appinstallationrepositoryassociation.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "installation_id"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "installation_id": "1234567"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "AppInstallationRepositoryAssociation",
+     "shortGroup": "app",
+     "at": "config/cluster/appinstallationrepository/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AppInstallationRepositorySet",
+    "group": "app.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_app_installation_repositories",
+    "group": "app.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AppInstallationRepositories",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:47"
+    },
+    "references": [
+     {
+      "field": "selected_repositories",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/appinstallationrepositories/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "app/v1alpha1/appinstallationrepositories",
+      "at": "examples-generated/cluster/app/v1alpha1/appinstallationrepositories.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "installation_id"
+      ],
+      "refFields": [
+       "selected_repositories"
+      ]
+     },
+     {
+      "id": "app/v1alpha1/appinstallationrepositories",
+      "at": "examples/cluster/app/v1alpha1/appinstallationrepositories.yaml",
+      "origin": "hand",
+      "fields": [
+       "installation_id"
+      ],
+      "refFields": [
+       "selected_repositories"
+      ],
+      "values": {
+       "installation_id": "1234567"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "AppInstallationRepositories",
+     "shortGroup": "app",
+     "at": "config/cluster/appinstallationrepositories/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "Branch",
+    "group": "branch.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_branch",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Branch",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:52"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/branch/config.go:16"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/branch",
+      "at": "examples-generated/cluster/repo/v1alpha1/branch.yaml",
+      "origin": "generated",
+      "fields": [
+       "branch"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "at": "examples/cluster/branch/branch.yaml",
+      "origin": "hand",
+      "fields": [
+       "branch"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "branch": "example-branch"
+      }
+     },
+     {
+      "id": "repo/v1alpha1/branch",
+      "at": "examples/cluster/repo/v1alpha1/branch.yaml",
+      "origin": "hand",
+      "fields": [
+       "branch"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "branch": "development"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Branch",
+     "shortGroup": "repo",
+     "at": "config/cluster/branch/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "BranchDefault",
+    "group": "branch.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_branch_default",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "DefaultBranch",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "template",
+     "template": "{{ .external_name }}",
+     "expr": "config.TemplatedStringAsIdentifier(\"repository\", \"{{ .external_name }}\")",
+     "at": "config/external_name.go:54"
+    },
+    "references": [
+     {
+      "field": "branch",
+      "target": "github_branch",
+      "targetKind": "repo.github.upbound.io/Branch",
+      "source": "both",
+      "at": "config/cluster/branchdefault/config.go:14"
+     },
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "source": "config",
+      "at": "config/cluster/branchdefault/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/defaultbranch",
+      "at": "examples-generated/cluster/repo/v1alpha1/defaultbranch.yaml",
+      "origin": "generated",
+      "with": [
+       "github_branch",
+       "github_repository"
+      ],
+      "refFields": [
+       "branch"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/defaultbranch",
+      "at": "examples/cluster/repo/v1alpha1/defaultbranch.yaml",
+      "origin": "hand",
+      "with": [
+       "github_branch",
+       "github_repository"
+      ],
+      "refFields": [
+       "branch"
+      ]
+     }
+    ],
+    "renamed": {
+     "kind": "DefaultBranch",
+     "shortGroup": "repo",
+     "at": "config/cluster/branchdefault/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_branch": [
+     "branch.github.hfl.dev/Branch"
+    ],
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "BranchProtection",
+    "group": "branch.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_branch_protection",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "BranchProtection",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:57"
+    },
+    "references": [
+     {
+      "field": "repository_id",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/branchprotection/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/branchprotection",
+      "at": "examples-generated/cluster/repo/v1alpha1/branchprotection.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository",
+       "github_team",
+       "github_team_repository"
+      ],
+      "fields": [
+       "allows_deletions",
+       "enforce_admins",
+       "force_push_bypassers",
+       "pattern",
+       "required_pull_request_reviews",
+       "required_pull_request_reviews.dismiss_stale_reviews",
+       "required_pull_request_reviews.dismissal_restrictions",
+       "required_pull_request_reviews.restrict_dismissals",
+       "required_status_checks",
+       "required_status_checks.contexts",
+       "required_status_checks.strict",
+       "restrict_pushes",
+       "restrict_pushes.push_allowances"
+      ],
+      "refFields": [
+       "repository_id"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/branchprotection",
+      "at": "examples/cluster/repo/v1alpha1/branchprotection.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository",
+       "github_team",
+       "github_team_repository"
+      ],
+      "fields": [
+       "allows_deletions",
+       "enforce_admins",
+       "force_push_bypassers",
+       "pattern",
+       "required_pull_request_reviews",
+       "required_pull_request_reviews.dismiss_stale_reviews",
+       "required_pull_request_reviews.dismissal_restrictions",
+       "required_pull_request_reviews.restrict_dismissals",
+       "required_status_checks",
+       "required_status_checks.contexts",
+       "required_status_checks.strict",
+       "restrict_pushes",
+       "restrict_pushes.push_allowances"
+      ],
+      "refFields": [
+       "repository_id"
+      ],
+      "values": {
+       "allows_deletions": true,
+       "enforce_admins": true,
+       "force_push_bypassers": [
+        "${data.github_user.example.node_id}",
+        "/exampleuser",
+        "exampleorganization/exampleteam"
+       ],
+       "pattern": "main",
+       "required_pull_request_reviews": [
+        {
+         "dismiss_stale_reviews": true,
+         "dismissal_restrictions": [
+          "${data.github_user.example.node_id}",
+          "${github_team.example.node_id}",
+          "/exampleuser",
+          "exampleorganization/exampleteam"
+         ],
+         "restrict_dismissals": true
+        }
+       ],
+       "required_status_checks": [
+        {
+         "contexts": [
+          "ci/travis"
+         ],
+         "strict": false
+        }
+       ],
+       "restrict_pushes": [
+        {
+         "push_allowances": [
+          "${data.github_user.example.node_id}",
+          "/exampleuser",
+          "exampleorganization/exampleteam"
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "BranchProtection",
+     "shortGroup": "repo",
+     "at": "config/cluster/branchprotection/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "BranchProtectionV3",
+    "group": "branch.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_branch_protection_v3",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "BranchProtectionv3",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:59"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/branchprotectionv3/config.go:11"
+     },
+     {
+      "field": "required_pull_request_reviews.bypass_pull_request_allowances.teams",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"slug\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/repo/v1alpha1/zz_branchprotectionv3_types.go:407"
+     },
+     {
+      "field": "required_pull_request_reviews.dismissal_teams",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"slug\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/repo/v1alpha1/zz_branchprotectionv3_types.go:262"
+     },
+     {
+      "field": "restrictions.teams",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"slug\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/repo/v1alpha1/zz_branchprotectionv3_types.go:483"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/branchprotectionv3",
+      "at": "examples-generated/cluster/repo/v1alpha1/branchprotectionv3.yaml",
+      "origin": "generated",
+      "fields": [
+       "branch",
+       "restrictions",
+       "restrictions.users"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/branchprotectionv3",
+      "at": "examples/cluster/repo/v1alpha1/branchprotectionv3.yaml",
+      "origin": "hand",
+      "fields": [
+       "branch",
+       "restrictions",
+       "restrictions.users"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "branch": "main",
+       "restrictions": [
+        {
+         "users": [
+          "foo-user"
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "BranchProtectionv3",
+     "shortGroup": "repo",
+     "at": "config/cluster/branchprotectionv3/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ],
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CodespacesOrganizationSecret",
+    "group": "codespaces.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_codespaces_organization_secret",
+    "group": "codespaces.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationCodespacesSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:61"
+    },
+    "examples": [
+     {
+      "id": "codespaces/v1alpha1/organizationcodespacessecret",
+      "at": "examples-generated/cluster/codespaces/v1alpha1/organizationcodespacessecret.yaml",
+      "origin": "generated",
+      "fields": [
+       "secret_name",
+       "visibility"
+      ]
+     },
+     {
+      "id": "codespaces/v1alpha1/organizationcodespacessecret",
+      "at": "examples/cluster/codespaces/v1alpha1/organizationcodespacessecret.yaml",
+      "origin": "hand",
+      "fields": [
+       "secret_name",
+       "visibility"
+      ],
+      "values": {
+       "secret_name": "example_secret_name",
+       "visibility": "private"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationCodespacesSecret",
+     "shortGroup": "codespaces",
+     "at": "config/cluster/codespacesorganizationsecret/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "CodespacesOrganizationSecretRepositories",
+    "group": "codespaces.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_codespaces_organization_secret_repositories",
+    "group": "codespaces.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationCodespacesSecretRepositorySet",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:63"
+    },
+    "references": [
+     {
+      "field": "secret_name",
+      "target": "github_codespaces_organization_secret",
+      "targetKind": "codespaces.github.upbound.io/OrganizationCodespacesSecret",
+      "source": "both",
+      "at": "config/cluster/codespacesorganizationsecretrepositories/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "codespaces/v1alpha1/organizationcodespacessecretrepositoryset",
+      "at": "examples-generated/cluster/codespaces/v1alpha1/organizationcodespacessecretrepositoryset.yaml",
+      "origin": "generated",
+      "fields": [
+       "selected_repository_ids"
+      ],
+      "refFields": [
+       "secret_name"
+      ]
+     },
+     {
+      "id": "codespaces/v1alpha1/organizationcodespacessecretrepositoryset",
+      "at": "examples/cluster/codespaces/v1alpha1/organizationcodespacessecretrepositoryset.yaml",
+      "origin": "hand",
+      "fields": [
+       "selected_repository_ids"
+      ],
+      "refFields": [
+       "secret_name"
+      ],
+      "values": {
+       "selected_repository_ids": [
+        123456789
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationCodespacesSecretRepositorySet",
+     "shortGroup": "codespaces",
+     "at": "config/cluster/codespacesorganizationsecretrepositories/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_codespaces_organization_secret": [
+     "codespaces.github.hfl.dev/CodespacesOrganizationSecret"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CodespacesSecret",
+    "group": "codespaces.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_codespaces_secret",
+    "group": "codespaces.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "CodespacesSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:65"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/codespacessecret/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "codespaces/v1alpha1/codespacessecret",
+      "at": "examples-generated/cluster/codespaces/v1alpha1/codespacessecret.yaml",
+      "origin": "generated",
+      "fields": [
+       "secret_name"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "codespaces/v1alpha1/codespacessecret",
+      "at": "examples/cluster/codespaces/v1alpha1/codespacessecret.yaml",
+      "origin": "hand",
+      "fields": [
+       "secret_name"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "secret_name": "example_secret_name"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "CodespacesSecret",
+     "shortGroup": "codespaces",
+     "at": "config/cluster/codespacessecret/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CodespacesUserSecret",
+    "group": "codespaces.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_codespaces_user_secret",
+    "group": "codespaces.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "UserCodespacesSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:67"
+    },
+    "examples": [
+     {
+      "id": "codespaces/v1alpha1/usercodespacessecret",
+      "at": "examples-generated/cluster/codespaces/v1alpha1/usercodespacessecret.yaml",
+      "origin": "generated",
+      "fields": [
+       "secret_name",
+       "selected_repository_ids"
+      ]
+     },
+     {
+      "id": "codespaces/v1alpha1/usercodespacessecret",
+      "at": "examples/cluster/codespaces/v1alpha1/usercodespacessecret.yaml",
+      "origin": "hand",
+      "fields": [
+       "secret_name",
+       "selected_repository_ids"
+      ],
+      "values": {
+       "secret_name": "example_secret_name",
+       "selected_repository_ids": [
+        123456789
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "UserCodespacesSecret",
+     "shortGroup": "codespaces",
+     "at": "config/cluster/codespacesusersecret/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "EmuGroupMapping",
+    "group": "emu.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_emu_group_mapping",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "EmuGroupMapping",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:69"
+    },
+    "references": [
+     {
+      "field": "team_slug",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"slug\",true)",
+      "source": "both",
+      "at": "config/cluster/emugroupmapping/config.go:13"
+     }
+    ],
+    "examples": [
+     {
+      "id": "team/v1alpha1/emugroupmapping",
+      "at": "examples-generated/cluster/team/v1alpha1/emugroupmapping.yaml",
+      "origin": "generated",
+      "fields": [
+       "group_id"
+      ],
+      "refFields": [
+       "team_slug"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/emugroupmapping",
+      "at": "examples/cluster/team/v1alpha1/emugroupmapping.yaml",
+      "origin": "hand",
+      "fields": [
+       "group_id"
+      ],
+      "refFields": [
+       "team_slug"
+      ],
+      "values": {
+       "group_id": 28836
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "EmuGroupMapping",
+     "shortGroup": "team",
+     "at": "config/cluster/emugroupmapping/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "EnterpriseActionsRunnerGroup",
+    "group": "enterprise.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_enterprise_actions_runner_group",
+    "group": "enterprise.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "ActionsRunnerGroup",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:71"
+    },
+    "examples": [
+     {
+      "id": "enterprise/v1alpha1/actionsrunnergroup",
+      "at": "examples-generated/cluster/enterprise/v1alpha1/actionsrunnergroup.yaml",
+      "origin": "generated",
+      "with": [
+       "github_enterprise_organization"
+      ],
+      "fields": [
+       "allows_public_repositories",
+       "enterprise_slug",
+       "name",
+       "restricted_to_workflows",
+       "selected_organization_ids",
+       "selected_workflows",
+       "visibility"
+      ]
+     },
+     {
+      "id": "enterprise/v1alpha1/actionsrunnergroup",
+      "at": "examples/cluster/enterprise/v1alpha1/actionsrunnergroup.yaml",
+      "origin": "hand",
+      "fields": [
+       "allows_public_repositories",
+       "enterprise_slug",
+       "name",
+       "restricted_to_workflows",
+       "selected_organization_ids",
+       "selected_workflows",
+       "visibility"
+      ],
+      "values": {
+       "allows_public_repositories": true,
+       "enterprise_slug": "my-enterprise",
+       "name": "my-awesome-runner-group",
+       "restricted_to_workflows": true,
+       "selected_organization_ids": [
+        123456
+       ],
+       "selected_workflows": [
+        "my-organization/my-repo/.github/workflows/cool-workflow.yaml@refs/tags/v1"
+       ],
+       "visibility": "selected"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ActionsRunnerGroup",
+     "shortGroup": "enterprise",
+     "at": "config/cluster/enterpriseactionsrunnergroup/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "EnterpriseActionsWorkflowPermissions",
+    "group": "enterprise.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_enterprise_actions_workflow_permissions",
+    "group": "enterprise.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "ActionsWorkflowPermissions",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:73"
+    },
+    "examples": [
+     {
+      "id": "enterprise/v1alpha1/actionsworkflowpermissions",
+      "at": "examples-generated/cluster/enterprise/v1alpha1/actionsworkflowpermissions.yaml",
+      "origin": "generated",
+      "fields": [
+       "can_approve_pull_request_reviews",
+       "default_workflow_permissions",
+       "enterprise_slug"
+      ]
+     },
+     {
+      "id": "enterprise/v1alpha1/actionsworkflowpermissions",
+      "at": "examples/cluster/enterprise/v1alpha1/actionsworkflowpermissions.yaml",
+      "origin": "hand",
+      "fields": [
+       "can_approve_pull_request_reviews",
+       "default_workflow_permissions",
+       "enterprise_slug"
+      ],
+      "values": {
+       "can_approve_pull_request_reviews": false,
+       "default_workflow_permissions": "read",
+       "enterprise_slug": "my-enterprise"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ActionsWorkflowPermissions",
+     "shortGroup": "enterprise",
+     "at": "config/cluster/enterpriseactionsworkflowpermissions/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "EnterpriseIpAllowListEntry",
+    "group": "enterprise.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_enterprise_ip_allow_list_entry",
+    "group": "enterprise.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "IPAllowListEntry",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:75"
+    },
+    "examples": [
+     {
+      "id": "enterprise/v1alpha1/ipallowlistentry",
+      "at": "examples-generated/cluster/enterprise/v1alpha1/ipallowlistentry.yaml",
+      "origin": "generated",
+      "fields": [
+       "enterprise_slug",
+       "ip",
+       "is_active",
+       "name"
+      ]
+     },
+     {
+      "id": "enterprise/v1alpha1/ipallowlistentry",
+      "at": "examples/cluster/enterprise/v1alpha1/ipallowlistentry.yaml",
+      "origin": "hand",
+      "fields": [
+       "enterprise_slug",
+       "ip",
+       "is_active",
+       "name"
+      ],
+      "values": {
+       "enterprise_slug": "my-enterprise",
+       "ip": "192.168.1.0/20",
+       "is_active": true,
+       "name": "My IP Range Name"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "IPAllowListEntry",
+     "shortGroup": "enterprise",
+     "at": "config/cluster/enterpriseipallowlistentry/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "EnterpriseOrganization",
+    "group": "enterprise.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_enterprise_organization",
+    "group": "enterprise.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Organization",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:77"
+    },
+    "examples": [
+     {
+      "id": "enterprise/v1alpha1/organization",
+      "at": "examples-generated/cluster/enterprise/v1alpha1/organization.yaml",
+      "origin": "generated",
+      "fields": [
+       "admin_logins",
+       "billing_email",
+       "description",
+       "display_name",
+       "enterprise_id",
+       "name"
+      ]
+     },
+     {
+      "at": "examples/cluster/organization/organization.yaml",
+      "origin": "hand",
+      "fields": [
+       "admin_logins",
+       "billing_email",
+       "description",
+       "enterprise_id",
+       "name"
+      ],
+      "values": {
+       "admin_logins": [
+        "janedoe"
+       ],
+       "billing_email": "foo@bar.com",
+       "description": "Hello GitHub Provider",
+       "enterprise_id": "XYZ123",
+       "name": "hello-provider-github"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Organization",
+     "shortGroup": "enterprise",
+     "at": "config/cluster/enterpriseorganization/config.go:10"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "EnterpriseSecurityAnalysisSettings",
+    "group": "enterprise.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_enterprise_security_analysis_settings",
+    "group": "enterprise.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecurityAnalysisSettings",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:79"
+    },
+    "examples": [
+     {
+      "id": "enterprise/v1alpha1/securityanalysissettings",
+      "at": "examples-generated/cluster/enterprise/v1alpha1/securityanalysissettings.yaml",
+      "origin": "generated",
+      "fields": [
+       "enterprise_slug",
+       "secret_scanning_enabled_for_new_repositories"
+      ]
+     },
+     {
+      "id": "enterprise/v1alpha1/securityanalysissettings",
+      "at": "examples/cluster/enterprise/v1alpha1/securityanalysissettings.yaml",
+      "origin": "hand",
+      "fields": [
+       "enterprise_slug",
+       "secret_scanning_enabled_for_new_repositories"
+      ],
+      "values": {
+       "enterprise_slug": "my-enterprise",
+       "secret_scanning_enabled_for_new_repositories": true
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "SecurityAnalysisSettings",
+     "shortGroup": "enterprise",
+     "at": "config/cluster/enterprisesecurityanalysissettings/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "Issue",
+    "group": "issue.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_issue",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "GithubIssue",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:81"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/githubissue/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/githubissue",
+      "at": "examples-generated/cluster/repo/v1alpha1/githubissue.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "body",
+       "title"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     }
+    ],
+    "renamed": {
+     "kind": "GithubIssue",
+     "shortGroup": "repo",
+     "at": "config/cluster/githubissue/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IssueLabel",
+    "group": "issue.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_issue_label",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryLabel",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:83"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/issuelabel/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorylabel",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorylabel.yaml",
+      "origin": "generated",
+      "fields": [
+       "color",
+       "name"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorylabel",
+      "at": "examples/cluster/repo/v1alpha1/repositorylabel.yaml",
+      "origin": "hand",
+      "fields": [
+       "color",
+       "name"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "color": "FF0000",
+       "name": "Urgent"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryLabel",
+     "shortGroup": "repo",
+     "at": "config/cluster/issuelabel/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IssueLabelSet",
+    "group": "issue.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_issue_labels",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "IssueLabels",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:85"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/issuelabels/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/issuelabels",
+      "at": "examples-generated/cluster/repo/v1alpha1/issuelabels.yaml",
+      "origin": "generated",
+      "fields": [
+       "label",
+       "label.color",
+       "label.name"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/issuelabels",
+      "at": "examples/cluster/repo/v1alpha1/issuelabels.yaml",
+      "origin": "hand",
+      "fields": [
+       "label",
+       "label.color",
+       "label.name",
+       "repository"
+      ],
+      "values": {
+       "label": [
+        {
+         "color": "FF0000",
+         "name": "Urgent"
+        },
+        {
+         "color": "FF0000",
+         "name": "Critical"
+        }
+       ],
+       "repository": "test-repo"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "IssueLabels",
+     "shortGroup": "repo",
+     "at": "config/cluster/issuelabels/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "Membership",
+    "group": "membership.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_membership",
+    "group": "user.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Membership",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:87"
+    },
+    "examples": [
+     {
+      "id": "user/v1alpha1/membership",
+      "at": "examples-generated/cluster/user/v1alpha1/membership.yaml",
+      "origin": "generated",
+      "fields": [
+       "role",
+       "username"
+      ]
+     },
+     {
+      "id": "user/v1alpha1/membership",
+      "at": "examples/cluster/user/v1alpha1/membership.yaml",
+      "origin": "hand",
+      "fields": [
+       "role",
+       "username"
+      ],
+      "values": {
+       "role": "member",
+       "username": "SomeUser"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Membership",
+     "shortGroup": "user",
+     "at": "config/cluster/membership/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrganizationBlock",
+    "group": "organization.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_organization_block",
+    "group": "organization.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationBlock",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:89"
+    },
+    "examples": [
+     {
+      "id": "organization/v1alpha1/organizationblock",
+      "at": "examples-generated/cluster/organization/v1alpha1/organizationblock.yaml",
+      "origin": "generated",
+      "fields": [
+       "username"
+      ]
+     },
+     {
+      "id": "organization/v1alpha1/organizationblock",
+      "at": "examples/cluster/organization/v1alpha1/organizationblock.yaml",
+      "origin": "hand",
+      "fields": [
+       "username"
+      ],
+      "values": {
+       "username": "paultyng"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationBlock",
+     "shortGroup": "organization",
+     "at": "config/cluster/organizationblock/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrganizationRepositoryRole",
+    "group": "organization.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_organization_repository_role",
+    "group": "organization.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationRepositoryRole",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:91"
+    },
+    "examples": [
+     {
+      "id": "organization/v1alpha1/organizationrepositoryrole",
+      "at": "examples-generated/cluster/organization/v1alpha1/organizationrepositoryrole.yaml",
+      "origin": "generated",
+      "fields": [
+       "base_role",
+       "name",
+       "permissions"
+      ]
+     },
+     {
+      "id": "organization/v1alpha1/organizationrepositoryrole",
+      "at": "examples/cluster/organization/v1alpha1/organizationrepositoryrole.yaml",
+      "origin": "hand",
+      "fields": [
+       "base_role",
+       "name",
+       "permissions"
+      ],
+      "values": {
+       "base_role": "read",
+       "name": "example",
+       "permissions": [
+        "add_assignee",
+        "add_label"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationRepositoryRole",
+     "shortGroup": "organization",
+     "at": "config/cluster/organizationrepositoryrole/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrganizationRole",
+    "group": "organization.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_organization_role",
+    "group": "organization.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationRole",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:93"
+    },
+    "examples": [
+     {
+      "id": "organization/v1alpha1/organizationrole",
+      "at": "examples-generated/cluster/organization/v1alpha1/organizationrole.yaml",
+      "origin": "generated",
+      "fields": [
+       "base_role",
+       "name",
+       "permissions"
+      ]
+     },
+     {
+      "id": "organization/v1alpha1/organizationrole",
+      "at": "examples/cluster/organization/v1alpha1/organizationrole.yaml",
+      "origin": "hand",
+      "fields": [
+       "base_role",
+       "name",
+       "permissions"
+      ],
+      "values": {
+       "base_role": "read",
+       "name": "example",
+       "permissions": [
+        "read_organization_custom_org_role",
+        "read_organization_custom_repo_role"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationRole",
+     "shortGroup": "organization",
+     "at": "config/cluster/organizationrole/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrganizationRoleTeam",
+    "group": "organization.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_organization_role_team",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationRoleTeam",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:95"
+    },
+    "references": [
+     {
+      "field": "team_slug",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"slug\",true)",
+      "source": "both",
+      "at": "config/cluster/organizationroleteam/config.go:13"
+     }
+    ],
+    "examples": [
+     {
+      "id": "team/v1alpha1/organizationroleteam",
+      "at": "examples-generated/cluster/team/v1alpha1/organizationroleteam.yaml",
+      "origin": "generated",
+      "fields": [
+       "role_id"
+      ],
+      "refFields": [
+       "team_slug"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/organizationroleteam",
+      "at": "examples/cluster/team/v1alpha1/organizationroleteam.yaml",
+      "origin": "hand",
+      "fields": [
+       "role_id"
+      ],
+      "refFields": [
+       "team_slug"
+      ],
+      "values": {
+       "role_id": 1234
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationRoleTeam",
+     "shortGroup": "team",
+     "at": "config/cluster/organizationroleteam/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrganizationRoleUser",
+    "group": "organization.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_organization_role_user",
+    "group": "user.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationRoleUser",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:97"
+    },
+    "examples": [
+     {
+      "id": "user/v1alpha1/organizationroleuser",
+      "at": "examples-generated/cluster/user/v1alpha1/organizationroleuser.yaml",
+      "origin": "generated",
+      "fields": [
+       "login",
+       "role_id"
+      ]
+     },
+     {
+      "id": "user/v1alpha1/organizationroleuser",
+      "at": "examples/cluster/user/v1alpha1/organizationroleuser.yaml",
+      "origin": "hand",
+      "fields": [
+       "login",
+       "role_id"
+      ],
+      "values": {
+       "login": "example-user",
+       "role_id": 1234
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationRoleUser",
+     "shortGroup": "user",
+     "at": "config/cluster/organizationroleuser/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrganizationRuleset",
+    "group": "organization.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_organization_ruleset",
+    "group": "enterprise.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationRuleset",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:99"
+    },
+    "examples": [
+     {
+      "id": "enterprise/v1alpha1/organizationruleset",
+      "at": "examples-generated/cluster/enterprise/v1alpha1/organizationruleset.yaml",
+      "origin": "generated",
+      "fields": [
+       "bypass_actors",
+       "bypass_actors.actor_id",
+       "bypass_actors.actor_type",
+       "bypass_actors.bypass_mode",
+       "conditions",
+       "conditions.ref_name",
+       "conditions.ref_name.exclude",
+       "conditions.ref_name.include",
+       "enforcement",
+       "name",
+       "rules",
+       "rules.branch_name_pattern",
+       "rules.branch_name_pattern.name",
+       "rules.branch_name_pattern.negate",
+       "rules.branch_name_pattern.operator",
+       "rules.branch_name_pattern.pattern",
+       "rules.creation",
+       "rules.deletion",
+       "rules.required_code_scanning",
+       "rules.required_code_scanning.required_code_scanning_tool",
+       "rules.required_code_scanning.required_code_scanning_tool.alerts_threshold",
+       "rules.required_code_scanning.required_code_scanning_tool.security_alerts_threshold",
+       "rules.required_code_scanning.required_code_scanning_tool.tool",
+       "rules.required_linear_history",
+       "rules.required_signatures",
+       "rules.required_workflows",
+       "rules.required_workflows.do_not_enforce_on_create",
+       "rules.required_workflows.required_workflow",
+       "rules.required_workflows.required_workflow.path",
+       "rules.required_workflows.required_workflow.ref",
+       "rules.required_workflows.required_workflow.repository_id",
+       "rules.update",
+       "target"
+      ]
+     },
+     {
+      "at": "examples/cluster/organization/organizationruleset.yaml",
+      "origin": "hand",
+      "fields": [
+       "bypass_actors",
+       "bypass_actors.actor_id",
+       "bypass_actors.actor_type",
+       "bypass_actors.bypass_mode",
+       "conditions",
+       "conditions.ref_name",
+       "conditions.ref_name.exclude",
+       "conditions.ref_name.include",
+       "conditions.repository_name",
+       "conditions.repository_name.exclude",
+       "conditions.repository_name.include",
+       "enforcement",
+       "name",
+       "rules",
+       "rules.branch_name_pattern",
+       "rules.branch_name_pattern.name",
+       "rules.branch_name_pattern.negate",
+       "rules.branch_name_pattern.operator",
+       "rules.branch_name_pattern.pattern",
+       "rules.creation",
+       "rules.deletion",
+       "rules.required_linear_history",
+       "rules.required_signatures",
+       "rules.update",
+       "target"
+      ],
+      "values": {
+       "bypass_actors": [
+        {
+         "actor_id": 13473,
+         "actor_type": "Integration",
+         "bypass_mode": "always"
+        }
+       ],
+       "conditions": [
+        {
+         "ref_name": [
+          {
+           "exclude": [],
+           "include": [
+            "~ALL"
+           ]
+          }
+         ],
+         "repository_name": [
+          {
+           "exclude": [],
+           "include": [
+            "~ALL"
+           ]
+          }
+         ]
+        }
+       ],
+       "enforcement": "disabled",
+       "name": "example",
+       "rules": [
+        {
+         "branch_name_pattern": [
+          {
+           "name": "example",
+           "negate": false,
+           "operator": "starts_with",
+           "pattern": "ex"
+          }
+         ],
+         "creation": true,
+         "deletion": true,
+         "required_linear_history": true,
+         "required_signatures": true,
+         "update": true
+        }
+       ],
+       "target": "branch"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationRuleset",
+     "shortGroup": "enterprise",
+     "at": "config/cluster/organizationruleset/config.go:10"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrganizationWebhook",
+    "group": "organization.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_organization_webhook",
+    "group": "organization.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OrganizationWebhook",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:101"
+    },
+    "examples": [
+     {
+      "id": "organization/v1alpha1/organizationwebhook",
+      "at": "examples-generated/cluster/organization/v1alpha1/organizationwebhook.yaml",
+      "origin": "generated",
+      "fields": [
+       "?name",
+       "active",
+       "configuration",
+       "configuration.content_type",
+       "configuration.insecure_ssl",
+       "events"
+      ]
+     },
+     {
+      "id": "organization/v1alpha1/organizationwebhook",
+      "at": "examples/cluster/organization/v1alpha1/organizationwebhook.yaml",
+      "origin": "hand",
+      "fields": [
+       "active",
+       "configuration",
+       "configuration.content_type",
+       "configuration.insecure_ssl",
+       "events"
+      ],
+      "values": {
+       "active": false,
+       "configuration": [
+        {
+         "content_type": "form",
+         "insecure_ssl": false
+        }
+       ],
+       "events": [
+        "issues"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OrganizationWebhook",
+     "shortGroup": "organization",
+     "at": "config/cluster/organizationwebhook/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "Release",
+    "group": "release.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_release",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Release",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:103"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/release/config.go:11"
+     },
+     {
+      "field": "target_commitish",
+      "target": "github_branch",
+      "targetKind": "repo.github.upbound.io/Branch",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"branch\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/repo/v1alpha1/zz_release_types.go:213"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/release",
+      "at": "examples-generated/cluster/repo/v1alpha1/release.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "tag_name"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/release",
+      "at": "examples/cluster/repo/v1alpha1/release.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "tag_name"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "tag_name": "v1.0.0"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Release",
+     "shortGroup": "repo",
+     "at": "config/cluster/release/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_branch": [
+     "branch.github.hfl.dev/Branch"
+    ],
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "Repository",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Repository",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:105"
+    },
+    "lateInitIgnored": [
+     {
+      "field": "private",
+      "at": "config/cluster/repository/config.go:13"
+     },
+     {
+      "field": "default_branch",
+      "at": "config/cluster/repository/config.go:13"
+     }
+    ],
+    "customCode": [
+     {
+      "what": "custom diff",
+      "expr": "repositoryCustomDiff",
+      "at": "config/cluster/repository/config.go:17"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repository",
+      "at": "examples-generated/cluster/repo/v1alpha1/repository.yaml",
+      "origin": "generated",
+      "fields": [
+       "description",
+       "name",
+       "template",
+       "template.include_all_branches",
+       "template.owner",
+       "template.repository",
+       "visibility"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repository",
+      "at": "examples/cluster/repo/v1alpha1/repository.yaml",
+      "origin": "hand",
+      "fields": [
+       "description",
+       "name",
+       "template",
+       "template.include_all_branches",
+       "template.owner",
+       "template.repository",
+       "visibility"
+      ],
+      "values": {
+       "description": "My awesome codebase",
+       "name": "example",
+       "template": [
+        {
+         "include_all_branches": true,
+         "owner": "github",
+         "repository": "terraform-template-module"
+        }
+       ],
+       "visibility": "public"
+      }
+     },
+     {
+      "at": "examples/cluster/repository/repository.yaml",
+      "origin": "hand",
+      "fields": [
+       "gitignore_template",
+       "name",
+       "visibility"
+      ],
+      "values": {
+       "gitignore_template": "Terraform",
+       "name": "hello-provider-github",
+       "visibility": "public"
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "repo",
+     "at": "config/cluster/repository/config.go:11"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryAutolinkReference",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_autolink_reference",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryAutolinkReference",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:107"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositoryautolinkreference/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositoryautolinkreference",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositoryautolinkreference.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "key_prefix",
+       "target_url_template"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositoryautolinkreference",
+      "at": "examples/cluster/repo/v1alpha1/repositoryautolinkreference.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "key_prefix",
+       "target_url_template"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "key_prefix": "TICKET-",
+       "target_url_template": "https://example.com/TICKET?query=\u003cnum\u003e"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryAutolinkReference",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositoryautolinkreference/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryCollaborator",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_collaborator",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryCollaborator",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:109"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorycollaborator/config.go:13"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorycollaborator",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorycollaborator.yaml",
+      "origin": "generated",
+      "fields": [
+       "permission",
+       "username"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorycollaborator",
+      "at": "examples/cluster/repo/v1alpha1/repositorycollaborator.yaml",
+      "origin": "hand",
+      "fields": [
+       "permission",
+       "username"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "permission": "admin",
+       "username": "SomeUser"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryCollaborator",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorycollaborator/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryCollaborator",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_collaborators",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryCollaboratorSet",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:111"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorycollaborators/config.go:13"
+     },
+     {
+      "field": "team.team_id",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"slug\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/repo/v1alpha1/zz_repositorycollaboratorset_types.go:177"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorycollaboratorset",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorycollaboratorset.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository",
+       "github_team"
+      ],
+      "fields": [
+       "team",
+       "team.permission",
+       "user",
+       "user.permission",
+       "user.username"
+      ],
+      "refFields": [
+       "repository",
+       "team.team_id"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorycollaboratorset",
+      "at": "examples/cluster/repo/v1alpha1/repositorycollaboratorset.yaml",
+      "origin": "hand",
+      "fields": [
+       "user",
+       "user.permission",
+       "user.username"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "user": [
+        {
+         "permission": "admin",
+         "username": "SomeUser"
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryCollaboratorSet",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorycollaborators/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ],
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryCustomProperty",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_custom_property",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryCustomProperty",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:113"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorycustomproperty/config.go:13"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorycustomproperty",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorycustomproperty.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "property_name",
+       "property_type",
+       "property_value"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryCustomProperty",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorycustomproperty/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryDependabotSecurityUpdate",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_dependabot_security_updates",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryDependabotSecurityUpdates",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:115"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorydependabotsecurityupdates/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorydependabotsecurityupdates",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorydependabotsecurityupdates.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "enabled"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorydependabotsecurityupdates",
+      "at": "examples/cluster/repo/v1alpha1/repositorydependabotsecurityupdates.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "enabled"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "enabled": true
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryDependabotSecurityUpdates",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorydependabotsecurityupdates/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryDeployKey",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_deploy_key",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "DeployKey",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:117"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorydeploykey/config.go:13"
+     }
+    ],
+    "schemaOverrides": [
+     {
+      "field": "key",
+      "property": "Required",
+      "value": "true",
+      "at": "config/cluster/repositorydeploykey/config.go:17"
+     },
+     {
+      "field": "read_only",
+      "property": "Required",
+      "value": "true",
+      "at": "config/cluster/repositorydeploykey/config.go:18"
+     },
+     {
+      "field": "title",
+      "property": "Required",
+      "value": "true",
+      "at": "config/cluster/repositorydeploykey/config.go:19"
+     },
+     {
+      "field": "key",
+      "property": "Sensitive",
+      "value": "true",
+      "at": "config/cluster/repositorydeploykey/config.go:22"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/deploykey",
+      "at": "examples-generated/cluster/repo/v1alpha1/deploykey.yaml",
+      "origin": "generated",
+      "fields": [
+       "read_only",
+       "title"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/deploykey",
+      "at": "examples/cluster/repo/v1alpha1/deploykey.yaml",
+      "origin": "hand",
+      "fields": [
+       "read_only",
+       "title"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "read_only": true,
+       "title": "Repository test key"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "DeployKey",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorydeploykey/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryDeploymentBranchPolicy",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_environment_deployment_policy",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "EnvironmentDeploymentPolicy",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:121"
+    },
+    "references": [
+     {
+      "field": "environment",
+      "target": "github_repository_environment",
+      "targetKind": "repo.github.upbound.io/Environment",
+      "source": "both",
+      "at": "config/cluster/repositoryenvironmentdeploymentpolicy/config.go:15"
+     },
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositoryenvironmentdeploymentpolicy/config.go:12"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/environmentdeploymentpolicy",
+      "at": "examples-generated/cluster/repo/v1alpha1/environmentdeploymentpolicy.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository",
+       "github_repository_environment"
+      ],
+      "fields": [
+       "branch_pattern"
+      ],
+      "refFields": [
+       "environment",
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/environmentdeploymentpolicy",
+      "at": "examples/cluster/repo/v1alpha1/environmentdeploymentpolicy.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository",
+       "github_repository_environment"
+      ],
+      "fields": [
+       "branch_pattern"
+      ],
+      "refFields": [
+       "environment",
+       "repository"
+      ],
+      "values": {
+       "branch_pattern": "releases/*"
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "repo",
+     "at": "config/cluster/repositoryenvironmentdeploymentpolicy/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ],
+    "github_repository_environment": [
+     "repository.github.hfl.dev/RepositoryEnvironment"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryEnvironment",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_environment",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Environment",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:119"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositoryenvironment/config.go:14"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/environment",
+      "at": "examples-generated/cluster/repo/v1alpha1/environment.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "deployment_branch_policy",
+       "deployment_branch_policy.custom_branch_policies",
+       "deployment_branch_policy.protected_branches",
+       "environment",
+       "prevent_self_review",
+       "reviewers",
+       "reviewers.users"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/environment",
+      "at": "examples/cluster/repo/v1alpha1/environment.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "deployment_branch_policy",
+       "deployment_branch_policy.custom_branch_policies",
+       "deployment_branch_policy.protected_branches",
+       "environment",
+       "prevent_self_review",
+       "reviewers",
+       "reviewers.users"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "deployment_branch_policy": [
+        {
+         "custom_branch_policies": false,
+         "protected_branches": true
+        }
+       ],
+       "environment": "example",
+       "prevent_self_review": true,
+       "reviewers": [
+        {
+         "users": [
+          1234567
+         ]
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Environment",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositoryenvironment/config.go:11"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryFile",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_file",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryFile",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:124"
+    },
+    "references": [
+     {
+      "field": "branch",
+      "target": "github_branch",
+      "targetKind": "repo.github.upbound.io/Branch",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"branch\",true)",
+      "source": "both",
+      "at": "config/cluster/repositoryfile/config.go:16"
+     },
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositoryfile/config.go:13"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositoryfile",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositoryfile.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "commit_author",
+       "commit_email",
+       "commit_message",
+       "content",
+       "file",
+       "overwrite_on_create"
+      ],
+      "refFields": [
+       "branch",
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositoryfile",
+      "at": "examples/cluster/repo/v1alpha1/repositoryfile.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "commit_author",
+       "commit_email",
+       "commit_message",
+       "content",
+       "file",
+       "overwrite_on_create"
+      ],
+      "refFields": [
+       "branch",
+       "repository"
+      ],
+      "values": {
+       "commit_author": "Terraform User",
+       "commit_email": "terraform@example.com",
+       "commit_message": "Managed by Terraform",
+       "content": "**/*.tfstate",
+       "file": ".gitignore",
+       "overwrite_on_create": true
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryFile",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositoryfile/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_branch": [
+     "branch.github.hfl.dev/Branch"
+    ],
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryMilestone",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_milestone",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryMilestone",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:126"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorymilestone/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorymilestone",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorymilestone.yaml",
+      "origin": "generated",
+      "fields": [
+       "owner",
+       "title"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorymilestone",
+      "at": "examples/cluster/repo/v1alpha1/repositorymilestone.yaml",
+      "origin": "hand",
+      "fields": [
+       "owner",
+       "title"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "owner": "example-owner",
+       "title": "v1.1.0"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryMilestone",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorymilestone/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryPagesSite",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_pages",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryPages",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:128"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorypages/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorypages",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorypages.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "build_type",
+       "source",
+       "source.branch",
+       "source.path"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorypages",
+      "at": "examples/cluster/repo/v1alpha1/repositorypages.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "build_type",
+       "source",
+       "source.branch",
+       "source.path"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "build_type": "legacy",
+       "source": [
+        {
+         "branch": "main",
+         "path": "/"
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryPages",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorypages/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryPullRequest",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_pull_request",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "PullRequest",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:130"
+    },
+    "references": [
+     {
+      "field": "base_repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorypullrequest/config.go:16"
+     },
+     {
+      "field": "head_ref",
+      "target": "github_branch",
+      "targetKind": "repo.github.upbound.io/Branch",
+      "source": "both",
+      "at": "config/cluster/repositorypullrequest/config.go:22"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/pullrequest",
+      "at": "examples-generated/cluster/repo/v1alpha1/pullrequest.yaml",
+      "origin": "generated",
+      "fields": [
+       "base_ref",
+       "body",
+       "title"
+      ],
+      "refFields": [
+       "base_repository",
+       "head_ref"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/pullrequest",
+      "at": "examples/cluster/repo/v1alpha1/pullrequest.yaml",
+      "origin": "hand",
+      "fields": [
+       "base_ref",
+       "body",
+       "title"
+      ],
+      "refFields": [
+       "base_repository",
+       "head_ref"
+      ],
+      "values": {
+       "base_ref": "main",
+       "body": "This will change everything",
+       "title": "My newest feature"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "PullRequest",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorypullrequest/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_branch": [
+     "branch.github.hfl.dev/Branch"
+    ],
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryRuleset",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_ruleset",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryRuleset",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:132"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositoryruleset/config.go:13"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositoryruleset",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositoryruleset.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "bypass_actors",
+       "bypass_actors.actor_id",
+       "bypass_actors.actor_type",
+       "bypass_actors.bypass_mode",
+       "conditions",
+       "conditions.ref_name",
+       "conditions.ref_name.exclude",
+       "conditions.ref_name.include",
+       "enforcement",
+       "name",
+       "rules",
+       "rules.creation",
+       "rules.deletion",
+       "rules.required_code_scanning",
+       "rules.required_code_scanning.required_code_scanning_tool",
+       "rules.required_code_scanning.required_code_scanning_tool.alerts_threshold",
+       "rules.required_code_scanning.required_code_scanning_tool.security_alerts_threshold",
+       "rules.required_code_scanning.required_code_scanning_tool.tool",
+       "rules.required_deployments",
+       "rules.required_deployments.required_deployment_environments",
+       "rules.required_linear_history",
+       "rules.required_signatures",
+       "rules.update",
+       "target"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositoryruleset",
+      "at": "examples/cluster/repo/v1alpha1/repositoryruleset.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "bypass_actors",
+       "bypass_actors.actor_id",
+       "bypass_actors.actor_type",
+       "bypass_actors.bypass_mode",
+       "conditions",
+       "conditions.ref_name",
+       "conditions.ref_name.exclude",
+       "conditions.ref_name.include",
+       "enforcement",
+       "name",
+       "rules",
+       "rules.creation",
+       "rules.deletion",
+       "rules.required_deployments",
+       "rules.required_deployments.required_deployment_environments",
+       "rules.required_linear_history",
+       "rules.required_signatures",
+       "rules.update",
+       "target"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "bypass_actors": [
+        {
+         "actor_id": 13473,
+         "actor_type": "Integration",
+         "bypass_mode": "always"
+        }
+       ],
+       "conditions": [
+        {
+         "ref_name": [
+          {
+           "exclude": [],
+           "include": [
+            "~ALL"
+           ]
+          }
+         ]
+        }
+       ],
+       "enforcement": "active",
+       "name": "example",
+       "rules": [
+        {
+         "creation": true,
+         "deletion": true,
+         "required_deployments": [
+          {
+           "required_deployment_environments": [
+            "test"
+           ]
+          }
+         ],
+         "required_linear_history": true,
+         "required_signatures": true,
+         "update": true
+        }
+       ],
+       "target": "branch"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryRuleset",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositoryruleset/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryTopics",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_topics",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryTopics",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:136"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorytopics/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorytopics",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorytopics.yaml",
+      "origin": "generated",
+      "fields": [
+       "topics"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorytopics",
+      "at": "examples/cluster/repo/v1alpha1/repositorytopics.yaml",
+      "origin": "hand",
+      "fields": [
+       "topics"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "topics": [
+        "topic-1",
+        "topic-2"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryTopics",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorytopics/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryVulnerabilityAlerts",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_vulnerability_alerts",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryVulnerabilityAlerts",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:138"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositoryvulnerabilityalerts/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositoryvulnerabilityalerts",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositoryvulnerabilityalerts.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "enabled"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositoryvulnerabilityalerts",
+      "at": "examples/cluster/repo/v1alpha1/repositoryvulnerabilityalerts.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "enabled"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "enabled": true
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryVulnerabilityAlerts",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositoryvulnerabilityalerts/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RepositoryWebhook",
+    "group": "repository.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_repository_webhook",
+    "group": "repo.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryWebhook",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:140"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/repositorywebhook/config.go:13"
+     }
+    ],
+    "examples": [
+     {
+      "id": "repo/v1alpha1/repositorywebhook",
+      "at": "examples-generated/cluster/repo/v1alpha1/repositorywebhook.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "active",
+       "configuration",
+       "configuration.content_type",
+       "configuration.insecure_ssl",
+       "events"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "repo/v1alpha1/repositorywebhook",
+      "at": "examples/cluster/repo/v1alpha1/repositorywebhook.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "active",
+       "configuration",
+       "configuration.content_type",
+       "configuration.insecure_ssl",
+       "events"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "active": false,
+       "configuration": [
+        {
+         "content_type": "form",
+         "insecure_ssl": false
+        }
+       ],
+       "events": [
+        "issues"
+       ]
+      }
+     },
+     {
+      "id": "repo/v1alpha1/repositorywebhook",
+      "at": "examples/cluster/repositorywebhook/repositorywebhook.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "active",
+       "configuration",
+       "configuration.content_type",
+       "configuration.insecure_ssl",
+       "events"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "active": true,
+       "configuration": [
+        {
+         "content_type": "form",
+         "insecure_ssl": false
+        }
+       ],
+       "events": [
+        "issues"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryWebhook",
+     "shortGroup": "repo",
+     "at": "config/cluster/repositorywebhook/config.go:10"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "Team",
+    "group": "team.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_team",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Team",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:143"
+    },
+    "examples": [
+     {
+      "id": "team/v1alpha1/team",
+      "at": "examples-generated/cluster/team/v1alpha1/team.yaml",
+      "origin": "generated",
+      "fields": [
+       "description",
+       "name",
+       "privacy"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/team",
+      "at": "examples/cluster/team/v1alpha1/team.yaml",
+      "origin": "hand",
+      "fields": [
+       "description",
+       "name",
+       "privacy"
+      ],
+      "values": {
+       "description": "Some cool team",
+       "name": "some-team",
+       "privacy": "closed"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Team",
+     "shortGroup": "team",
+     "at": "config/cluster/team/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "TeamMembers",
+    "group": "team.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_team_members",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Members",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:145"
+    },
+    "references": [
+     {
+      "field": "team_id",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "source": "both",
+      "at": "config/cluster/teammembers/config.go:10"
+     },
+     {
+      "field": "team_slug",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"slug\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/team/v1alpha1/zz_members_types.go:129"
+     }
+    ],
+    "examples": [
+     {
+      "id": "team/v1alpha1/members",
+      "at": "examples-generated/cluster/team/v1alpha1/members.yaml",
+      "origin": "generated",
+      "with": [
+       "github_team"
+      ],
+      "fields": [
+       "members",
+       "members.role",
+       "members.username"
+      ],
+      "refFields": [
+       "team_slug"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/members",
+      "at": "examples/cluster/team/v1alpha1/members.yaml",
+      "origin": "hand",
+      "with": [
+       "github_membership",
+       "github_team"
+      ],
+      "fields": [
+       "members",
+       "members.role",
+       "members.username"
+      ],
+      "refFields": [
+       "team_id"
+      ],
+      "values": {
+       "members": [
+        {
+         "role": "maintainer",
+         "username": "SomeUser"
+        },
+        {
+         "role": "member",
+         "username": "AnotherUser"
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "team",
+     "at": "config/cluster/teammembers/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TeamMembership",
+    "group": "team.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_team_membership",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "TeamMembership",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:147"
+    },
+    "references": [
+     {
+      "field": "team_id",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "source": "both",
+      "at": "config/cluster/teammembership/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "team/v1alpha1/teammembership",
+      "at": "examples-generated/cluster/team/v1alpha1/teammembership.yaml",
+      "origin": "generated",
+      "with": [
+       "github_membership",
+       "github_team"
+      ],
+      "fields": [
+       "role",
+       "username"
+      ],
+      "refFields": [
+       "team_id"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/teammembership",
+      "at": "examples/cluster/team/v1alpha1/teammembership.yaml",
+      "origin": "hand",
+      "with": [
+       "github_membership",
+       "github_team"
+      ],
+      "fields": [
+       "role",
+       "username"
+      ],
+      "refFields": [
+       "team_id"
+      ],
+      "values": {
+       "role": "member",
+       "username": "SomeUser"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "TeamMembership",
+     "shortGroup": "team",
+     "at": "config/cluster/teammembership/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TeamRepository",
+    "group": "team.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_team_repository",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "TeamRepository",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:150"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/teamrepository/config.go:11"
+     },
+     {
+      "field": "team_id",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "source": "both",
+      "at": "config/cluster/teamrepository/config.go:14"
+     }
+    ],
+    "examples": [
+     {
+      "id": "team/v1alpha1/teamrepository",
+      "at": "examples-generated/cluster/team/v1alpha1/teamrepository.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository",
+       "github_team"
+      ],
+      "fields": [
+       "permission"
+      ],
+      "refFields": [
+       "repository",
+       "team_id"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/teamrepository",
+      "at": "examples/cluster/team/v1alpha1/teamrepository.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository",
+       "github_team"
+      ],
+      "fields": [
+       "permission"
+      ],
+      "refFields": [
+       "repository",
+       "team_id"
+      ],
+      "values": {
+       "permission": "pull"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "TeamRepository",
+     "shortGroup": "team",
+     "at": "config/cluster/teamrepository/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ],
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TeamSettings",
+    "group": "team.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_team_settings",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "TeamSettings",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:152"
+    },
+    "references": [
+     {
+      "field": "team_id",
+      "target": "github_team",
+      "targetKind": "team.github.upbound.io/Team",
+      "source": "both",
+      "at": "config/cluster/teamsettings/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "team/v1alpha1/teamsettings",
+      "at": "examples-generated/cluster/team/v1alpha1/teamsettings.yaml",
+      "origin": "generated",
+      "with": [
+       "github_team"
+      ],
+      "fields": [
+       "review_request_delegation",
+       "review_request_delegation.algorithm",
+       "review_request_delegation.member_count",
+       "review_request_delegation.notify"
+      ],
+      "refFields": [
+       "team_id"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/teamsettings",
+      "at": "examples/cluster/team/v1alpha1/teamsettings.yaml",
+      "origin": "hand",
+      "with": [
+       "github_team"
+      ],
+      "fields": [
+       "review_request_delegation",
+       "review_request_delegation.algorithm",
+       "review_request_delegation.member_count",
+       "review_request_delegation.notify"
+      ],
+      "refFields": [
+       "team_id"
+      ],
+      "values": {
+       "review_request_delegation": [
+        {
+         "algorithm": "ROUND_ROBIN",
+         "member_count": 1,
+         "notify": true
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "TeamSettings",
+     "shortGroup": "team",
+     "at": "config/cluster/teamsettings/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TeamSyncGroupMapping",
+    "group": "team.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_team_sync_group_mapping",
+    "group": "team.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "TeamSyncGroupMapping",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:154"
+    },
+    "references": [
+     {
+      "field": "team_id",
+      "target": "github_team",
+      "source": "config",
+      "at": "config/cluster/teamsyncgroupmapping/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "team/v1alpha1/teamsyncgroupmapping",
+      "at": "examples-generated/cluster/team/v1alpha1/teamsyncgroupmapping.yaml",
+      "origin": "generated",
+      "fields": [
+       "?dynamic",
+       "?dynamic.group",
+       "?dynamic.group.content",
+       "?dynamic.group.content.group_description",
+       "?dynamic.group.content.group_id",
+       "?dynamic.group.content.group_name",
+       "?dynamic.group.for_each",
+       "team_slug"
+      ]
+     },
+     {
+      "id": "team/v1alpha1/teamsyncgroupmapping",
+      "at": "examples/cluster/team/v1alpha1/teamsyncgroupmapping.yaml",
+      "origin": "hand",
+      "fields": [
+       "group",
+       "group.group_description",
+       "group.group_id",
+       "group.group_name",
+       "team_slug"
+      ],
+      "values": {
+       "group": [
+        {
+         "group_description": "The identity provider group of the example team",
+         "group_id": "1a2b3c4d-0000-0000-0000-000000000000",
+         "group_name": "some_team_group"
+        }
+       ],
+       "team_slug": "example"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "TeamSyncGroupMapping",
+     "shortGroup": "team",
+     "at": "config/cluster/teamsyncgroupmapping/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_team": [
+     "team.github.hfl.dev/Team"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "UserGpgKey",
+    "group": "user.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_user_gpg_key",
+    "group": "user.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "GPGKey",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:156"
+    },
+    "examples": [
+     {
+      "id": "user/v1alpha1/gpgkey",
+      "at": "examples-generated/cluster/user/v1alpha1/gpgkey.yaml",
+      "origin": "generated",
+      "fields": [
+       "armored_public_key"
+      ]
+     },
+     {
+      "id": "user/v1alpha1/gpgkey",
+      "at": "examples/cluster/user/v1alpha1/gpgkey.yaml",
+      "origin": "hand",
+      "fields": [
+       "armored_public_key"
+      ],
+      "values": {
+       "armored_public_key": "-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "GPGKey",
+     "shortGroup": "user",
+     "at": "config/cluster/usergpgkey/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "UserSshKey",
+    "group": "user.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_user_ssh_key",
+    "group": "user.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SSHKey",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:160"
+    },
+    "examples": [
+     {
+      "id": "user/v1alpha1/sshkey",
+      "at": "examples-generated/cluster/user/v1alpha1/sshkey.yaml",
+      "origin": "generated",
+      "fields": [
+       "key",
+       "title"
+      ]
+     },
+     {
+      "id": "user/v1alpha1/sshkey",
+      "at": "examples/cluster/user/v1alpha1/sshkey.yaml",
+      "origin": "hand",
+      "fields": [
+       "key",
+       "title"
+      ],
+      "values": {
+       "key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl example@example.com",
+       "title": "example title"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "SSHKey",
+     "shortGroup": "user",
+     "at": "config/cluster/usersshkey/config.go:8"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "WorkflowRepositoryPermissions",
+    "group": "workflow.github.hfl.dev"
+   },
+   "facts": {
+    "terraform": "github_workflow_repository_permissions",
+    "group": "actions.github.upbound.io",
+    "version": "v1alpha1",
+    "kind": "RepositoryWorkflowPermissions",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/external_name.go:162"
+    },
+    "references": [
+     {
+      "field": "repository",
+      "target": "github_repository",
+      "targetKind": "repo.github.upbound.io/Repository",
+      "source": "both",
+      "at": "config/cluster/workflowrepositorypermissions/config.go:11"
+     }
+    ],
+    "examples": [
+     {
+      "id": "actions/v1alpha1/repositoryworkflowpermissions",
+      "at": "examples-generated/cluster/actions/v1alpha1/repositoryworkflowpermissions.yaml",
+      "origin": "generated",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "can_approve_pull_request_reviews",
+       "default_workflow_permissions"
+      ],
+      "refFields": [
+       "repository"
+      ]
+     },
+     {
+      "id": "actions/v1alpha1/repositoryworkflowpermissions",
+      "at": "examples/cluster/actions/v1alpha1/repositoryworkflowpermissions.yaml",
+      "origin": "hand",
+      "with": [
+       "github_repository"
+      ],
+      "fields": [
+       "can_approve_pull_request_reviews",
+       "default_workflow_permissions"
+      ],
+      "refFields": [
+       "repository"
+      ],
+      "values": {
+       "can_approve_pull_request_reviews": true,
+       "default_workflow_permissions": "read"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RepositoryWorkflowPermissions",
+     "shortGroup": "actions",
+     "at": "config/cluster/workflowrepositorypermissions/config.go:8"
+    }
+   },
+   "targetsOurs": {
+    "github_repository": [
+     "repository.github.hfl.dev/Repository"
+    ]
+   }
+  }
+ ],
+ "noUpjet": [
+  "dependabot.github.hfl.dev/DependabotOrganizationSecret",
+  "dependabot.github.hfl.dev/DependabotOrganizationSecretRepository",
+  "dependabot.github.hfl.dev/DependabotSecret",
+  "enterprise.github.hfl.dev/EnterpriseActionsPermissions",
+  "organization.github.hfl.dev/OrganizationCustomProperties",
+  "organization.github.hfl.dev/OrganizationSettings"
+ ]
+}
